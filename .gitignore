@@ -1,0 +1,82 @@
+# Environment variables and secrets
+.env
+.env.local
+.env.production
+.env.staging
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Audio cache and temporary files
+*_cache/
+temp/
+tmp/
+*.tmp
+*.log
+
+# Test and development files
+tempCodeRunnerFile.py
+test_*
+debug_*
+
+# Audio files (except samples)
+*.mp3
+*.wav
+*.ogg
+*.m4a
+audio/*.mp3
+audio/*.wav
+
+# Screenshots and images (optional - keep if needed for documentation)
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Railway
+.railway/
+
+# Node modules (if you add any frontend build tools later)
+node_modules/

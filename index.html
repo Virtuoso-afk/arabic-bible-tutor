@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معلم القراءة العربية - الكتاب المقدس</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1>معلم القراءة العربية</h1>
+            <p>تعلم قراءة الكتاب المقدس بالعربية</p>
+            <p style="font-size: 1.1rem; color: #2c5282; font-weight: 500; margin-top: 15px; background: #e6f3ff; padding: 12px; border-radius: 8px; border: 1px solid #b3d9ff;">💡 اضغط على أيقونة الإعدادات ⚙️ للتحكم في سرعة النطق وحجم الخط ومستوى الصعوبة</p>
+        </header>
+
+        <main class="app-main">
+            <!-- Text Display Section -->
+            <section class="text-section">
+                <div class="verse-container">
+                    <div class="verse-reference">
+                        <span id="book-name">التكوين</span>
+                        <span id="chapter-verse">1:1</span>
+                    </div>
+                    <div class="verse-text" id="current-verse">
+                        في البدء خلق الله السماوات والأرض
+                    </div>
+                </div>
+            </section>
+
+            <!-- Controls Section -->
+            <section class="controls-section">
+                <div class="recording-controls">
+                    <button id="start-recording" class="btn btn-primary">
+                        🎤 ابدأ القراءة
+                    </button>
+                    <button id="stop-recording" class="btn btn-secondary" disabled>
+                        ⏹️ توقف
+                    </button>
+                    <button id="play-reference" class="btn btn-accent">
+                        🔊 استمع للنموذج
+                    </button>
+                </div>
+
+                <!-- Auto-Stop Toggle -->
+                <div class="auto-stop-controls">
+                    <label class="auto-stop-label">
+                        <input type="checkbox" id="auto-stop-listening" checked>
+                        <span class="auto-stop-text">توقف تلقائياً بعد الصمت</span>
+                        <small class="auto-stop-hint">عند الإلغاء: استخدم زر التوقف لإنهاء التسجيل</small>
+                    </label>
+                </div>
+
+                <div class="audio-visualization">
+                    <canvas id="audio-canvas" width="400" height="100"></canvas>
+                </div>
+            </section>
+
+            <!-- Feedback Section -->
+            <section class="feedback-section">
+                <div class="recognition-result" id="recognition-result">
+                    <div class="result-text" id="result-text"></div>
+                    <div class="accuracy-score" id="accuracy-score"></div>
+                </div>
+                
+                <div class="feedback-message" id="feedback-message">
+                    اضغط على "ابدأ القراءة" لتبدأ التمرين
+                </div>
+            </section>
+
+            <!-- Navigation Section -->
+            <section class="navigation-section">
+                <button id="prev-verse" class="btn btn-nav">⏮️ السابق</button>
+                <div class="progress-indicator">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <span class="progress-text" id="progress-text">آية 1 من 10</span>
+                </div>
+                <button id="next-verse" class="btn btn-nav">التالي ⏭️</button>
+            </section>
+        </main>
+
+        <!-- Settings Panel -->
+        <aside class="settings-panel" id="settings-panel">
+            <div class="settings-header">
+                <h3>الإعدادات</h3>
+                <button id="close-settings" class="close-settings">✕</button>
+            </div>
+            <div class="setting-group">
+                <label for="accuracy-threshold">مستوى الدقة المطلوب:</label>
+                <input type="range" id="accuracy-threshold" min="70" max="95" value="85">
+                <span id="accuracy-value">85%</span>
+            </div>
+            <div class="setting-group">
+                <label for="show-diacritics">إظهار التشكيل:</label>
+                <input type="checkbox" id="show-diacritics" checked>
+            </div>
+            <div class="setting-group">
+                <label for="font-size">حجم الخط:</label>
+                <input type="range" id="font-size" min="16" max="32" value="24">
+            </div>
+            <div class="setting-group">
+                <label for="speech-rate">سرعة النطق:</label>
+                <input type="range" id="speech-rate" min="0.5" max="1.2" step="0.1" value="0.8">
+                <span id="speech-rate-value">0.8x</span>
+            </div>
+        </aside>
+
+        <button id="settings-toggle" class="settings-toggle">⚙️</button>
+    </div>
+
+    <!-- Audio elements for reference pronunciation -->
+    <audio id="reference-audio" preload="none"></audio>
+
+    <!-- Scripts -->
+    <script src="bible-texts.js"></script>
+    <script src="audio-processor.js"></script>
+    <script src="speech-recognition.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
