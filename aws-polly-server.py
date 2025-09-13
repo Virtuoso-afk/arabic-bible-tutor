@@ -232,8 +232,8 @@ def clear_cache():
         return jsonify({'error': f'Error clearing cache: {str(e)}'}), 500
 
 if __name__ == '__main__':
-    # Get port from environment variable (Render sets this automatically)
-    port = int(os.getenv('PORT', 10000))
+    # Get port from environment variable (App Runner uses 8000 by default)
+    port = int(os.getenv('PORT', 8000))
     
     print("🎙️  Arabic Bible Tutor - AWS Polly TTS Server")
     print("=" * 50)
@@ -250,11 +250,11 @@ if __name__ == '__main__':
     print(f"\n🚀 Starting server on port {port}")
     print(f"   Health check: /health")
     print(f"   Available voices: /voices")
-    print("\n💡 Environment variables required:")
-    print("   - AWS_ACCESS_KEY_ID")
-    print("   - AWS_SECRET_ACCESS_KEY") 
+    print("\n💡 AWS Configuration:")
+    print("   - Using IAM roles (recommended for App Runner)")
+    print("   - Or set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY")
     print("   - AWS_REGION (optional, defaults to us-east-1)")
-    print("   - PORT (set automatically by Render)")
+    print("   - PORT (set automatically by App Runner)")
     
     # Use production settings for Render deployment
     debug_mode = os.getenv('FLASK_ENV') == 'development'

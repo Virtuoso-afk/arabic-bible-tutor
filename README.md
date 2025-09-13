@@ -13,89 +13,102 @@ A web application for teaching Arabic reading using biblical texts with high-qua
 
 ## 🚀 Quick Start
 
-## 🌐 Deploy to Render (Recommended)
+## 🌐 Deploy to AWS App Runner (Recommended)
 
-This project is optimized for deployment on Render.com with both frontend and backend services.
+This project is optimized for deployment on AWS App Runner with seamless AWS Polly integration.
 
 ### 1. Prerequisites
-- GitHub account
-- Render account (free tier available)
-- AWS account with Polly access
-- AWS Access Key ID and Secret Access Key
+- GitHub account  
+- AWS account with App Runner and Polly access
+- Basic familiarity with AWS Console
 
-### 2. GitHub Setup
+### 2. Setup IAM Role (Recommended)
+
+**Option A: IAM Role (Most Secure)**
+1. Go to **IAM Console** → **Policies** → **Create Policy**
+2. Use this JSON policy:
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow", 
+            "Action": [
+                "polly:SynthesizeSpeech",
+                "polly:DescribeVoices"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+3. Name: `ArabicBibleTutorPollyPolicy`
+4. Create **IAM Role** → **AWS Service** → **App Runner** 
+5. Attach the policy, name: `ArabicBibleTutorAppRunnerRole`
+6. Copy the Role ARN
+
+**Option B: Access Keys (Simpler)**
+- Use your existing AWS access keys
+- Set as environment variables in App Runner
+
+### 3. GitHub Setup
 
 ```bash
-# Initialize git repository
-git init
-
-# Add all files (credentials are excluded by .gitignore)
-git add .
-
-# Create initial commit
-git commit -m "Initial commit: Arabic Bible Reading Tutor"
-
-# Add GitHub remote (replace with your repository URL)
+# Push your project to GitHub (if not done already)
 git remote add origin https://github.com/yourusername/arabic-bible-tutor.git
-
-# Push to GitHub
-git branch -M main
+git branch -M main  
 git push -u origin main
 ```
 
-### 3. Render Deployment
+### 4. Deploy Backend on App Runner
 
-#### Option A: Using render.yaml (Automatic)
-1. **Connect GitHub to Render:**
-   - Go to [Render Dashboard](https://dashboard.render.com/)
-   - Click "New" → "Blueprint"
-   - Connect your GitHub repository
-   - Render will automatically detect `render.yaml` and deploy both services
+1. **Go to AWS App Runner Console**
+2. **Create Service:**
+   - Source: Repository → GitHub
+   - Connect your GitHub account
+   - Select repository: `arabic-bible-tutor`
+   - Branch: `main`
 
-#### Option B: Manual Setup
-1. **Deploy Backend API:**
-   - Click "New" → "Web Service"
-   - Connect GitHub repository
-   - Set build command: `pip install -r requirements.txt`
-   - Set start command: `python aws-polly-server.py`
-   - Add environment variables:
-     - `AWS_ACCESS_KEY_ID`: Your AWS access key
-     - `AWS_SECRET_ACCESS_KEY`: Your AWS secret key
-     - `AWS_REGION`: `us-east-1`
-     - `FLASK_ENV`: `production`
+3. **Configure Build:**
+   - Runtime: Python 3.11
+   - Build command: `pip install -r requirements.txt`
+   - Start command: `python aws-polly-server.py`
+   - Port: `8000`
 
-2. **Deploy Frontend:**
-   - Click "New" → "Static Site"
-   - Connect same GitHub repository
-   - Build command: (leave empty)
-   - Publish directory: `.` (current directory)
+4. **Configure Service:**
+   - Service name: `arabic-bible-tutor-api`
+   - **Instance Role**: Select `ArabicBibleTutorAppRunnerRole` (if using IAM)
+   - **Environment Variables** (only if not using IAM):
+     - `AWS_ACCESS_KEY_ID` = your access key
+     - `AWS_SECRET_ACCESS_KEY` = your secret key
+     - `AWS_REGION` = us-east-1
 
-### 4. Environment Variables Setup
+5. **Deploy** (takes 3-5 minutes)
 
-In your Render service dashboard, add these environment variables:
+### 5. Deploy Frontend on S3 + CloudFront
 
-| Variable | Value | Required |
-|----------|-------|----------|
-| `AWS_ACCESS_KEY_ID` | Your AWS access key | Yes |
-| `AWS_SECRET_ACCESS_KEY` | Your AWS secret access key | Yes |
-| `AWS_REGION` | `us-east-1` (recommended) | No |
-| `FLASK_ENV` | `production` | No |
+1. **Create S3 Bucket:**
+   - Bucket name: `arabic-bible-tutor-frontend`
+   - Enable static website hosting
+   - Upload all frontend files: `index.html`, `styles.css`, `app.js`, etc.
 
-### 5. Update Frontend Configuration
+2. **Update API URL:**
+   - Update `audio-processor.js` with your App Runner URL:
+   ```javascript
+   const TTS_SERVICE_URL = 'https://your-app-id.region.awsapprunner.com';
+   ```
 
-After deployment, update `audio-processor.js` with your Render API URL:
-
-```javascript
-// Replace localhost with your Render service URL
-const TTS_SERVICE_URL = 'https://your-service-name.onrender.com';
-```
+3. **Optional: CloudFront Distribution:**
+   - Create CloudFront distribution
+   - Origin: Your S3 bucket
+   - Custom domain if desired
 
 ### 6. Test Deployment
 
-1. Visit your Render static site URL
-2. Open browser developer tools
-3. Test the "Listen to Model" button
-4. Verify AWS Polly integration works
+1. Visit your App Runner service URL: `/health`
+2. Test your S3 frontend
+3. Verify Polly integration works
+4. Check browser console for any CORS issues
 
 ## 💻 Local Development
 
@@ -216,28 +229,36 @@ You should see:
 
 ## 🛠️ Troubleshooting
 
-### Render Deployment Issues
+### App Runner Deployment Issues
 
 **Service Won't Start**
-- Check build logs in Render dashboard
-- Verify `requirements.txt` contains all dependencies
-- Ensure environment variables are set correctly
+- Check build logs in App Runner console
+- Verify `requirements.txt` contains all dependencies  
+- Ensure `apprunner.yaml` configuration is correct
+- Check that Python runtime version is supported
 
-**AWS Polly Not Working on Render**
-- Verify `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` are set
-- Check that your AWS account has Polly permissions
-- Test credentials locally first
+**IAM Role Issues**
+- Verify IAM role has Polly permissions
+- Check that role is attached to App Runner service
+- Ensure role trust policy allows App Runner
+- Test with access keys first to isolate IAM issues
+
+**AWS Polly Not Working**
+- Test IAM permissions with AWS CLI: `aws polly describe-voices`
+- Verify App Runner is in same region as Polly service
+- Check CloudWatch logs for detailed error messages
 - Ensure AWS region supports Arabic voices
 
 **Frontend Can't Connect to Backend**
-- Update `audio-processor.js` with your Render API URL
+- Update `audio-processor.js` with your App Runner URL
 - Check CORS settings in Flask server
-- Verify both services are deployed and running
+- Verify App Runner service is running and healthy
+- Test backend endpoints directly: `/health`, `/voices`
 
-**"Service Unavailable" Errors**
-- Render free tier services sleep after 15 minutes of inactivity
-- First request may take 30-60 seconds to wake up the service
-- Consider upgrading to paid tier for always-on services
+**CORS Errors**
+- App Runner URLs are HTTPS - ensure frontend uses HTTPS
+- Verify Flask CORS configuration allows your frontend domain
+- Check browser developer tools for specific CORS errors
 
 ### Local Development Issues
 

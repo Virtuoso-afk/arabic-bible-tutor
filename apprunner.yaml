@@ -1,0 +1,21 @@
+version: 1.0
+runtime: python3
+build:
+  commands:
+    build:
+      - echo "Installing dependencies..."
+      - pip install --upgrade pip
+      - pip install -r requirements.txt
+run:
+  runtime-version: 3.11
+  command: python aws-polly-server.py
+  network:
+    port: 8000
+  env:
+    - name: PORT
+      value: "8000"
+    - name: FLASK_ENV
+      value: "production"
+    - name: AWS_DEFAULT_REGION
+      value: "us-east-1"
+    # AWS credentials will be handled by IAM roles - no need to set here
