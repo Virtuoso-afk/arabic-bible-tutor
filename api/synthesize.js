@@ -41,7 +41,7 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const { text, voice = 'adam', rate = 'medium' } = req.body;
+    const { text, voice = 'antoni', rate = 'medium' } = req.body;
 
     if (!text) {
       return res.status(400).json({ error: 'Text is required' });
