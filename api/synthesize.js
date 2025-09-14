@@ -62,6 +62,11 @@ module.exports = async function handler(req, res) {
     }
 
     const voiceConfig = ARABIC_VOICES[voice];
+    
+    // Debug logging
+    console.log('🎵 Selected voice:', voice);
+    console.log('🎵 Voice config:', voiceConfig);
+    console.log('🎵 Using voice ID:', voiceConfig.id);
 
     // Convert rate to ElevenLabs stability/similarity settings
     const rateSettings = {
