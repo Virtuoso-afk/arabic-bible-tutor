@@ -513,8 +513,9 @@ class ArabicTTSGenerator {
             elevenlabs: {
                 enabled: true, // ElevenLabs with serverless function
                 serverUrl: '/api/synthesize', // Vercel serverless function
-                voiceId: 'antoni', // Default to Antoni voice
+                voiceId: 'yahya', // Default to Yahya voice (Modern Standard Arabic)
                 voices: {
+                    'yahya': 'Yahya (Modern Standard Arabic)',
                     'adam': 'Adam (Deep Male Voice)',
                     'sarah': 'Sarah (Female Voice)', 
                     'antoni': 'Antoni (Warm Male Voice)'

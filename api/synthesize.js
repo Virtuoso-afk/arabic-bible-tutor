@@ -5,6 +5,12 @@
 
 // Available Arabic voices from ElevenLabs
 const ARABIC_VOICES = {
+  'yahya': {
+    'id': 'QRq5hPRAKf5ZhSlTBH6r',
+    'name': 'Yahya (Modern Standard Arabic)',
+    'language': 'ar',
+    'gender': 'Male'
+  },
   'adam': {
     'id': '21m00Tcm4TlvDq8ikWAM',
     'name': 'Adam (Deep Male Voice)',
@@ -41,7 +47,7 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const { text, voice = 'antoni', rate = 'medium' } = req.body;
+    const { text, voice = 'yahya', rate = 'medium' } = req.body;
 
     if (!text) {
       return res.status(400).json({ error: 'Text is required' });
