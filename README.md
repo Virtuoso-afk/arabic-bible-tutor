@@ -1,348 +1,220 @@
 # Arabic Bible Reading Tutor 🎓📖
 
-A web application for teaching Arabic reading using biblical texts with high-quality speech recognition and text-to-speech technology.
+A frontend-only web application for teaching Arabic reading using biblical texts with browser-based speech recognition and text-to-speech technology.
 
 ## 🌟 Features
 
-- **High-Quality Speech Recognition**: Advanced Arabic speech recognition with multiple fallback options
-- **Multiple TTS Services**: AWS Polly, Azure Cognitive Services, Google Cloud TTS, and enhanced browser TTS
+- **Browser-Based Speech Recognition**: Uses Web Speech API for Arabic speech recognition
+- **Built-in Text-to-Speech**: Enhanced browser TTS with optimized Arabic voice selection
 - **Biblical Text Database**: Verses from Old and New Testament in Arabic with and without diacritics
 - **Progressive Learning**: Beginner, intermediate, and advanced difficulty levels
 - **Real-time Audio Visualization**: Visual feedback for pronunciation quality
 - **Responsive Arabic UI**: Full RTL support with Arabic fonts
+- **Frontend-Only**: No backend required, deploys easily on static hosting platforms
 
-## 🚀 Quick Start
+## 🚀 Quick Start - Vercel Deployment (Recommended)
 
-## 🌐 Deploy to AWS App Runner (Recommended)
-
-This project is optimized for deployment on AWS App Runner with seamless AWS Polly integration.
+This project is optimized for deployment on Vercel as a static frontend application.
 
 ### 1. Prerequisites
 - GitHub account  
-- AWS account with App Runner and Polly access
-- Basic familiarity with AWS Console
+- Vercel account (free)
+- Modern browser with Web Speech API support (Chrome, Edge, Safari)
 
-### 2. Setup IAM Role (Recommended)
+### 2. Deploy to Vercel
+1. **Fork this repository** to your GitHub account
+2. **Import to Vercel**:
+   - Go to [vercel.com](https://vercel.com)
+   - Click "Import Project"
+   - Select your forked repository
+   - Choose "Static Site" as the framework preset
+   - Deploy!
 
-**Option A: IAM Role (Most Secure)**
-1. Go to **IAM Console** → **Policies** → **Create Policy**
-2. Use this JSON policy:
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow", 
-            "Action": [
-                "polly:SynthesizeSpeech",
-                "polly:DescribeVoices"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
-3. Name: `ArabicBibleTutorPollyPolicy`
-4. Create **IAM Role** → **AWS Service** → **App Runner** 
-5. Attach the policy, name: `ArabicBibleTutorAppRunnerRole`
-6. Copy the Role ARN
+3. **Access your app**: Vercel will provide you with a URL like `https://your-app.vercel.app`
 
-**Option B: Access Keys (Simpler)**
-- Use your existing AWS access keys
-- Set as environment variables in App Runner
-
-### 3. GitHub Setup
-
+### 3. Local Development
 ```bash
-# Push your project to GitHub (if not done already)
-git remote add origin https://github.com/yourusername/arabic-bible-tutor.git
-git branch -M main  
-git push -u origin main
-```
+# Clone your forked repository
+git clone https://github.com/your-username/arabic-bible-tutor.git
+cd arabic-bible-tutor
 
-### 4. Deploy Backend on App Runner
-
-1. **Go to AWS App Runner Console**
-2. **Create Service:**
-   - Source: Repository → GitHub
-   - Connect your GitHub account
-   - Select repository: `arabic-bible-tutor`
-   - Branch: `main`
-
-3. **Configure Build:**
-   - Runtime: Python 3.11
-   - Build command: `pip install -r requirements.txt`
-   - Start command: `python aws-polly-server.py`
-   - Port: `8000`
-
-4. **Configure Service:**
-   - Service name: `arabic-bible-tutor-api`
-   - **Instance Role**: Select `ArabicBibleTutorAppRunnerRole` (if using IAM)
-   - **Environment Variables** (only if not using IAM):
-     - `AWS_ACCESS_KEY_ID` = your access key
-     - `AWS_SECRET_ACCESS_KEY` = your secret key
-     - `AWS_REGION` = us-east-1
-
-5. **Deploy** (takes 3-5 minutes)
-
-### 5. Deploy Frontend on S3 + CloudFront
-
-1. **Create S3 Bucket:**
-   - Bucket name: `arabic-bible-tutor-frontend`
-   - Enable static website hosting
-   - Upload all frontend files: `index.html`, `styles.css`, `app.js`, etc.
-
-2. **Update API URL:**
-   - Update `audio-processor.js` with your App Runner URL:
-   ```javascript
-   const TTS_SERVICE_URL = 'https://your-app-id.region.awsapprunner.com';
-   ```
-
-3. **Optional: CloudFront Distribution:**
-   - Create CloudFront distribution
-   - Origin: Your S3 bucket
-   - Custom domain if desired
-
-### 6. Test Deployment
-
-1. Visit your App Runner service URL: `/health`
-2. Test your S3 frontend
-3. Verify Polly integration works
-4. Check browser console for any CORS issues
-
-## 💻 Local Development
-
-### 1. Basic Setup (Browser TTS)
-
-```bash
-# Clone or download the project
-cd "the app"
-
-# Start simple web server
+# Serve locally (any static server works)
+# Option 1: Python
 python3 -m http.server 8000
+
+# Option 2: Node.js serve
+npx serve .
+
+# Option 3: Live Server (VS Code extension)
+# Right-click index.html and select "Open with Live Server"
 
 # Open in browser
 open http://localhost:8000
 ```
 
-### 2. AWS Polly Setup (Best Quality)
+## 🛠️ Browser Compatibility
 
-#### Prerequisites
-- AWS account with Polly access
-- AWS credentials configured
+### Recommended Browsers
+- **Chrome/Chromium** (Best support for Web Speech API)
+- **Microsoft Edge** (Good Arabic speech recognition)
+- **Safari** (macOS/iOS - Good Arabic TTS voices)
 
-#### Install Dependencies
+### Required Browser Features
+- Web Speech API (for speech recognition)
+- Speech Synthesis API (for text-to-speech)
+- Web Audio API (for audio visualization)
+- Microphone access permission
 
-```bash
-pip install -r requirements.txt
+## 🎯 Usage
+
+1. **Grant microphone permission** when prompted
+2. **Click "ابدأ القراءة" (Start Reading)** to begin
+3. **Read the displayed Arabic text** aloud
+4. **Get instant feedback** on pronunciation accuracy
+5. **Navigate** between verses using next/previous buttons
+6. **Adjust settings** using the gear icon:
+   - Accuracy threshold
+   - Font size
+   - Speech rate
+   - Show/hide diacritics
+
+## 📱 Features Overview
+
+### Speech Recognition
+- Uses browser's native speech recognition
+- Optimized for Arabic language
+- Real-time interim results
+- Automatic silence detection
+- Manual stop option
+
+### Text-to-Speech
+- Enhanced browser TTS with Arabic voice prioritization
+- Adjustable speech rate (0.5x - 1.2x)
+- Voice quality scoring
+- Fallback voice selection
+
+### Learning System
+- Progressive difficulty levels
+- Accuracy scoring (70-95% threshold)
+- Multiple attempts (up to 3)
+- Automatic progression on success
+- Visual feedback and highlighting
+
+### Audio Visualization
+- Real-time waveform display
+- Volume level monitoring
+- Visual recording indicators
+
+## 🔧 Technical Details
+
+### Architecture
+- **Frontend-Only**: Pure HTML, CSS, JavaScript
+- **No Backend**: All processing done in browser
+- **Static Hosting**: Compatible with any static hosting service
+- **Progressive Web App**: Can be installed on mobile devices
+
+### Browser APIs Used
+- Web Speech API (`webkitSpeechRecognition`)
+- Speech Synthesis API (`speechSynthesis`)
+- Web Audio API (`AudioContext`)
+- MediaDevices API (`getUserMedia`)
+
+### File Structure
 ```
-
-#### Configure AWS Credentials
-
-**Option A: Environment Variables**
-```bash
-export AWS_ACCESS_KEY_ID="your-access-key"
-export AWS_SECRET_ACCESS_KEY="your-secret-key"
-export AWS_REGION="us-east-1"
-```
-
-**Option B: AWS CLI**
-```bash
-aws configure
-```
-
-**Option C: Create `.env` file**
-```env
-AWS_ACCESS_KEY_ID=your-access-key
-AWS_SECRET_ACCESS_KEY=your-secret-key
-AWS_REGION=us-east-1
-```
-
-#### Start AWS Polly Server
-
-```bash
-# Start the TTS server
-python3 aws-polly-server.py
-```
-
-You should see:
-```
-🎙️  Arabic Bible Tutor - AWS Polly TTS Server
-==================================================
-✅ AWS Polly client initialized successfully
-📍 Region: us-east-1
-🗂️  Cache directory: /tmp/arabic_tutor_cache
-🎵 Available voices: zeina, hala
-🚀 Starting server on http://localhost:5000
-```
-
-#### Configure Web App
-
-1. Open the web app: http://localhost:8000
-2. Click settings (⚙️)
-3. Change "خدمة النطق" to "AWS Polly"
-4. Choose voice: زينة (Zeina) for Modern Standard Arabic
-5. Click "🎵 اختبار AWS Polly" to test
-
-## 🎵 Available Arabic Voices
-
-### AWS Polly (Recommended)
-- **Zeina** - Modern Standard Arabic (Female)
-- **Hala** - Gulf Arabic (Female, Neural)
-
-### Azure Cognitive Services
-- **ar-SA-HamedNeural** - Saudi Arabic (Male, Neural)
-- **ar-EG-SalmaNeural** - Egyptian Arabic (Female, Neural)
-
-### Google Cloud TTS
-- **ar-XA-Standard-B** - Arabic (Male)
-- **ar-XA-Wavenet-B** - Arabic (Male, WaveNet)
-
-## 📖 Usage
-
-1. **Select Difficulty**: App starts with beginner level
-2. **Read the Verse**: Click "ابدأ القراءة" (Start Reading)
-3. **Get Feedback**: App compares your pronunciation with expected text
-4. **Listen to Reference**: Click "استمع للنموذج" (Listen to Model) for correct pronunciation
-5. **Progress**: Complete verses to advance through levels
-
-### Keyboard Shortcuts
-- **Ctrl/Cmd + Space**: Start/Stop recording
-- **Ctrl/Cmd + P**: Play reference audio
-- **Ctrl/Cmd + ←**: Next verse
-- **Ctrl/Cmd + →**: Previous verse
-
-## ⚙️ Settings
-
-### Audio Settings
-- **Voice Service**: Choose between AWS Polly, Azure, Google, Browser, or Auto
-- **Speech Rate**: Adjust from 0.5x to 1.2x speed
-- **Accuracy Threshold**: Set required pronunciation accuracy (70-95%)
-
-### Display Settings
-- **Show Diacritics**: Toggle Arabic diacritical marks
-- **Font Size**: Adjust text size for readability
-
-### AWS Polly Settings
-- **Voice**: Choose between Zeina (MSA) or Hala (Gulf)
-- **Server URL**: Default is http://localhost:5000
-
-## 🛠️ Troubleshooting
-
-### App Runner Deployment Issues
-
-**Service Won't Start**
-- Check build logs in App Runner console
-- Verify `requirements.txt` contains all dependencies  
-- Ensure `apprunner.yaml` configuration is correct
-- Check that Python runtime version is supported
-
-**IAM Role Issues**
-- Verify IAM role has Polly permissions
-- Check that role is attached to App Runner service
-- Ensure role trust policy allows App Runner
-- Test with access keys first to isolate IAM issues
-
-**AWS Polly Not Working**
-- Test IAM permissions with AWS CLI: `aws polly describe-voices`
-- Verify App Runner is in same region as Polly service
-- Check CloudWatch logs for detailed error messages
-- Ensure AWS region supports Arabic voices
-
-**Frontend Can't Connect to Backend**
-- Update `audio-processor.js` with your App Runner URL
-- Check CORS settings in Flask server
-- Verify App Runner service is running and healthy
-- Test backend endpoints directly: `/health`, `/voices`
-
-**CORS Errors**
-- App Runner URLs are HTTPS - ensure frontend uses HTTPS
-- Verify Flask CORS configuration allows your frontend domain
-- Check browser developer tools for specific CORS errors
-
-### Local Development Issues
-
-### AWS Polly Issues
-
-**"AWS Polly server not available"**
-- Ensure the Python server is running: `python3 aws-polly-server.py`
-- Check if port 5000 is available
-- Verify server URL in settings
-
-**"AWS Polly not configured on server"**
-- Check AWS credentials are set
-- Verify AWS region supports Arabic voices
-- Test with: `python3 -c "import boto3; print(boto3.client('polly').describe_voices())"`
-
-**Voice Quality Issues**
-- Try different voices (Zeina vs Hala)
-- Adjust speech rate in settings
-- Check internet connection for cloud TTS services
-
-### General Issues
-
-**Microphone Not Working**
-- Allow microphone permissions in browser
-- Check microphone settings in OS
-- Try refreshing the page
-
-**Speech Recognition Accuracy Low**
-- Speak clearly and at moderate pace
-- Ensure quiet environment
-- Lower accuracy threshold in settings
-- Try different browser (Chrome recommended)
-
-## 🏗️ Architecture
-
-```
-├── index.html              # Main application interface
-├── app.js                  # Core application logic
-├── speech-recognition.js   # Arabic speech recognition engine
-├── audio-processor.js      # TTS and audio processing
+├── index.html              # Main application page
+├── styles.css             # Application styles (RTL Arabic UI)
+├── app.js                 # Main application logic
 ├── bible-texts.js         # Biblical text database
-├── styles.css             # Arabic RTL styling
-├── aws-polly-server.py    # AWS Polly TTS server
-├── requirements.txt       # Python dependencies
-└── audio/                 # Prerecorded audio files (optional)
+├── audio-processor.js     # Audio processing and TTS
+├── speech-recognition.js  # Speech recognition handling
+├── vercel.json           # Vercel deployment configuration
+└── audio/                # Audio assets directory
 ```
 
-## 🔒 Privacy & Security
+## 🌍 Deployment Options
 
-- **Local Processing**: Speech recognition runs in your browser
-- **API Keys**: Stored only in browser's local storage
-- **Audio Cache**: AWS Polly responses cached locally for performance
-- **No Data Collection**: No user data sent to external servers except TTS requests
+### Vercel (Recommended)
+- Automatic deployments from Git
+- Global CDN
+- Custom domains
+- Analytics
+- Perfect for static sites
 
-## 📚 Biblical Texts Included
+### Other Static Hosting Options
+- **Netlify**: Similar to Vercel with Git integration
+- **GitHub Pages**: Free hosting for GitHub repositories
+- **Firebase Hosting**: Google's static hosting service
+- **Surge.sh**: Simple static hosting
 
-### Old Testament (العهد القديم)
-- Genesis 1:1-5 (التكوين)
-- Psalm 23:1-3 (المزامير)
+### Manual Deployment
+1. Download/clone the repository
+2. Upload all files to any web server
+3. Ensure `index.html` is the default document
+4. Access via your domain/URL
 
-### New Testament (العهد الجديد)
-- Matthew 5:3-5, 6:9-10 (متى)
-- John 3:16, 14:6 (يوحنا)
-- Romans 8:28 (رومية)
+## 📞 Browser Support Notes
+
+### Chrome/Chromium
+- Best overall support
+- Excellent Arabic speech recognition
+- Good Arabic TTS voices (varies by OS)
+
+### Microsoft Edge
+- Good speech recognition
+- Native Windows Arabic voices
+- Recommended for Windows users
+
+### Safari (macOS/iOS)
+- Good Arabic TTS voices
+- Some Web Speech API limitations
+- Works best for TTS functionality
+
+### Firefox
+- Limited Web Speech API support
+- TTS works well
+- May require different speech recognition approach
+
+## 🎓 Educational Features
+
+### Difficulty Levels
+- **Beginner**: Simple verses with full diacritics
+- **Intermediate**: Mixed diacritics and complexity
+- **Advanced**: Minimal diacritics, complex texts
+
+### Learning Aids
+- Diacritics toggle (تشكيل)
+- Adjustable font sizes
+- Reference audio playback
+- Visual error highlighting
+- Progress tracking
+
+### Accessibility
+- Right-to-left (RTL) layout
+- High contrast text
+- Keyboard shortcuts
+- Screen reader compatible
+- Mobile-friendly interface
+
+## 🚀 Performance Tips
+
+1. **Use Chrome** for best speech recognition
+2. **Enable microphone permissions** before starting
+3. **Use in quiet environment** for better accuracy
+4. **Speak clearly and at moderate pace**
+5. **Ensure stable internet connection** for voice synthesis
+
+## 📝 License
+
+MIT License - Feel free to use for educational purposes.
 
 ## 🤝 Contributing
 
-1. Add more biblical verses to `bible-texts.js`
-2. Record native Arabic audio files in `audio/` directory
-3. Improve speech recognition accuracy
-4. Add more Arabic voices and languages
-5. Enhance UI/UX for better learning experience
-
-## 📄 License
-
-This project is created for educational purposes to help teach Arabic reading in Christian contexts.
-
-## 🆘 Support
-
-For issues or questions:
-1. Check the troubleshooting section above
-2. Test with the health check: http://localhost:5000/health
-3. Enable browser developer console to see detailed error messages
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test in multiple browsers
+5. Submit a pull request
 
 ---
 
-**May this tool help many learn to read the Word of God in Arabic! 🙏**
+**Happy Learning! 📚✨**

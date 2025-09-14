@@ -508,17 +508,17 @@ class ArabicTTSGenerator {
         this.audioCache = new Map();
         this.loadVoices();
         
-        // Cloud TTS services configuration
+        // Cloud TTS services configuration - disabled for frontend-only deployment
         this.cloudServices = {
             aws: {
-                enabled: true, // Enable AWS by default
-                serverUrl: 'http://localhost:5001',
-                voiceId: 'Zeina', // High-quality Arabic voice (Zeina or Hala)
+                enabled: false, // Disabled for frontend-only
+                serverUrl: null,
+                voiceId: 'Zeina',
                 region: 'us-east-1'
             },
             google: {
                 enabled: false,
-                apiKey: null, // User would need to provide
+                apiKey: null,
                 endpoint: 'https://texttospeech.googleapis.com/v1/text:synthesize'
             },
             azure: {
@@ -603,20 +603,20 @@ class ArabicTTSGenerator {
     }
 
     /**
-     * Get TTS methods in order of preference
+     * Get TTS methods in order of preference - Frontend-only version
      */
     getTTSMethods() {
         switch (this.options.preferredService) {
             case 'cloud':
-                return ['aws', 'azure', 'google', 'enhanced_browser', 'browser'];
+                return ['enhanced_browser', 'browser']; // Cloud services disabled
             case 'aws':
-                return ['aws', 'enhanced_browser', 'browser'];
+                return ['enhanced_browser', 'browser']; // AWS disabled, fallback to browser
             case 'browser':
                 return ['enhanced_browser', 'browser'];
             case 'prerecorded':
                 return ['prerecorded', 'enhanced_browser', 'browser'];
             default: // auto
-                return ['prerecorded', 'aws', 'azure', 'google', 'enhanced_browser', 'browser'];
+                return ['prerecorded', 'enhanced_browser', 'browser']; // Removed cloud services
         }
     }
 
@@ -660,184 +660,35 @@ class ArabicTTSGenerator {
     }
 
     /**
-     * Try AWS Polly TTS (uses local server)
+     * Try AWS Polly TTS (disabled for frontend-only deployment)
      */
     async tryAWSPollyTTS(text, options) {
-        if (!this.cloudServices.aws.enabled) {
-            return null;
-        }
-
-        try {
-            const serverUrl = this.cloudServices.aws.serverUrl || 'http://localhost:5000';
-            
-            // Determine rate based on options
-            const rateMap = {
-                0.5: 'x-slow',
-                0.7: 'slow', 
-                0.8: 'slow',
-                0.9: 'medium',
-                1.0: 'medium',
-                1.1: 'fast',
-                1.2: 'fast'
-            };
-            
-            const rate = rateMap[options.rate || this.options.rate] || 'medium';
-            
-            const requestBody = {
-                text: text,
-                voice: this.cloudServices.aws.voiceId.toLowerCase(),
-                rate: rate
-            };
-
-            // Use SSML endpoint for better pronunciation
-            const response = await fetch(`${serverUrl}/synthesize-ssml`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestBody)
-            });
-
-            if (response.ok) {
-                const audioBlob = await response.blob();
-                return this.playAudioBlob(audioBlob);
-            } else {
-                const error = await response.text();
-                console.error('AWS Polly server error:', error);
-                return null;
-            }
-            
-        } catch (error) {
-            console.error('AWS Polly TTS failed:', error);
-            return null;
-        }
-    }
-
-    /**
-     * Create AWS request with proper authentication
-     */
-    async createAWSRequest(requestBody) {
-        const aws = this.cloudServices.aws;
-        const endpoint = `https://polly.${aws.region}.amazonaws.com/v1/speech`;
-        
-        // For browser-based AWS requests, we'll use a proxy approach
-        // Since AWS Signature V4 is complex to implement in browser
-        // We'll try to use AWS SDK if available, otherwise fallback
-        
-        if (window.AWS) {
-            // If AWS SDK is loaded
-            AWS.config.update({
-                accessKeyId: aws.accessKey,
-                secretAccessKey: aws.secretKey,
-                region: aws.region
-            });
-            
-            const polly = new AWS.Polly();
-            const params = {
-                Text: requestBody.Text,
-                OutputFormat: requestBody.OutputFormat,
-                VoiceId: requestBody.VoiceId,
-                LanguageCode: requestBody.LanguageCode,
-                Engine: requestBody.Engine
-            };
-            
-            return new Promise((resolve, reject) => {
-                polly.synthesizeSpeech(params, (err, data) => {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        const audioBlob = new Blob([data.AudioStream], { type: 'audio/mpeg' });
-                        resolve({ audioBlob });
-                    }
-                });
-            });
-        }
-        
-        // Fallback: Direct REST API call (requires CORS setup or proxy)
-        const timestamp = new Date().toISOString().replace(/[:\-]|\.\d{3}/g, '');
-        const date = timestamp.substr(0, 8);
-        
-        const headers = {
-            'Content-Type': 'application/x-amz-json-1.0',
-            'X-Amz-Target': 'com.amazon.speech.v1.PollyService.SynthesizeSpeech',
-            'X-Amz-Date': timestamp,
-        };
-        
-        return {
-            url: endpoint,
-            headers: headers
-        };
-    }
-
-    /**
-     * Try Azure Cognitive Services TTS (requires API key)
-     */
-    async tryAzureTTS(text, options) {
-        if (!this.cloudServices.azure.enabled || !this.cloudServices.azure.apiKey) {
-            return null;
-        }
-
-        const ssml = this.createArabicSSML(text, {
-            voice: 'ar-SA-HamedNeural', // High-quality Arabic voice
-            rate: options.rate || this.options.rate,
-            pitch: options.pitch || this.options.pitch
-        });
-
-        const response = await fetch(this.cloudServices.azure.endpoint, {
-            method: 'POST',
-            headers: {
-                'Ocp-Apim-Subscription-Key': this.cloudServices.azure.apiKey,
-                'Content-Type': 'application/ssml+xml',
-                'X-Microsoft-OutputFormat': 'audio-16khz-128kbitrate-mono-mp3'
-            },
-            body: ssml
-        });
-
-        if (response.ok) {
-            const audioBlob = await response.blob();
-            return this.playAudioBlob(audioBlob);
-        }
-        
+        // AWS Polly disabled for frontend-only deployment
+        console.log('AWS Polly TTS disabled for frontend-only deployment, falling back to browser TTS');
         return null;
     }
 
     /**
-     * Try Google Cloud TTS (requires API key)
+     * Create AWS request (disabled for frontend-only deployment)
+     */
+    async createAWSRequest(requestBody) {
+        console.log('AWS TTS disabled for frontend-only deployment');
+        return null;
+    }
+
+    /**
+     * Try Azure Cognitive Services TTS (disabled for frontend-only deployment)
+     */
+    async tryAzureTTS(text, options) {
+        console.log('Azure TTS disabled for frontend-only deployment');
+        return null;
+    }
+
+    /**
+     * Try Google Cloud TTS (disabled for frontend-only deployment)
      */
     async tryGoogleTTS(text, options) {
-        if (!this.cloudServices.google.enabled || !this.cloudServices.google.apiKey) {
-            return null;
-        }
-
-        const requestBody = {
-            input: { text: text },
-            voice: {
-                languageCode: 'ar-XA', // Arabic (all regions)
-                name: 'ar-XA-Standard-B', // High-quality Arabic voice
-                ssmlGender: 'MALE'
-            },
-            audioConfig: {
-                audioEncoding: 'MP3',
-                speakingRate: options.rate || this.options.rate,
-                pitch: (options.pitch || this.options.pitch - 1) * 20 // Convert to semitones
-            }
-        };
-
-        const response = await fetch(`${this.cloudServices.google.endpoint}?key=${this.cloudServices.google.apiKey}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(requestBody)
-        });
-
-        if (response.ok) {
-            const result = await response.json();
-            const audioData = atob(result.audioContent);
-            const audioBlob = new Blob([new Uint8Array(audioData.split('').map(c => c.charCodeAt(0)))], { type: 'audio/mp3' });
-            return this.playAudioBlob(audioBlob);
-        }
-        
+        console.log('Google Cloud TTS disabled for frontend-only deployment');
         return null;
     }
 
