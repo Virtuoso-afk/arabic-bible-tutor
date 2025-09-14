@@ -498,7 +498,7 @@ class ArabicTTSGenerator {
             rate: 0.8,
             pitch: 1.0,
             volume: 1.0,
-            preferredService: 'aws', // AWS Polly as default
+            preferredService: 'elevenlabs', // ElevenLabs as default
             enableCloudTTS: true,
             ...options
         };
@@ -510,9 +510,19 @@ class ArabicTTSGenerator {
         
         // Cloud TTS services configuration - using Vercel serverless function
         this.cloudServices = {
-            aws: {
-                enabled: true, // Re-enabled with serverless function
+            elevenlabs: {
+                enabled: true, // ElevenLabs with serverless function
                 serverUrl: '/api/synthesize', // Vercel serverless function
+                voiceId: 'adam', // Default to Adam voice
+                voices: {
+                    'adam': 'Adam (Deep Male Voice)',
+                    'sarah': 'Sarah (Female Voice)', 
+                    'antoni': 'Antoni (Warm Male Voice)'
+                }
+            },
+            aws: {
+                enabled: false, // Disabled - replaced by ElevenLabs
+                serverUrl: '/api/synthesize',
                 voiceId: 'Zeina',
                 region: 'us-east-1'
             },
@@ -608,15 +618,17 @@ class ArabicTTSGenerator {
     getTTSMethods() {
         switch (this.options.preferredService) {
             case 'cloud':
-                return ['aws', 'enhanced_browser', 'browser']; // AWS re-enabled
+                return ['elevenlabs', 'enhanced_browser', 'browser']; // ElevenLabs first
+            case 'elevenlabs':
+                return ['elevenlabs', 'enhanced_browser', 'browser']; // ElevenLabs first
             case 'aws':
-                return ['aws', 'enhanced_browser', 'browser']; // AWS first
+                return ['aws', 'enhanced_browser', 'browser']; // AWS fallback
             case 'browser':
                 return ['enhanced_browser', 'browser'];
             case 'prerecorded':
-                return ['prerecorded', 'aws', 'enhanced_browser', 'browser'];
+                return ['prerecorded', 'elevenlabs', 'enhanced_browser', 'browser'];
             default: // auto
-                return ['prerecorded', 'aws', 'enhanced_browser', 'browser']; // AWS back in the mix
+                return ['prerecorded', 'elevenlabs', 'enhanced_browser', 'browser']; // ElevenLabs as default
         }
     }
 
@@ -627,6 +639,8 @@ class ArabicTTSGenerator {
         switch (method) {
             case 'prerecorded':
                 return this.tryPrerecordedAudio(text);
+            case 'elevenlabs':
+                return this.tryElevenLabsTTS(text, options);
             case 'aws':
                 return this.tryAWSPollyTTS(text, options);
             case 'azure':
@@ -657,6 +671,59 @@ class ArabicTTSGenerator {
         }
         
         return null; // No prerecorded audio available
+    }
+
+    /**
+     * Try ElevenLabs TTS (using Vercel serverless function)
+     */
+    async tryElevenLabsTTS(text, options) {
+        if (!this.cloudServices.elevenlabs.enabled) {
+            return null;
+        }
+
+        try {
+            const serverUrl = this.cloudServices.elevenlabs.serverUrl;
+            
+            // Determine rate based on options
+            const rateMap = {
+                0.5: 'slow',
+                0.7: 'slow', 
+                0.8: 'slow',
+                0.9: 'medium',
+                1.0: 'medium',
+                1.1: 'fast',
+                1.2: 'fast'
+            };
+            
+            const rate = rateMap[options.rate || this.options.rate] || 'medium';
+            
+            const requestBody = {
+                text: text,
+                voice: this.cloudServices.elevenlabs.voiceId.toLowerCase(),
+                rate: rate
+            };
+
+            const response = await fetch(serverUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (response.ok) {
+                const audioBlob = await response.blob();
+                return this.playAudioBlob(audioBlob);
+            } else {
+                const error = await response.json();
+                console.error('ElevenLabs serverless function error:', error);
+                return null;
+            }
+            
+        } catch (error) {
+            console.error('ElevenLabs TTS failed:', error);
+            return null;
+        }
     }
 
     /**
@@ -765,8 +832,33 @@ class ArabicTTSGenerator {
             // Add pauses for better pronunciation
             utterance.text = this.addPausesForArabic(enhancedText);
 
-            utterance.onend = () => resolve(true);
-            utterance.onerror = (error) => reject(error);
+            // Cancel any ongoing speech before starting new one
+            this.synthesis.cancel();
+            
+            let resolved = false;
+            
+            utterance.onend = () => {
+                if (!resolved) {
+                    resolved = true;
+                    resolve(true);
+                }
+            };
+            
+            utterance.onerror = (error) => {
+                if (!resolved) {
+                    resolved = true;
+                    console.error('Enhanced TTS Error:', error);
+                    reject(error);
+                }
+            };
+            
+            // Timeout fallback in case onend doesn't fire
+            setTimeout(() => {
+                if (!resolved) {
+                    resolved = true;
+                    resolve(true);
+                }
+            }, 30000); // 30 second timeout
 
             this.synthesis.speak(utterance);
         });
@@ -796,8 +888,33 @@ class ArabicTTSGenerator {
                 utterance.voice = arabicVoice;
             }
 
-            utterance.onend = () => resolve(true);
-            utterance.onerror = (error) => reject(error);
+            // Cancel any ongoing speech before starting new one
+            this.synthesis.cancel();
+            
+            let resolved = false;
+            
+            utterance.onend = () => {
+                if (!resolved) {
+                    resolved = true;
+                    resolve(true);
+                }
+            };
+            
+            utterance.onerror = (error) => {
+                if (!resolved) {
+                    resolved = true;
+                    console.error('Browser TTS Error:', error);
+                    reject(error);
+                }
+            };
+            
+            // Timeout fallback in case onend doesn't fire
+            setTimeout(() => {
+                if (!resolved) {
+                    resolved = true;
+                    resolve(true);
+                }
+            }, 30000); // 30 second timeout
 
             this.synthesis.speak(utterance);
         });
@@ -945,6 +1062,12 @@ class ArabicTTSGenerator {
     stop() {
         if (this.synthesis) {
             this.synthesis.cancel();
+            // Wait a moment to ensure cancellation completes
+            setTimeout(() => {
+                if (this.synthesis.speaking) {
+                    this.synthesis.cancel();
+                }
+            }, 100);
         }
     }
 

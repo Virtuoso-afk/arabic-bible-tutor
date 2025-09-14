@@ -298,20 +298,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* Compact Audio Visualization */
-.audio-visualization {
-    display: flex;
-    justify-content: center;
-    margin: 15px 0;
-}
-
-.audio-visualization canvas {
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    background: #f8f9fa;
-    max-width: 100%;
-    height: auto;
-}
 
 /* Feedback Section */
 .feedback-section {
@@ -603,10 +589,6 @@ input:focus {
         max-width: 120px;
     }
     
-    .audio-visualization canvas {
-        width: 400px;
-        height: 80px;
-    }
     
     .auto-stop-hint {
         display: block;

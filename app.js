@@ -53,8 +53,8 @@ class ArabicBibleTutor {
             // Setup settings
             this.loadSettings();
             
-            // Force AWS Polly as default
-            this.updateTTSService('aws');
+            // Force ElevenLabs as default
+            this.updateTTSService('elevenlabs');
             
             console.log('Arabic Bible Tutor initialized successfully');
         } catch (error) {
@@ -103,7 +103,6 @@ class ArabicBibleTutor {
             speechRateValue: document.getElementById('speech-rate-value'),
             
             // Audio
-            audioCanvas: document.getElementById('audio-canvas'),
             referenceAudio: document.getElementById('reference-audio')
         };
     }
@@ -156,10 +155,6 @@ class ArabicBibleTutor {
         try {
             this.audioProcessor = new AudioProcessor();
             
-            // Setup audio visualization
-            if (this.elements.audioCanvas) {
-                this.audioProcessor.setupVisualization(this.elements.audioCanvas);
-            }
 
             // Setup audio processor events
             this.audioProcessor.on('metrics', (metrics) => {
@@ -341,12 +336,23 @@ class ArabicBibleTutor {
 
         this.state.isRecording = false;
         
+        // Stop speech recognition first
         if (this.speechRecognition) {
             this.speechRecognition.stop();
         }
         
+        // Stop audio processing and cleanup microphone
         if (this.audioProcessor) {
             this.audioProcessor.stopProcessing();
+            // Force cleanup of audio stream
+            const audioState = this.audioProcessor.getAudioState();
+            if (audioState.hasStream && this.audioProcessor.mediaStream) {
+                this.audioProcessor.mediaStream.getTracks().forEach(track => {
+                    track.stop();
+                    console.log('Stopped microphone track:', track.kind);
+                });
+                this.audioProcessor.mediaStream = null;
+            }
         }
         
         this.updateRecordingUI(false);
@@ -354,6 +360,9 @@ class ArabicBibleTutor {
         if (this.elements.currentVerse) {
             this.elements.currentVerse.classList.remove('reading');
         }
+        
+        // Show feedback that recording stopped
+        this.showFeedback('تم إيقاف التسجيل', 'info');
     }
 
     /**
@@ -777,13 +786,13 @@ class ArabicBibleTutor {
     /**
      * Update TTS service preference (simplified - always use AWS)
      */
-    updateTTSService(service = 'aws') {
+    updateTTSService(service = 'elevenlabs') {
         if (this.ttsGenerator) {
-            this.ttsGenerator.setPreferredService('aws');
+            this.ttsGenerator.setPreferredService('elevenlabs');
             
-            // Enable AWS service
-            if (this.ttsGenerator.cloudServices.aws) {
-                this.ttsGenerator.cloudServices.aws.enabled = true;
+            // Enable ElevenLabs service
+            if (this.ttsGenerator.cloudServices.elevenlabs) {
+                this.ttsGenerator.cloudServices.elevenlabs.enabled = true;
             }
         }
     }
