@@ -25,46 +25,48 @@
                     <div class="verse-text" id="current-verse">
                         في البدء خلق الله السماوات والأرض
                     </div>
+                    
+                    <!-- Speech Recognition Result - Moved directly below verse -->
+                    <div class="recognition-result" id="recognition-result">
+                        <div class="result-label">قراءتك:</div>
+                        <div class="result-text" id="result-text"></div>
+                        <div class="accuracy-score" id="accuracy-score"></div>
+                    </div>
                 </div>
             </section>
 
-            <!-- Controls Section -->
+            <!-- Controls Section - Compact Mobile Layout -->
             <section class="controls-section">
                 <div class="recording-controls">
                     <button id="start-recording" class="btn btn-primary">
-                        🎤 ابدأ القراءة
+                        🎤 ابدأ
                     </button>
                     <button id="stop-recording" class="btn btn-secondary" disabled>
                         ⏹️ توقف
                     </button>
                     <button id="play-reference" class="btn btn-accent">
-                        🔊 استمع للنموذج
+                        🔊 استمع
                     </button>
                 </div>
 
-                <!-- Auto-Stop Toggle -->
-                <div class="auto-stop-controls">
-                    <label class="auto-stop-label">
-                        <input type="checkbox" id="auto-stop-listening" checked>
-                        <span class="auto-stop-text">توقف تلقائياً بعد الصمت</span>
-                        <small class="auto-stop-hint">عند الإلغاء: استخدم زر التوقف لإنهاء التسجيل</small>
-                    </label>
-                </div>
-
+                <!-- Compact Audio Visualization -->
                 <div class="audio-visualization">
-                    <canvas id="audio-canvas" width="400" height="100"></canvas>
+                    <canvas id="audio-canvas" width="300" height="60"></canvas>
                 </div>
             </section>
 
             <!-- Feedback Section -->
             <section class="feedback-section">
-                <div class="recognition-result" id="recognition-result">
-                    <div class="result-text" id="result-text"></div>
-                    <div class="accuracy-score" id="accuracy-score"></div>
+                <div class="feedback-message" id="feedback-message">
+                    اضغط على "ابدأ" لتبدأ التمرين
                 </div>
                 
-                <div class="feedback-message" id="feedback-message">
-                    اضغط على "ابدأ القراءة" لتبدأ التمرين
+                <!-- Auto-Stop Toggle - Moved to bottom -->
+                <div class="auto-stop-controls">
+                    <label class="auto-stop-label">
+                        <input type="checkbox" id="auto-stop-listening" checked>
+                        <span class="auto-stop-text">توقف تلقائياً</span>
+                    </label>
                 </div>
             </section>
 
