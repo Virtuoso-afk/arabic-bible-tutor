@@ -508,11 +508,11 @@ class ArabicTTSGenerator {
         this.audioCache = new Map();
         this.loadVoices();
         
-        // Cloud TTS services configuration - disabled for frontend-only deployment
+        // Cloud TTS services configuration - using Vercel serverless function
         this.cloudServices = {
             aws: {
-                enabled: false, // Disabled for frontend-only
-                serverUrl: null,
+                enabled: true, // Re-enabled with serverless function
+                serverUrl: '/api/synthesize', // Vercel serverless function
                 voiceId: 'Zeina',
                 region: 'us-east-1'
             },
@@ -603,20 +603,20 @@ class ArabicTTSGenerator {
     }
 
     /**
-     * Get TTS methods in order of preference - Frontend-only version
+     * Get TTS methods in order of preference - With AWS Polly via serverless function
      */
     getTTSMethods() {
         switch (this.options.preferredService) {
             case 'cloud':
-                return ['enhanced_browser', 'browser']; // Cloud services disabled
+                return ['aws', 'enhanced_browser', 'browser']; // AWS re-enabled
             case 'aws':
-                return ['enhanced_browser', 'browser']; // AWS disabled, fallback to browser
+                return ['aws', 'enhanced_browser', 'browser']; // AWS first
             case 'browser':
                 return ['enhanced_browser', 'browser'];
             case 'prerecorded':
-                return ['prerecorded', 'enhanced_browser', 'browser'];
+                return ['prerecorded', 'aws', 'enhanced_browser', 'browser'];
             default: // auto
-                return ['prerecorded', 'enhanced_browser', 'browser']; // Removed cloud services
+                return ['prerecorded', 'aws', 'enhanced_browser', 'browser']; // AWS back in the mix
         }
     }
 
@@ -660,12 +660,56 @@ class ArabicTTSGenerator {
     }
 
     /**
-     * Try AWS Polly TTS (disabled for frontend-only deployment)
+     * Try AWS Polly TTS (using Vercel serverless function)
      */
     async tryAWSPollyTTS(text, options) {
-        // AWS Polly disabled for frontend-only deployment
-        console.log('AWS Polly TTS disabled for frontend-only deployment, falling back to browser TTS');
-        return null;
+        if (!this.cloudServices.aws.enabled) {
+            return null;
+        }
+
+        try {
+            const serverUrl = this.cloudServices.aws.serverUrl;
+            
+            // Determine rate based on options
+            const rateMap = {
+                0.5: 'x-slow',
+                0.7: 'slow', 
+                0.8: 'slow',
+                0.9: 'medium',
+                1.0: 'medium',
+                1.1: 'fast',
+                1.2: 'fast'
+            };
+            
+            const rate = rateMap[options.rate || this.options.rate] || 'medium';
+            
+            const requestBody = {
+                text: text,
+                voice: this.cloudServices.aws.voiceId.toLowerCase(),
+                rate: rate
+            };
+
+            const response = await fetch(serverUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (response.ok) {
+                const audioBlob = await response.blob();
+                return this.playAudioBlob(audioBlob);
+            } else {
+                const error = await response.json();
+                console.error('AWS Polly serverless function error:', error);
+                return null;
+            }
+            
+        } catch (error) {
+            console.error('AWS Polly TTS failed:', error);
+            return null;
+        }
     }
 
     /**

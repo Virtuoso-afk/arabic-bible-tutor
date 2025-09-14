@@ -1,0 +1,17 @@
+{
+  "name": "arabic-bible-tutor",
+  "version": "1.0.0",
+  "description": "Arabic Bible Reading Tutor with AWS Polly TTS",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static site - no build needed'",
+    "start": "python3 -m http.server 8000"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1691.0"
+  },
+  "keywords": ["arabic", "bible", "tts", "speech-recognition", "education"],
+  "author": "Arabic Bible Tutor",
+  "license": "MIT"
+}

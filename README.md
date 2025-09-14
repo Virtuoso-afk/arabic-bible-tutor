@@ -21,35 +21,71 @@ This project is optimized for deployment on Vercel as a static frontend applicat
 - Vercel account (free)
 - Modern browser with Web Speech API support (Chrome, Edge, Safari)
 
-### 2. Deploy to Vercel
+### 2. Set up AWS Credentials
+1. **Create AWS IAM User**:
+   - Go to AWS Console → IAM → Users → Create User
+   - Grant Polly permissions with this policy:
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Action": [
+           "polly:SynthesizeSpeech",
+           "polly:DescribeVoices"
+         ],
+         "Resource": "*"
+       }
+     ]
+   }
+   ```
+   - Save the Access Key ID and Secret Access Key
+
+### 3. Deploy to Vercel
 1. **Fork this repository** to your GitHub account
 2. **Import to Vercel**:
    - Go to [vercel.com](https://vercel.com)
    - Click "Import Project"
    - Select your forked repository
-   - Choose "Static Site" as the framework preset
+   - Choose "Node.js" as the framework preset
    - Deploy!
 
-3. **Access your app**: Vercel will provide you with a URL like `https://your-app.vercel.app`
+3. **Add Environment Variables in Vercel**:
+   - Go to your project dashboard
+   - Settings → Environment Variables
+   - Add these variables:
+     - `AWS_ACCESS_KEY_ID` = your AWS access key
+     - `AWS_SECRET_ACCESS_KEY` = your AWS secret key  
+     - `AWS_REGION` = us-east-1 (or your preferred region)
 
-### 3. Local Development
+4. **Redeploy**: Your app will now use high-quality AWS Polly voices!
+
+5. **Access your app**: Vercel will provide you with a URL like `https://your-app.vercel.app`
+
+### 4. Local Development
 ```bash
 # Clone your forked repository
 git clone https://github.com/your-username/arabic-bible-tutor.git
 cd arabic-bible-tutor
 
-# Serve locally (any static server works)
-# Option 1: Python
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your AWS credentials
+
+# Run with Vercel CLI (recommended for testing serverless functions)
+npm install -g vercel
+vercel dev
+
+# Alternative: Serve static files (AWS TTS won't work)
 python3 -m http.server 8000
 
-# Option 2: Node.js serve
-npx serve .
-
-# Option 3: Live Server (VS Code extension)
-# Right-click index.html and select "Open with Live Server"
-
 # Open in browser
-open http://localhost:8000
+open http://localhost:3000  # for vercel dev
+# or http://localhost:8000   # for static server
 ```
 
 ## 🛠️ Browser Compatibility
