@@ -3,7 +3,7 @@
  * This function proxies requests to AWS Polly for text-to-speech synthesis
  */
 
-import AWS from 'aws-sdk';
+const AWS = require('aws-sdk');
 
 // Configure AWS Polly
 const polly = new AWS.Polly({
@@ -30,7 +30,7 @@ const ARABIC_VOICES = {
   }
 };
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
