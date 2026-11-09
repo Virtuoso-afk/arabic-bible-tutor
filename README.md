@@ -54,7 +54,7 @@ tests/           Browser smoke tests
 AGENTS.md        Engineering, testing, content, and safety conventions
 ```
 
-Start with [the product vision](docs/PRODUCT_VISION.md), then read [architecture](docs/ARCHITECTURE.md), [decisions](docs/DECISIONS.md), and [roadmap](docs/ROADMAP.md).
+Start with [the product vision](docs/PRODUCT_VISION.md), [first-vertical specification](docs/FIRST_VERTICAL.md), [decisions](docs/DECISIONS.md), and [roadmap](docs/ROADMAP.md). The [architecture](docs/ARCHITECTURE.md), [sample lessons](docs/SAMPLE_LESSON.md), [AI tutor specification](docs/AI_TUTOR_SPEC.md), [content policy](docs/CONTENT_POLICY.md), and [learner flow](docs/LEARNER_FLOW.md) define the current foundation boundaries.
 
 ## Current boundaries
 

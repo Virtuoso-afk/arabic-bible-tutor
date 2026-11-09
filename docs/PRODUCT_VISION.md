@@ -4,7 +4,7 @@
 
 Build an Arabic-first learning platform that helps learners understand, practise, and reflect through structured courses and responsible AI assistance. The first vertical contains two approved learning paths—Arabic language learning through licensed Bible passages and Bible study in Arabic—while the foundation remains useful for other subjects, resources, and teaching methods.
 
-The provisional product name **مدار** is a working label. It should be validated with Arabic-speaking learners and teachers before brand investment.
+The Mission 00A name **مدار** is an archived provisional label, not an approved identity or required candidate. Mission 00C will explore the brand from first principles before the product owner approves implementation.
 
 ## Approved first-vertical structure
 

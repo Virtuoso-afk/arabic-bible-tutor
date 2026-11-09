@@ -8,9 +8,9 @@ This file records decisions that materially shape the foundation. Revisit them w
 
 **Decision:** Separate subject, learning outcomes, language, and resources. Do not encode “Arabic through the Bible” or “Bible in Arabic” as the platform model.
 
-**Reason:** The primary learner need remains unresolved. Choosing prematurely would distort content, assessment, and tutor behavior.
+**Historical reason:** The primary learner need was unresolved during Mission 00A. Choosing prematurely would have distorted content, assessment, and tutor behavior.
 
-**Revisit when:** Interviews and a curriculum prototype identify the first learner, outcome, and teacher workflow.
+**Resolution:** PD-001 approves both paths while preserving their separate educational models. Pilot order and learner profiles remain open.
 
 ## D-002 — Use a Next.js modular monolith
 

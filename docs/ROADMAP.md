@@ -15,7 +15,7 @@ The Mission 00A interface and provisional “مدار” identity are not approv
 
 ## Mission 00B — Product definition and foundation closeout
 
-**Status:** In progress
+**Status:** Complete; pending Maestro review
 
 - Record PD-001, PD-002, and PD-003.
 - Specify both initial paths, including learner profiles, outcomes, curriculum boundaries, and shared versus separate capabilities.
@@ -24,6 +24,14 @@ The Mission 00A interface and provisional “مدار” identity are not approv
 - Define content licensing, provenance, translation, canon, institutional-context, and correction policies.
 - Map MVP learner flows, contextual assistance, practice, completion, and recovery states.
 - Close the mission with a validated, committed, clean foundation.
+
+Mission 00B specifications:
+
+- [First vertical](FIRST_VERTICAL.md)
+- [Conceptual sample lessons](SAMPLE_LESSON.md)
+- [AI tutor specification](AI_TUTOR_SPEC.md)
+- [Content policy](CONTENT_POLICY.md)
+- [Learner flow](LEARNER_FLOW.md)
 
 ## Mission 00C — Design exploration and approval
 
