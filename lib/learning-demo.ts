@@ -160,7 +160,7 @@ export const reviewRecommendation = {
   title: "راجع روابط التسلسل",
   description: "مراجعة مقترحة لأن سجل العرض يحتوي دليل بنية واحدًا فقط. يمكن تأجيلها دون عقوبة.",
   courseId: "arabic-sequence",
-  lessonId: "review-understanding",
+  lessonId: "apply-sequence",
 } as const;
 
 export function getCourse(courseId: string) {

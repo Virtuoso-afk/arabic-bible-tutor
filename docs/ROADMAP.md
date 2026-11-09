@@ -110,11 +110,21 @@ Mission 00C produced Modern Academy, Learning Quest, and Contemporary Scholar pr
 
 ### Mission 01A-4 — Lesson framework
 
-**Status:** Recommended next checkpoint; requires Maestro review before starting
+**Status:** Implemented locally; pending Maestro review
 
-- Implement the approved fixture-backed lesson frame, activity presentation, source-layer labels, hints, feedback, and completion preview.
-- Keep tutor behavior deterministic and explicitly simulated; add no AI provider or conversation storage.
-- Preserve path-specific activities, rubrics, and evidence semantics established in 01A-3.
+- Implement two complete fixture-backed lessons with a shared typed schema, deterministic evaluation, progressive hints, retry, explanatory feedback, completion, and reset.
+- Keep authored content separate from session-only interaction evidence and preserve completion as distinct from mastery.
+- Provide contextual authored guidance with explicit disclosure that AI is disconnected; add no provider, fake chat, or conversation storage.
+- Connect available course and dashboard destinations to real lesson routes while preserving unavailable course states.
+- Validate path-specific assessment, keyboard semantics, focus management, refresh reset, path independence, and responsive overflow.
+
+### Recommended Mission 01A-5 — Supporting learner surfaces
+
+**Status:** Proposed; requires Maestro approval before implementation
+
+- Implement separate progress and review surfaces using fixture evidence without implying persistence.
+- Add private achievements, profile and learning preferences, and approved loading, empty, offline, source-unavailable, and error-recovery states.
+- Keep any contextual tutor presentation deterministic until a later server-side grounded-AI mission is explicitly approved.
 
 ## Mission 01B — Responsive and interaction QA
 

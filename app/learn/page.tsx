@@ -7,6 +7,8 @@ import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Surface } from "@/components/ui/surface";
 import { achievements, demoLearner, evidenceRecords, getCourse, pathProgress, reviewRecommendation } from "@/lib/learning-demo";
+import { getLesson, getLessonForCourse } from "@/lib/lesson-fixtures";
+import { lessonRoute } from "@/lib/lesson-schema";
 import styles from "./dashboard.module.css";
 
 export const metadata: Metadata = { title: "لوحة المتعلّم التجريبية — نَسَق", robots: { index: false, follow: false } };
@@ -14,6 +16,8 @@ export const metadata: Metadata = { title: "لوحة المتعلّم التجر
 export default function LearnerDashboardPage() {
   const course = getCourse(demoLearner.currentCourseId)!;
   const currentLesson = course.lessons.find((lesson) => lesson.id === demoLearner.currentLessonId)!;
+  const interactiveLesson = getLesson(course.id, currentLesson.id)!;
+  const reviewLesson = getLessonForCourse(reviewRecommendation.courseId)!;
   const achievement = achievements[0];
   const completedLessons = pathProgress.reduce((total, progress) => total + progress.completion.completedLessons, 0);
 
@@ -30,7 +34,7 @@ export default function LearnerDashboardPage() {
             <Surface as="article" className={styles.continueCard} tone="navy">
               <div className={styles.continueMeta}><Badge tone="language">مسار تعلّم العربية</Badge><span>الدرس ٣ من ٥ · عرض فقط</span></div>
               <h2>{currentLesson.title}</h2><p>{currentLesson.summary} لا توجد إجابة محفوظة أو جلسة فعلية.</p>
-              <div className={styles.continueBottom}><ButtonLink href={`/learn/courses/${course.id}#${currentLesson.id}`} variant="secondary">عرض ملخص الدرس التالي <span aria-hidden="true">←</span></ButtonLink><span>المقرر: {course.title}</span></div>
+              <div className={styles.continueBottom}><ButtonLink href={lessonRoute(interactiveLesson)} variant="secondary">ابدأ الدرس التفاعلي <span aria-hidden="true">←</span></ButtonLink><span>المقرر: {course.title}</span></div>
             </Surface>
 
             <Surface as="section" aria-labelledby="journey-title" className={styles.journeyCard}>
@@ -44,7 +48,7 @@ export default function LearnerDashboardPage() {
 
           <aside aria-label="ملخصات العرض" className={styles.side}>
             <Surface as="section" className={styles.sideCard}>
-              <Badge tone="milestone">مراجعة موصى بها في العرض</Badge><h2>{reviewRecommendation.title}</h2><p>{reviewRecommendation.description}</p><ButtonLink href={`/learn/courses/${reviewRecommendation.courseId}#${reviewRecommendation.lessonId}`} variant="secondary">عرض موضع المراجعة</ButtonLink>
+              <Badge tone="milestone">مراجعة موصى بها في العرض</Badge><h2>{reviewRecommendation.title}</h2><p>{reviewRecommendation.description}</p><ButtonLink href={lessonRoute(reviewLesson)} variant="secondary">افتح تمرين المراجعة</ButtonLink>
             </Surface>
             <Surface as="section" className={styles.achievement} data-evidence-ids={achievement.evidenceIds.join(" ")} tone="navy">
               <span aria-hidden="true" className={styles.achievementMark}>✦</span><Badge tone="milestone">مثال إنجاز قائم على دليلين</Badge><h2>{achievement.title}</h2><p>{achievement.description}</p><small>إنجاز خاص داخل العرض · لا ترتيب ولا مكافأة عشوائية</small>

@@ -49,7 +49,7 @@ test("course details support back navigation and switching educational paths", a
   await page.getByRole("link", { name: "عرض تفاصيل مقرر من الفهم إلى التعبير" }).click();
   await expect(page).toHaveURL(/\/learn\/courses\/arabic-sequence$/);
   await expect(page.getByRole("heading", { level: 1, name: "من الفهم إلى التعبير" })).toBeVisible();
-  await expect(page.getByText(/لا تسجيل أو إكمال أو حفظ تقدّم/)).toBeVisible();
+  await expect(page.getByText(/لا تسجيل أو حفظ تقدّم أو إكمال إنتاجي/)).toBeVisible();
   await expect(page.getByRole("heading", { name: "معاينة الدروس" })).toBeVisible();
 
   await page.getByRole("link", { name: "انتقل إلى مقررات المسار الآخر" }).click();
@@ -89,6 +89,6 @@ test("dashboard keyboard navigation exposes the skip link and real destinations"
   await expect(skip).toBeFocused();
   await page.keyboard.press("Enter");
   await expect(page.locator("#shell-content")).toBeFocused();
-  await expect(page.getByRole("link", { name: /عرض ملخص الدرس التالي/ })).toHaveAttribute("href", "/learn/courses/arabic-sequence#apply-sequence");
-  await expect(page.getByRole("link", { name: "عرض موضع المراجعة" })).toHaveAttribute("href", "/learn/courses/arabic-sequence#review-understanding");
+  await expect(page.getByRole("link", { name: /ابدأ الدرس التفاعلي/ })).toHaveAttribute("href", "/learn/courses/arabic-sequence/lessons/apply-sequence");
+  await expect(page.getByRole("link", { name: "افتح تمرين المراجعة" })).toHaveAttribute("href", "/learn/courses/arabic-sequence/lessons/apply-sequence");
 });
