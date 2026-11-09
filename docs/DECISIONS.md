@@ -87,6 +87,22 @@ Gamification must communicate meaningful progress, achievable milestones, master
 
 **Reason:** This direction can provide a distinctive, credible educational experience with motivating feedback while maintaining professional trust and serving different curricula through one visual language.
 
+## PD-004 — Refined A+B hybrid with selected C study components
+
+**Status:** Approved and binding design direction; exact Mission 00C-S visual execution pending owner and Maestro review
+
+**Decision:** Create one cohesive Arabic-first system from:
+
+- Concept A / Modern Academy for accessible spacious layouts, premium hierarchy, light learning surfaces, responsive navigation, and maintainable component architecture;
+- Concept B / Learning Quest for distinctive energy, course journeys, meaningful progress feedback, evidence-backed achievements, and subtle celebration;
+- selected Concept C / Contemporary Scholar patterns for long-form reading, source citations, annotations, and explicit distinction among source quotation, interpretation, curriculum guidance, and AI-generated explanation.
+
+The synthesis must feel designed as one product. It must not reproduce the three concepts side by side or carry their conflicting card, color, typography, and layout systems into production. Both initial paths share the visual and course framework while retaining separate curricula, tutor behavior, assessments, rubrics, and progress dimensions.
+
+**Mission boundary:** Mission 00C-S designs and validates the exact synthesis through standalone proofs and implementation documentation. It does not authorize production UI changes. Mission 01A begins only after the product owner and Maestro review the Mission 00C-S visual result.
+
+**Reason:** The approved combination preserves A's trust and scalability, adds B's learner momentum, and uses C's strongest source-literacy treatment without adopting a dense editorial product shell.
+
 ## Open decisions
 
 - Which approved learning path should lead the first pilot?
@@ -94,3 +110,5 @@ Gamification must communicate meaningful progress, achievable milestones, master
 - Which Arabic register, dialect support, and accessibility accommodations are required?
 - Which Bible translation or original materials can be licensed for the pilot?
 - What evidence demonstrates learning progress without overstating mastery?
+- Is the provisional Mission 00C-S `نَسَق` identity suitable for naming and trademark validation?
+- Does the first MVP require a complete dark theme or only purposeful navy brand surfaces?

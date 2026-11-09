@@ -35,6 +35,8 @@ Mission 00B specifications:
 
 ## Mission 00C — Design exploration and approval
 
+**Status:** Complete; three directions reviewed and PD-004 synthesis direction approved
+
 Explore PD-002 and PD-003 from first principles before implementing a redesign:
 
 - brand and visual identity directions;
@@ -54,7 +56,23 @@ The exploration must define one shared visual language and lesson framework whil
 
 **Exit evidence:** approved brand direction, design tokens, Arabic typography and licensing decision, responsive specifications for core surfaces and system states, interaction and motion guidance, and accessibility review.
 
+Mission 00C produced Modern Academy, Learning Quest, and Contemporary Scholar proofs. PD-004 selects a refined A+B hybrid with selected C study components.
+
+## Mission 00C-S — Final hybrid design synthesis
+
+**Status:** Design refinement complete when locally checkpointed; visual execution pending product-owner and Maestro review
+
+- Synthesize PD-004 into one visual language rather than a patchwork of the three explorations.
+- Define the provisional identity, semantic tokens, Arabic typography, responsive behavior, component states, content-layer labels, motion, and accessibility requirements.
+- Produce standalone landing, dashboard, and interactive lesson proofs at mobile, tablet, and desktop widths.
+- Demonstrate separate path progress, course journey, humane achievement, source context, educator guidance, exercise feedback, progressive hints, and contextual tutor behavior.
+- Provide a route, component, token, testing, and sequencing handoff for Mission 01A.
+
+**Exit gate:** the product owner and Maestro visually review the Mission 00C-S proof and either approve the execution, request a bounded revision, or pause. No production redesign begins before that review.
+
 ## Mission 01A — Approved frontend redesign implementation
+
+**Status:** Subsequent mission; blocked on Mission 00C-S visual review
 
 - Implement only the Mission 00C direction approved by the product owner.
 - Build fixture-backed landing, onboarding, dashboard, discovery, course, lesson, tutor, progress, profile, settings, and system-state surfaces within agreed MVP scope.
