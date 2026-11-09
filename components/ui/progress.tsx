@@ -21,7 +21,7 @@ export function ProgressIndicator({ label, max = 100, tone = "primary", value }:
   return (
     <div className={styles.progressGroup}>
       <div className={styles.progressHeader}><span>{label}</span><strong>{percent}%</strong></div>
-      <progress className={`${styles.progress} ${toneClasses[tone]}`} max={max} value={value}>{percent}%</progress>
+      <progress aria-label={`${label}: ${percent}%`} className={`${styles.progress} ${toneClasses[tone]}`} max={max} value={value}>{percent}%</progress>
     </div>
   );
 }

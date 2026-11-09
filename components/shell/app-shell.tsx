@@ -4,7 +4,7 @@ import { BrandLockup } from "./brand-lockup";
 import { CoursesIcon, HomeIcon, PathsIcon, ProgressIcon, SettingsIcon } from "./shell-icons";
 import styles from "./app-shell.module.css";
 
-type NavigationId = "home" | "courses" | "paths" | "progress" | "settings";
+export type NavigationId = "home" | "courses" | "paths" | "progress" | "settings";
 
 type AppShellProps = {
   activeItem: NavigationId;
@@ -12,9 +12,9 @@ type AppShellProps = {
 };
 
 const navigation = [
-  { id: "home" as const, label: "الرئيسية", href: "/shell-preview", icon: <HomeIcon /> },
-  { id: "courses" as const, label: "المقررات", icon: <CoursesIcon /> },
-  { id: "paths" as const, label: "مسارات التعلّم", icon: <PathsIcon /> },
+  { id: "home" as const, label: "الرئيسية", href: "/learn", icon: <HomeIcon /> },
+  { id: "courses" as const, label: "المقررات", href: "/learn/courses", icon: <CoursesIcon /> },
+  { id: "paths" as const, label: "مسارات التعلّم", href: "/learn/courses#learning-paths", icon: <PathsIcon /> },
   { id: "progress" as const, label: "التقدّم", icon: <ProgressIcon /> },
   { id: "settings" as const, label: "الملف والإعدادات", icon: <SettingsIcon /> },
 ];
@@ -29,7 +29,7 @@ export function AppShell({ activeItem, children }: AppShellProps) {
           <nav aria-label="التنقل الرئيسي" className={styles.sidebarNavigation}>
             {navigation.map((item) => <NavigationItem active={item.id === activeItem} href={item.href} icon={item.icon} key={item.id} label={item.label} variant="sidebar" />)}
           </nav>
-          <div className={styles.shellNotice}><strong>معاينة البنية</strong><span>الوجهات غير النشطة ستُبنى في مهام لاحقة.</span></div>
+          <div className={styles.shellNotice}><strong>عرض تعليمي تجريبي</strong><span>البيانات ثابتة ولا تُحفظ أو تتزامن.</span></div>
         </aside>
         <main className={styles.main} id="shell-content" tabIndex={-1}>{children}</main>
       </div>

@@ -92,7 +92,7 @@ Mission 00C produced Modern Academy, Learning Quest, and Contemporary Scholar pr
 
 ### Mission 01A-2 — Public and onboarding surfaces
 
-**Status:** Implemented locally; pending Maestro review
+**Status:** Complete and locally checkpointed
 
 - Implement the approved landing and two working learner-path entry surfaces using production tokens and primitives.
 - Keep both learning paths explicit through typed original fixtures and separate outcomes, lesson topics, and activities.
@@ -101,11 +101,20 @@ Mission 00C produced Modern Academy, Learning Quest, and Contemporary Scholar pr
 
 ### Mission 01A-3 — Learner home
 
+**Status:** Implemented locally; pending Maestro review
+
+- Implement the approved fixture-backed learner dashboard, course journey, catalog, and course details.
+- Derive demonstration progress and achievements from explicit evidence fixtures while keeping completion separate from mastery.
+- Keep Path A and Path B course ownership, skill dimensions, and evidence visibly separate.
+- Validate real navigation, active responsive shell states, keyboard focus, and overflow at 390, 768, and 1440 px.
+
+### Mission 01A-4 — Lesson framework
+
 **Status:** Recommended next checkpoint; requires Maestro review before starting
 
-- Implement the approved fixture-backed learner dashboard and course journey.
-- Keep Path A and Path B progress dimensions visibly separate.
-- Reuse the 01A-1 shell and the path configuration established in 01A-2.
+- Implement the approved fixture-backed lesson frame, activity presentation, source-layer labels, hints, feedback, and completion preview.
+- Keep tutor behavior deterministic and explicitly simulated; add no AI provider or conversation storage.
+- Preserve path-specific activities, rubrics, and evidence semantics established in 01A-3.
 
 ## Mission 01B — Responsive and interaction QA
 
