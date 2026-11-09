@@ -130,11 +130,14 @@ Mission 00C produced Modern Academy, Learning Quest, and Contemporary Scholar pr
 
 ### Recommended Mission 01A-6 — System states and frontend consolidation
 
-**Status:** Proposed; requires Maestro approval before implementation
+**Status:** Implemented locally; pending Maestro review
 
-- Consolidate shared loading, empty, offline, and route-level error patterns across implemented frontend surfaces.
-- Review the completed public, learner-home, lesson, progress, and settings routes as one coherent frontend journey before introducing any service integration.
-- Resolve approved content and educator-review decisions needed for later grounded-content work while retaining fixture-only data and local deterministic behavior.
+- Consolidate truthful loading, not-found, recoverable-error, connectivity, empty, and unavailable treatments across implemented frontend surfaces.
+- Connect each public path entry to its matching course catalog and verify complete Path A and Path B journeys through lesson completion.
+- Harden generated dynamic routes, fixture relationships, browser-history and reload disclosure, navigation, and deterministic tutor failure behavior.
+- Audit product claims, content layers, source rights, accessibility, responsive layouts, and the approved visual system without introducing services or persistence.
+
+Mission 01A is now integrated as a complete fixture-backed frontend milestone. Production services, validated curriculum, manual assistive-technology review, and physical-device QA remain gated work.
 
 ## Mission 01B — Responsive and interaction QA
 

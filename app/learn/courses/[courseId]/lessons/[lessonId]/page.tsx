@@ -6,6 +6,7 @@ import { getLesson, lessonFixtures } from "@/lib/lesson-fixtures";
 
 type LessonPageProps = { params: Promise<{ courseId: string; lessonId: string }> };
 
+export const dynamicParams = false;
 export function generateStaticParams() {
   return lessonFixtures.map((lesson) => ({ courseId: lesson.courseId, lessonId: lesson.id }));
 }

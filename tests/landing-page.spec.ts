@@ -26,7 +26,7 @@ test("Path A entry explains language outcomes and can switch to Path B", async (
 
   await expect(page).toHaveURL(/\/learn\/paths\/arabic-language$/);
   await expect(page.getByRole("heading", { level: 1, name: "أتعلّم العربية من خلال مراجع كتابية" })).toBeVisible();
-  await expect(page.getByText("تطوير مهارات العربية هو الهدف الأساسي، وتُستخدم المراجع الكتابية المرخّصة مادةً للتعلّم اللغوي.")).toBeVisible();
+  await expect(page.getByText("تطوير مهارات العربية هو الهدف الأساسي، وأي مراجع كتابية مستقبلية تتطلب ترخيصًا موثقًا ومراجعة قبل استخدامها.")).toBeVisible();
   await expect(page.getByText("فهم مفردات وتراكيب عربية ضمن سياقها.")).toBeVisible();
   await expect(page.getByRole("heading", { level: 3, name: "الكلمة في سياقها" })).toBeVisible();
   await expect(page.getByText("لا يوجد تسجيل أو حفظ تقدّم أو معلّم ذكي فعّال.")).toBeVisible();
@@ -40,7 +40,7 @@ test("Path A entry explains language outcomes and can switch to Path B", async (
 test("Path B entry remains separate and supports back navigation", async ({ page }) => {
   await page.goto("/learn/paths/bible-study");
 
-  await expect(page.getByText("فهم محتوى الكتاب وسياقه هو الهدف الأساسي، ويقدّم معلّم ذكاء اصطناعي ناطق بالعربية التدريس والحوار داخل منهج معلن.")).toBeVisible();
+  await expect(page.getByText("فهم محتوى الكتاب وسياقه هو الهدف الأساسي، ويعرض النموذج أنشطة عربية ومساندة سياقية مؤلَّفة داخل منهج معلن.")).toBeVisible();
   await expect(page.getByText("التمييز بين معلومة المصدر والتفسير والشرح التعليمي.")).toBeVisible();
   await expect(page.getByRole("heading", { level: 3, name: "السياق قبل الاستنتاج" })).toBeVisible();
   await expect(page.getByRole("link", { name: "انتقل إلى تعلّم العربية" })).toHaveAttribute("href", "/learn/paths/arabic-language");

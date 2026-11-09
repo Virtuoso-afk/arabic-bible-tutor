@@ -49,7 +49,7 @@ test("progress review actions and responsive navigation lead to real routes", as
 test("temporary preferences visibly affect the preview and can be reset", async ({ page }) => {
   await page.goto("/settings/learning");
   await expect(page.getByText("ملف عرض غير مسجّل الدخول")).toBeVisible();
-  await expect(page.getByText(/لا يوجد حساب حقيقي/)).toBeVisible();
+  await expect(page.getByText(/لا يوجد حفظ دائم أو حساب حقيقي/)).toBeVisible();
   await expect(page.locator("main")).toHaveCount(1);
   const previewParagraph = page.getByText(/هذه فقرة أصلية لمعاينة/);
   const initialSize = await previewParagraph.evaluate((element) => parseFloat(getComputedStyle(element).fontSize));

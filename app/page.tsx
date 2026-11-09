@@ -26,9 +26,9 @@ export default function Home() {
 
       <Container className={styles.hero}>
         <div className={styles.heroCopy}>
-          <Badge tone="milestone">تعلّم عربي منظّم · بمساندة ذكية مسؤولة</Badge>
+          <Badge tone="milestone">تعلّم عربي منظّم · بمساندة سياقية مسؤولة</Badge>
           <h1>تقدّمٌ له معنى.<br /><em>وتعلّمٌ يبقى معك.</em></h1>
-          <p className={styles.lead}>دروس قصيرة وعميقة، تمارين تفاعلية، ومؤشرات إتقان تشرح ما تعلّمته فعلًا. ابدأ بتطوير العربية أو دراسة الكتاب بالعربية ضمن مسارين مستقلين.</p>
+          <p className={styles.lead}>دروس قصيرة وعميقة، تمارين تفاعلية، وأدلة عرض تشرح ما أظهرته المحاولة دون ادعاء إتقان. ابدأ بتطوير العربية أو دراسة الكتاب بالعربية ضمن مسارين مستقلين.</p>
           <div className={styles.heroActions}>
             <ButtonLink href="#paths">استكشف المسارين <span aria-hidden="true">←</span></ButtonLink>
             <ButtonLink href="#method" variant="secondary">تعرّف إلى منهج التعلّم</ButtonLink>

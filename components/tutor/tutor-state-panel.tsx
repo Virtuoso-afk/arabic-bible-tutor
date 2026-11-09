@@ -20,7 +20,7 @@ export function TutorStatePanel({ activity, guidance, onRevealHint, pathId, sour
   const panelRef = useRef<HTMLDivElement>(null);
   const mounted = useRef(false);
   const definition = getTutorStateDefinition(stateId);
-  const sourceReference = source.provenance?.sourceReference ?? "Reference metadata unavailable";
+  const sourceReference = source.provenance?.sourceReference;
 
   useEffect(() => {
     if (mounted.current) panelRef.current?.focus();
@@ -31,9 +31,11 @@ export function TutorStatePanel({ activity, guidance, onRevealHint, pathId, sour
     switch (stateId) {
       case "grounded-explanation": return { title: "شرح مرتبط بهدف النشاط", body: activity.tutorGuidance, detail: `الأساس: ${guidance.label} · ${activity.evidence.assessedSkill}` };
       case "progressive-hint": return { title: "ابدأ بأقل قدر من المساعدة", body: activity.hints[0], detail: "هذا التلميح مؤلَّف داخل ملف الدرس ولا يكشف الإجابة الكاملة." };
-      case "valid-citation": return { title: "إحالة مرجعية بلا اقتباس", body: source.body, detail: `المرجع: ${sourceReference} · ${source.provenance?.licenseStatus ?? "لا حالة ترخيص متاحة"}` };
+      case "valid-citation": return sourceReference
+        ? { title: "إحالة مرجعية بلا اقتباس", body: source.body, detail: `المرجع: ${sourceReference} · ${source.provenance?.licenseStatus ?? "لا حالة ترخيص متاحة"}` }
+        : { title: "بيانات المرجع غير متاحة", body: "لا يمكن عرض إحالة صالحة لأن ملف الدرس لا يحتوي على معرّف مصدر قابل للتحقق.", detail: "لم يُستبدل المرجع بمصدر آخر، ويمكن متابعة الإرشاد المؤلَّف فقط." };
       case "insufficient-grounding": return { title: "لا تكفي البيانات للإجابة", body: pathId === "arabic-language" ? "لا يحتوي الدرس الحالي على مادة معتمدة تجيب عن سؤال تفسيري خارج الهدف اللغوي." : "تحتوي الواجهة على بيانات مرجع وقاعدة مقرر فقط؛ لا يوجد نص مصدر مرخّص يثبت ادعاءً إضافيًا.", detail: "الإجراء الآمن: ارجع إلى الهدف المؤلَّف أو اطلب مراجعة معلّم بدل اختراع إجابة." };
-      case "source-unavailable": return { title: "تعذّر عرض المصدر في هذه الحالة", body: "تبقى إجابتك الحالية داخل ذاكرة الصفحة ما دام الدرس مفتوحًا، لكن لا يمكن تقديم شرح يعتمد على مصدر غير متاح.", detail: "التحديث أو الخروج يمسح المحاولة؛ الاستعادة الدائمة تتطلب طبقة حفظ مستقبلية." };
+      case "source-unavailable": return { title: "تعذّر عرض المصدر في هذه الحالة", body: "تبقى إجابتك الحالية داخل ذاكرة الصفحة ما دام الدرس مركّبًا، لكن لا يمكن تقديم شرح يعتمد على مصدر غير متاح.", detail: "قد يحتفظ الرجوع في الجلسة بالحالة؛ التحديث الكامل يمسحها، والاستعادة الدائمة تتطلب طبقة حفظ مستقبلية." };
       case "educator-review": return { title: "هذا الشرح يحتاج قرارًا من معلّم", body: "تتجاوز المسألة قاعدة النشاط المحددة أو تحتمل إطارًا تفسيريًا غير معتمد في العرض.", detail: "لم يُعتمد جواب بديل، ولا تُعرض المسألة بوصفها حقيقة مصدرية." };
       case "corrected-explanation": return { title: "سُحب شرح العرض السابق من المراجعة", body: "يوضح التصحيح أن بطاقة المصدر مرجع فقط، وأن إرشاد المقرر ليس اقتباسًا ولا تفسيرًا نهائيًا.", detail: "حالة تصحيح تجريبية · لا تغيّر دليل الدرس أو تقدّمه المؤقت." };
       case "tutor-unavailable": return { title: "المعلّم السياقي غير متاح", body: "لا توجد خدمة ذكاء اصطناعي متصلة أصلًا في هذه المهمة. يمكنك متابعة النشاط والتلميحات المؤلَّفة.", detail: "لم تُفقد إجابتك الحالية أثناء بقاء الصفحة مفتوحة." };
@@ -49,7 +51,7 @@ export function TutorStatePanel({ activity, guidance, onRevealHint, pathId, sour
 
       <div className={`${styles.statePanel} ${styles[definition.tone]}`} ref={panelRef} role="status" tabIndex={-1} data-testid="tutor-state-panel">
         <span>{definition.layerLabel}</span><h3>{content.title}</h3><p>{content.body}</p><small>{content.detail}</small>
-        {stateId === "valid-citation" && <div className={styles.citation}><strong>إحالة مصدر</strong><bdi dir="ltr">{sourceReference}</bdi><span>{source.provenance?.owner}</span></div>}
+        {stateId === "valid-citation" && sourceReference && <div className={styles.citation}><strong>إحالة مصدر</strong><bdi dir="ltr">{sourceReference}</bdi><span>{source.provenance?.owner}</span></div>}
       </div>
 
       <div className={styles.actions}>

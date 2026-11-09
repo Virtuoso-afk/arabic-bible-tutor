@@ -36,7 +36,7 @@ export function PreferencesDemo() {
 
   return (
     <div className={styles.page}>
-      <header className={styles.header}><div><Badge tone="milestone">ملف عرض غير مسجّل الدخول</Badge><h1>الملف وتفضيلات القراءة</h1><p>تؤثر عناصر التحكم المفعّلة في معاينة هذه الصفحة فقط. لا تُحفظ بعد التحديث أو الانتقال، ولا يوجد حساب حقيقي.</p></div><ButtonLink href="/learn" variant="secondary">العودة إلى لوحة العرض</ButtonLink></header>
+      <header className={styles.header}><div><Badge tone="milestone">ملف عرض غير مسجّل الدخول</Badge><h1>الملف وتفضيلات القراءة</h1><p>تؤثر عناصر التحكم المفعّلة في معاينة هذه الصفحة فقط. لا يوجد حفظ دائم أو حساب حقيقي، ويعيد التحديث الكامل القيم الافتراضية.</p></div><ButtonLink href="/learn" variant="secondary">العودة إلى لوحة العرض</ButtonLink></header>
 
       <div className={styles.layout}>
         <div className={styles.main}>

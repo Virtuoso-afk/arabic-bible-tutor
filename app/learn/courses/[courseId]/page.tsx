@@ -15,6 +15,7 @@ import styles from "./course-detail.module.css";
 
 type CourseDetailProps = { params: Promise<{ courseId: string }> };
 
+export const dynamicParams = false;
 export function generateStaticParams() { return courses.map((course) => ({ courseId: course.id })); }
 
 export async function generateMetadata({ params }: CourseDetailProps): Promise<Metadata> {

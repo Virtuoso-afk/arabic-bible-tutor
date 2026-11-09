@@ -11,6 +11,7 @@ import styles from "./path-entry.module.css";
 
 type PathEntryProps = { params: Promise<{ pathId: string }> };
 
+export const dynamicParams = false;
 export function generateStaticParams() {
   return learningPathIds.map((pathId) => ({ pathId }));
 }
@@ -27,6 +28,7 @@ export default async function PathEntryPage({ params }: PathEntryProps) {
   if (!isLearningPathId(pathId)) notFound();
   const path = learningPaths[pathId];
   const alternative = learningPaths[path.id === "arabic-language" ? "bible-study" : "arabic-language"];
+  const catalogAnchor = path.id === "arabic-language" ? "path-a" : "path-b";
 
   return (
     <main className={`${styles.page} ${styles[path.tone]}`}>
@@ -42,7 +44,7 @@ export default async function PathEntryPage({ params }: PathEntryProps) {
             <h1>{path.name}</h1>
             <p className={styles.purpose}>{path.purpose}</p>
             <p>{path.summary}</p>
-            <div className={styles.actions}><ButtonLink href="#outcomes">راجع النتائج المتوقعة <span aria-hidden="true">↓</span></ButtonLink><ButtonLink href="/#paths" variant="secondary">العودة إلى المسارين</ButtonLink></div>
+            <div className={styles.actions}><ButtonLink href={`/learn/courses#${catalogAnchor}`}>استكشف مقررات {path.shortName} <span aria-hidden="true">←</span></ButtonLink><ButtonLink href="#outcomes" variant="secondary">راجع النتائج المتوقعة <span aria-hidden="true">↓</span></ButtonLink></div>
           </div>
           <Surface as="aside" className={styles.demoPanel} tone="navy">
             <span aria-hidden="true" className={styles.heroMarker}>{path.marker}</span>

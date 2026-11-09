@@ -75,7 +75,7 @@ export function LessonPlayer({ lesson, courseTitle }: LessonPlayerProps) {
               return <li className={complete ? styles.outlineComplete : current ? styles.outlineCurrent : ""} key={item.id}><span aria-hidden="true">{complete ? "✓" : index + 1}</span><div><strong>{item.title}</strong><small>{complete ? "أُكمل في هذه الجلسة" : current ? "النشاط الحالي" : "لاحقًا"}</small></div></li>;
             })}
           </ol>
-          <div className={styles.localNotice}><strong>حالة عرض محلية</strong><p>لا حساب ولا حفظ. تحديث الصفحة أو الخروج يعيد هذه المحاولة.</p></div>
+          <div className={styles.localNotice}><strong>حالة عرض محلية</strong><p>قد يحتفظ الرجوع داخل سجل المتصفح بالمحاولة في الذاكرة، لكن التحديث الكامل يمسحها ولا يوجد حفظ دائم.</p></div>
         </aside>
 
         <main className={styles.lessonMain} id="lesson-main" tabIndex={-1}>
@@ -105,7 +105,7 @@ export function LessonPlayer({ lesson, courseTitle }: LessonPlayerProps) {
             </div>
           </section>}
 
-          {state.status === "completed" && <section className={styles.completionPanel} ref={completionRef} tabIndex={-1} data-testid="completion-panel"><span aria-hidden="true">✓</span><p className={styles.completionEyebrow}>اكتمل العرض المحلي</p><h1>أنهيت أنشطة «{lesson.title}»</h1><p>أكملت {lesson.activities.length} أنشطة في هذه الجلسة. هذا إكمال للنموذج فقط، ولا يعني إتقانًا أو تقدّمًا محفوظًا.</p><div className={styles.evidenceSummary}><h2>ملخص دليل الجلسة</h2><ul>{lesson.activities.map((item) => <li key={item.id}><strong>{item.evidence.assessedSkill}</strong><span>{item.evidence.completionMeaning}</span></li>)}</ul><p>سجلات المحاولات: {state.evidence.length} · لا تتضمن اسمًا أو إجابات نصية حرة.</p></div><div className={styles.completionActions}><Button onClick={() => dispatch({ type: "RESET" })} variant="secondary">أعد تشغيل العرض</Button><Link href={`/learn/courses/${lesson.courseId}`}>ارجع إلى المقرر</Link></div></section>}
+          {state.status === "completed" && <section className={styles.completionPanel} ref={completionRef} tabIndex={-1} data-testid="completion-panel"><span aria-hidden="true">✓</span><p className={styles.completionEyebrow}>اكتمل العرض المحلي</p><h1>أنهيت أنشطة «{lesson.title}»</h1><p>أكملت {lesson.activities.length} أنشطة في هذه الجلسة. هذا إكمال للنموذج فقط، ولا يعني إتقانًا أو تقدّمًا محفوظًا.</p><div className={styles.evidenceSummary}><h2>ملخص دليل الجلسة</h2><ul>{lesson.activities.map((item) => <li key={item.id}><strong>{item.evidence.assessedSkill}</strong><span>{item.evidence.completionMeaning}</span></li>)}</ul><p>سجلات المحاولات: {state.evidence.length} · لا تتضمن اسمًا أو إجابات نصية حرة.</p></div><div className={styles.completionActions}><Button onClick={() => dispatch({ type: "RESET" })} variant="secondary">أعد تشغيل العرض</Button><Link href={`/learn/courses/${lesson.courseId}`}>ارجع إلى المقرر</Link><Link href="/learn/progress">راجع أدلة العرض الثابتة</Link></div></section>}
         </main>
 
         <aside className={styles.tutorPanel} ref={tutorRef} aria-label="حالات المعلّم السياقي">

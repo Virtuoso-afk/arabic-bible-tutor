@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { ConnectivityNotice } from "@/components/states/connectivity-notice";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html data-scroll-behavior="smooth" lang="ar" dir="rtl">
-      <body>{children}</body>
+      <body><ConnectivityNotice />{children}</body>
     </html>
   );
 }
