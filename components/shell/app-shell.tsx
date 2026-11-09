@@ -15,8 +15,8 @@ const navigation = [
   { id: "home" as const, label: "الرئيسية", href: "/learn", icon: <HomeIcon /> },
   { id: "courses" as const, label: "المقررات", href: "/learn/courses", icon: <CoursesIcon /> },
   { id: "paths" as const, label: "مسارات التعلّم", href: "/learn/courses#learning-paths", icon: <PathsIcon /> },
-  { id: "progress" as const, label: "التقدّم", icon: <ProgressIcon /> },
-  { id: "settings" as const, label: "الملف والإعدادات", icon: <SettingsIcon /> },
+  { id: "progress" as const, label: "التقدّم", href: "/learn/progress", icon: <ProgressIcon /> },
+  { id: "settings" as const, label: "الملف والإعدادات", href: "/settings/learning", icon: <SettingsIcon /> },
 ];
 
 export function AppShell({ activeItem, children }: AppShellProps) {

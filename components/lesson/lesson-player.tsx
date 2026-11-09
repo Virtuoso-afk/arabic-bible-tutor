@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useReducer, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { TutorStatePanel } from "@/components/tutor/tutor-state-panel";
 import type { DemoLessonDefinition } from "@/lib/lesson-schema";
 import { createLessonReducer, initialLessonState } from "@/lib/lesson-state";
 import { learningPaths } from "@/lib/learning-paths";
@@ -25,6 +26,8 @@ export function LessonPlayer({ lesson, courseTitle }: LessonPlayerProps) {
   const tutorRef = useRef<HTMLElement>(null);
   const path = learningPaths[lesson.pathId];
   const activity = lesson.activities[state.currentActivityIndex];
+  const sourceBlock = lesson.blocks.find((block) => block.layer === "source-reference")!;
+  const guidanceBlock = lesson.blocks.find((block) => block.layer === "educator-guidance")!;
   const isActive = state.status !== "not-started" && state.status !== "reset" && state.status !== "completed";
   const completedActivities = state.status === "completed" ? lesson.activities.length : state.currentActivityIndex;
   const progressValue = Math.round((completedActivities / lesson.activities.length) * 100);
@@ -105,10 +108,8 @@ export function LessonPlayer({ lesson, courseTitle }: LessonPlayerProps) {
           {state.status === "completed" && <section className={styles.completionPanel} ref={completionRef} tabIndex={-1} data-testid="completion-panel"><span aria-hidden="true">✓</span><p className={styles.completionEyebrow}>اكتمل العرض المحلي</p><h1>أنهيت أنشطة «{lesson.title}»</h1><p>أكملت {lesson.activities.length} أنشطة في هذه الجلسة. هذا إكمال للنموذج فقط، ولا يعني إتقانًا أو تقدّمًا محفوظًا.</p><div className={styles.evidenceSummary}><h2>ملخص دليل الجلسة</h2><ul>{lesson.activities.map((item) => <li key={item.id}><strong>{item.evidence.assessedSkill}</strong><span>{item.evidence.completionMeaning}</span></li>)}</ul><p>سجلات المحاولات: {state.evidence.length} · لا تتضمن اسمًا أو إجابات نصية حرة.</p></div><div className={styles.completionActions}><Button onClick={() => dispatch({ type: "RESET" })} variant="secondary">أعد تشغيل العرض</Button><Link href={`/learn/courses/${lesson.courseId}`}>ارجع إلى المقرر</Link></div></section>}
         </main>
 
-        <aside className={styles.tutorPanel} ref={tutorRef} aria-labelledby="tutor-title">
-          <div className={styles.tutorHeading}><span aria-hidden="true">✦</span><div><h2 id="tutor-title">المعلّم السياقي</h2><p>إرشاد مؤلَّف · الذكاء الاصطناعي غير متصل</p></div></div>
-          <div className={styles.disclosure}><strong>لا توجد محادثة حية</strong><p>يعرض هذا الجزء إرشادًا حتميًا كتبه فريق المنهج للهدف الحالي.</p></div>
-          {isActive ? <><div className={styles.tutorContext}><span>النشاط الحالي</span><h3>{activity.title}</h3><p>{activity.tutorGuidance}</p></div><nav aria-label="مساندة الدرس" className={styles.tutorActions}><button onClick={revealHint} type="button">اكشف التلميح المتاح</button><a href={lesson.pathId === "bible-study" ? "#study-guidance" : "#lang-guidance"}>راجع قاعدة المقرر</a><a href={lesson.pathId === "bible-study" ? "#study-reference" : "#lang-reference"}>راجع بيانات المصدر</a></nav></> : <div className={styles.tutorContext}><span>حدود المساندة</span><h3>ابدأ الدرس لعرض إرشاد النشاط</h3><p>لن يرسل النموذج سؤالًا أو ينشئ إجابة. الإرشاد مرتبط بالنشاط فقط.</p></div>}
+        <aside className={styles.tutorPanel} ref={tutorRef} aria-label="حالات المعلّم السياقي">
+          {isActive ? <TutorStatePanel activity={activity} guidance={guidanceBlock} onRevealHint={revealHint} pathId={lesson.pathId} source={sourceBlock} /> : <div className={styles.tutorContext}><span>حدود المساندة</span><h2>ابدأ الدرس لعرض حالات المعلّم</h2><p>الذكاء الاصطناعي غير متصل، ولا توجد محادثة حية. الحالات ثابتة ومرتبطة بالنشاط فقط.</p></div>}
         </aside>
       </div>
 

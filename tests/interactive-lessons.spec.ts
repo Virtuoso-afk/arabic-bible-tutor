@@ -124,7 +124,7 @@ test("lesson semantics, keyboard controls, disclosure, responsiveness, and runti
     await expect(page.getByText("لا توجد محادثة حية")).toBeVisible();
     await expect(page.getByRole("progressbar", { name: /تقدم الدرس/ })).toBeVisible();
     await startLesson(page);
-    await expect(page.getByRole("link", { name: "راجع قاعدة المقرر" })).toHaveAttribute("href", route === pathA ? "#lang-guidance" : "#study-guidance");
+    await expect(page.getByRole("combobox", { name: "حالة المعلّم التجريبية" })).toBeVisible();
     const radios = page.getByRole("radio");
     await radios.first().focus();
     await page.keyboard.press("ArrowDown");

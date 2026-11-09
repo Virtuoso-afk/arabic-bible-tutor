@@ -1,0 +1,47 @@
+.page { padding-block: var(--space-8) var(--space-16); }
+.header { align-items: end; display: flex; gap: var(--space-8); justify-content: space-between; }
+.header h1 { font-family: var(--font-arabic-display); font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.3; margin: var(--space-3) 0; }
+.header p { color: var(--color-text-muted); line-height: var(--line-reading); margin: 0; max-width: 48rem; }
+.provenance { align-items: start; display: grid; gap: var(--space-5); grid-template-columns: auto 1fr; margin-top: var(--space-8); }
+.provenance h2 { font-size: 1.2rem; margin: 0 0 var(--space-2); }
+.provenance p { color: #b8c9d5; line-height: var(--line-ui-body); margin: 0; }
+.section { border-top: var(--border-default); padding-block: var(--space-12); }
+.sectionHeading { align-items: end; display: flex; gap: var(--space-8); justify-content: space-between; margin-bottom: var(--space-8); }
+.sectionHeading h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); margin: var(--space-3) 0 0; }
+.sectionHeading > p { color: var(--color-text-muted); line-height: var(--line-ui-body); margin: 0; max-width: 36rem; }
+.pathGrid, .evidenceColumns, .achievementGrid, .reviewGrid, .states { display: grid; gap: var(--space-5); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.evidenceGroup { border-block-start: .3rem solid var(--path-accent); }
+.evidenceGroup h3 { font-size: 1.3rem; margin: var(--space-3) 0 var(--space-5); }
+.evidenceGroup ul { display: grid; gap: var(--space-3); list-style: none; margin: 0; padding: 0; }
+.evidenceGroup li { align-items: start; background: var(--color-surface-soft); border-radius: var(--radius-control); display: grid; gap: var(--space-3); grid-template-columns: minmax(7.5rem, auto) 1fr; padding: var(--space-4); }
+.evidenceGroup code, .achievement code { color: var(--path-accent); font-family: var(--font-latin-ui); font-size: .75rem; font-weight: 800; overflow-wrap: anywhere; }
+.evidenceGroup li div { display: grid; gap: var(--space-1); }
+.evidenceGroup li span { color: var(--color-text-muted); font-size: var(--type-ui-label); line-height: 1.65; }
+.achievement { border-block-start: .3rem solid var(--path-accent); position: relative; }
+.achievement > div { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.achievement > span { color: var(--color-progress-milestone); font-size: 2rem; inset-block-start: var(--space-5); inset-inline-end: var(--space-5); position: absolute; }
+.achievement h3 { font-size: 1.35rem; margin: var(--space-5) 0 var(--space-2); }
+.achievement > p { color: var(--color-text-muted); line-height: var(--line-ui-body); }
+.achievement dl { background: var(--color-surface-soft); border-radius: var(--radius-control); display: grid; gap: var(--space-2); margin: var(--space-5) 0 0; padding: var(--space-4); }
+.achievement dt { font-size: var(--type-ui-caption); font-weight: 900; }
+.achievement dd { color: var(--color-text-muted); display: flex; flex-wrap: wrap; gap: var(--space-2); line-height: 1.7; margin: 0; }
+.reviewGrid article, .states section { display: grid; gap: var(--space-3); }
+.reviewGrid h3, .states h2 { font-size: 1.15rem; margin: 0; }
+.reviewGrid p, .states p { color: var(--color-text-muted); line-height: var(--line-ui-body); margin: 0; }
+.reviewGrid a { justify-self: start; }
+.states { border-top: var(--border-default); padding-top: var(--space-10, 2.5rem); }
+.footer { align-items: center; color: var(--color-text-muted); display: flex; font-size: var(--type-ui-caption); justify-content: space-between; padding-top: var(--space-8); }
+.footer a { color: var(--color-action-primary); font-weight: 800; min-height: 2.75rem; padding-block: .75rem; }
+.language { --path-accent: var(--color-path-language); }
+.study { --path-accent: var(--color-path-study); }
+
+@media (max-width: 74.99rem) { .sectionHeading { align-items: start; flex-direction: column; gap: var(--space-3); } }
+@media (max-width: 47.99rem) {
+  .page { padding-block: var(--space-5) var(--space-12); }
+  .header { align-items: stretch; flex-direction: column; gap: var(--space-5); }
+  .header a { width: 100%; }
+  .provenance { grid-template-columns: 1fr; }
+  .pathGrid, .evidenceColumns, .achievementGrid, .reviewGrid, .states { grid-template-columns: 1fr; }
+  .evidenceGroup li { grid-template-columns: 1fr; }
+  .footer { align-items: start; flex-direction: column; }
+}

@@ -152,7 +152,18 @@ export const achievements = [
     pathId: "bible-study" as const,
     title: "قارئ متأنٍ",
     description: "راجع المصدر وسياقه قبل اختيار الاستنتاج في مثال العرض.",
+    criterion: "وجود دليلي عرض مسمّيين: مراجعة المصدر ومراجعة السياق.",
     evidenceIds: ["study-source-1", "study-context-1"],
+    status: "demo" as const,
+  },
+  {
+    id: "sequence-builder",
+    pathId: "arabic-language" as const,
+    title: "بانٍ للتسلسل",
+    description: "رتّب بنية جملة وربط مفردة زمنية في بيانات العرض.",
+    criterion: "وجود دليل بنية واحد ودليل مفردات زمني واحد على الأقل في ملف العرض.",
+    evidenceIds: ["lang-structure-1", "lang-vocab-2"],
+    status: "demo" as const,
   },
 ] as const;
 
@@ -162,6 +173,16 @@ export const reviewRecommendation = {
   courseId: "arabic-sequence",
   lessonId: "apply-sequence",
 } as const;
+
+export const reviewSuggestions = [
+  reviewRecommendation,
+  {
+    title: "راجع الفرق بين المصدر والشرح",
+    description: "مراجعة مقترحة لأن ملف العرض يحتوي دليلًا واحدًا فقط لتمييز المصدر. لا يوجد موعد أو عقوبة.",
+    courseId: "context-and-evidence",
+    lessonId: "context-map",
+  },
+] as const;
 
 export function getCourse(courseId: string) {
   return courses.find((course) => course.id === courseId);

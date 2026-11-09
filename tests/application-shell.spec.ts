@@ -14,7 +14,9 @@ test("the shell exposes Arabic RTL navigation semantics and active state", async
   await expect(mobile).toHaveAttribute("aria-label", "التنقل الرئيسي للهاتف");
   const visibleNavigation = testInfo.project.name === "mobile-chromium" ? mobile : rail;
   await expect(visibleNavigation.getByRole("link", { name: "الرئيسية" })).toHaveAttribute("aria-current", "page");
-  await expect(rail.locator('[aria-disabled="true"]')).toHaveCount(2);
+  await expect(rail.locator('[aria-disabled="true"]')).toHaveCount(0);
+  await expect(visibleNavigation.getByRole("link", { name: "التقدّم" })).toHaveAttribute("href", "/learn/progress");
+  await expect(visibleNavigation.getByRole("link", { name: "الملف والإعدادات" })).toHaveAttribute("href", "/settings/learning");
 });
 
 test("the shell switches among mobile navigation, tablet rail, and desktop sidebar without overflow", async ({ page }) => {

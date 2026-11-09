@@ -118,13 +118,23 @@ Mission 00C produced Modern Academy, Learning Quest, and Contemporary Scholar pr
 - Connect available course and dashboard destinations to real lesson routes while preserving unavailable course states.
 - Validate path-specific assessment, keyboard semantics, focus management, refresh reset, path independence, and responsive overflow.
 
-### Recommended Mission 01A-5 — Supporting learner surfaces
+### Mission 01A-5 — Learner support and contextual tutor states
+
+**Status:** Implemented locally; pending Maestro review
+
+- Implement separate Path A and Path B progress dimensions, review suggestions, and compact private achievement examples from named fixture evidence.
+- Keep fixture progress visibly separate from session-only lesson attempts; no identity, preference, evidence, or progress persistence exists.
+- Add a demonstration profile and temporary reading preferences that affect only the mounted page and reset on refresh.
+- Extend contextual lesson guidance with nine deterministic states for grounding, hints, citation metadata, insufficient evidence, source failure, educator review, correction, tutor failure, and return to authored guidance.
+- Validate operational navigation, keyboard and focus behavior, Arabic RTL metadata, reduced motion, route integrity, runtime behavior, and responsive overflow.
+
+### Recommended Mission 01A-6 — System states and frontend consolidation
 
 **Status:** Proposed; requires Maestro approval before implementation
 
-- Implement separate progress and review surfaces using fixture evidence without implying persistence.
-- Add private achievements, profile and learning preferences, and approved loading, empty, offline, source-unavailable, and error-recovery states.
-- Keep any contextual tutor presentation deterministic until a later server-side grounded-AI mission is explicitly approved.
+- Consolidate shared loading, empty, offline, and route-level error patterns across implemented frontend surfaces.
+- Review the completed public, learner-home, lesson, progress, and settings routes as one coherent frontend journey before introducing any service integration.
+- Resolve approved content and educator-review decisions needed for later grounded-content work while retaining fixture-only data and local deterministic behavior.
 
 ## Mission 01B — Responsive and interaction QA
 
