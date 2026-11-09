@@ -103,6 +103,16 @@ The synthesis must feel designed as one product. It must not reproduce the three
 
 **Reason:** The approved combination preserves A's trust and scalability, adds B's learner momentum, and uses C's strongest source-literacy treatment without adopting a dense editorial product shell.
 
+## PD-005 — Approve the Mission 00C-S visual execution for frontend implementation
+
+**Status:** Approved and binding for production frontend implementation
+
+**Decision:** The product owner approves the Mission 00C-S `نَسَق` visual execution as the production frontend reference, subject to the established product, accessibility, content, privacy, and security requirements. Mission 01A may implement that system in bounded checkpoints without changing the two-path educational model or treating fixture content as validated curriculum.
+
+Mission 01A-1 is limited to production semantic tokens, an Arabic typography strategy, reusable interface primitives, and the responsive application shell. It does not authorize public-page redesigns, learner flows, live services, persistence, authentication, or AI. The approved Mission 00C-S proofs remain review evidence; implementation differences must be documented rather than silently altering them.
+
+**Reason:** The approved synthesis provides one coherent visual language for both learning paths and sufficient responsive, component, state, motion, and accessibility guidance to begin production implementation in reviewable increments.
+
 ## Open decisions
 
 - Which approved learning path should lead the first pilot?

@@ -1,0 +1,49 @@
+.content { padding-block: var(--space-8) var(--space-16); }
+.header { align-items: end; display: flex; gap: var(--space-8); justify-content: space-between; }
+.header h1 { font-family: var(--font-arabic-display); font-size: clamp(2rem,4vw,2.625rem); letter-spacing: -.035em; line-height: 1.35; margin: var(--space-4) 0 var(--space-2); }
+.header p { color: var(--color-text-muted); font-size: var(--type-ui-body); line-height: var(--line-ui-body); margin: 0; max-width: 43rem; }
+.headerMeta { align-items: flex-end; background: var(--color-surface-raised); border: var(--border-default); border-radius: var(--radius-control); display: flex; flex-direction: column; flex: 0 0 auto; padding: var(--space-3) var(--space-4); }
+.headerMeta span { color: var(--color-text-muted); font-size: var(--type-ui-caption); }
+.headerMeta strong { font-family: var(--font-latin-ui); font-size: var(--type-ui-label); }
+.section { margin-top: var(--space-12); }
+.sectionHeading { align-items: end; display: flex; gap: var(--space-8); justify-content: space-between; margin-bottom: var(--space-5); }
+.sectionHeading span, .kicker { color: var(--color-action-primary); font-size: var(--type-ui-caption); font-weight: 850; }
+.sectionHeading h2, .formSurface h2 { font-size: clamp(1.5rem,3vw,1.9375rem); margin: var(--space-1) 0 0; }
+.sectionHeading p { color: var(--color-text-muted); font-size: var(--type-ui-label); line-height: var(--line-ui-body); margin: 0; max-width: 28rem; }
+.foundationGrid { display: grid; gap: var(--space-4); grid-template-columns: repeat(2,minmax(0,1fr)); }
+.featureSurface { display: grid; gap: var(--space-5); }
+.featureSurface h3, .navySurface h3 { font-size: 1.25rem; margin: 0; }
+.featureSurface p, .navySurface p, .formSurface > div > p { color: var(--color-text-muted); font-size: var(--type-ui-label); line-height: var(--line-ui-body); margin: 0; }
+.featureSurface > a { justify-self: start; }
+.badgeRow { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.navySurface { display: grid; gap: var(--space-5); grid-column: 1/-1; overflow: hidden; position: relative; }
+.navySurface::after { border: 2.75rem solid rgba(181,215,67,.07); border-radius: 50%; content: ""; height: 14rem; inset: -7rem auto auto -5rem; position: absolute; width: 14rem; }
+.navySurface > * { position: relative; z-index: 1; }
+.navySurface p { color: #b7c8d4; }
+.stationRow { align-items: center; display: grid; grid-template-columns: 2.75rem minmax(2rem,8rem) 2.75rem minmax(2rem,8rem) 2.75rem; justify-content: start; }
+.stationRow span { align-items: center; background: var(--color-brand-navy-raised); border: 2px solid #456175; border-radius: 50%; display: flex; height: 2.75rem; justify-content: center; width: 2.75rem; }
+.stationRow i { background: #456175; height: 2px; }
+.stationRow .completeStation { background: var(--color-path-language); border-color: var(--color-path-language); }
+.stationRow .currentStation { background: var(--color-progress-current); border-color: var(--color-progress-current); box-shadow: 0 0 0 .5rem rgba(241,124,92,.16); }
+.formSurface { align-items: start; display: grid; gap: var(--space-8); grid-template-columns: .8fr 1.2fr; margin-top: var(--space-6); scroll-margin-top: var(--space-6); }
+.formSurface > div > p { margin-top: var(--space-3); }
+.form { display: grid; gap: var(--space-4); }
+.formActions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.footer { border-top: var(--border-default); color: var(--color-text-muted); display: flex; font-size: var(--type-ui-caption); justify-content: space-between; margin-top: var(--space-12); padding-top: var(--space-5); }
+
+@media (max-width: 64rem) {
+  .foundationGrid { grid-template-columns: 1fr; }
+  .navySurface { grid-column: auto; }
+  .formSurface { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 47.99rem) {
+  .content { padding-block: var(--space-6) var(--space-12); }
+  .header { align-items: start; flex-direction: column; gap: var(--space-4); }
+  .headerMeta { align-items: flex-start; }
+  .section { margin-top: var(--space-8); }
+  .sectionHeading { align-items: start; flex-direction: column; gap: var(--space-3); }
+  .stationRow { grid-template-columns: 2.75rem minmax(1rem,1fr) 2.75rem minmax(1rem,1fr) 2.75rem; }
+  .formActions { align-items: stretch; flex-direction: column; }
+  .footer { flex-direction: column; gap: var(--space-2); }
+}

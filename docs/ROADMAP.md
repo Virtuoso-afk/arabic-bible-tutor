@@ -60,7 +60,7 @@ Mission 00C produced Modern Academy, Learning Quest, and Contemporary Scholar pr
 
 ## Mission 00C-S — Final hybrid design synthesis
 
-**Status:** Design refinement complete when locally checkpointed; visual execution pending product-owner and Maestro review
+**Status:** Complete; visual execution approved through PD-005 and locally checkpointed
 
 - Synthesize PD-004 into one visual language rather than a patchwork of the three explorations.
 - Define the provisional identity, semantic tokens, Arabic typography, responsive behavior, component states, content-layer labels, motion, and accessibility requirements.
@@ -68,16 +68,35 @@ Mission 00C produced Modern Academy, Learning Quest, and Contemporary Scholar pr
 - Demonstrate separate path progress, course journey, humane achievement, source context, educator guidance, exercise feedback, progressive hints, and contextual tutor behavior.
 - Provide a route, component, token, testing, and sequencing handoff for Mission 01A.
 
-**Exit gate:** the product owner and Maestro visually review the Mission 00C-S proof and either approve the execution, request a bounded revision, or pause. No production redesign begins before that review.
+**Exit gate:** passed. PD-005 approves the Mission 00C-S proof as the production frontend reference, subject to the existing product, accessibility, content, privacy, and security requirements.
 
 ## Mission 01A — Approved frontend redesign implementation
 
-**Status:** Subsequent mission; blocked on Mission 00C-S visual review
+**Status:** In progress through bounded implementation checkpoints
 
 - Implement only the Mission 00C direction approved by the product owner.
 - Build fixture-backed landing, onboarding, dashboard, discovery, course, lesson, tutor, progress, profile, settings, and system-state surfaces within agreed MVP scope.
 - Preserve clear separation between the two curricula and assessment models.
 - Keep content original or explicitly licensed and integrations local or mocked.
+
+### Mission 01A-1 — Design-system foundations and application shell
+
+**Status:** Implemented locally; pending Maestro review
+
+- Translate the approved visual language into semantic production tokens with accessible focus and reduced-motion behavior.
+- Document the Arabic typography and licensing strategy without adding an unverified remote font dependency.
+- Build reusable buttons, links, surfaces, badges, progress, form fields, containers, and navigation items.
+- Build one typed responsive application shell: desktop sidebar, tablet icon rail, and mobile bottom navigation.
+- Validate RTL semantics, active and disabled navigation, keyboard focus, reduced motion, and horizontal overflow at 390, 768, and 1440 px.
+- Preserve the Mission 00C-S proofs and defer complete product screens and live functionality.
+
+### Mission 01A-2 — Public and onboarding surfaces
+
+**Status:** Recommended next checkpoint
+
+- Implement the approved landing and learner-entry surfaces using the production tokens, primitives, and shell conventions.
+- Keep both learning paths explicit and use reviewed fixture content only.
+- Add no authentication, persistence, analytics, AI provider, or production service without its own approved mission scope.
 
 ## Mission 01B — Responsive and interaction QA
 

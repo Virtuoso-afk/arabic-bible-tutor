@@ -11,6 +11,29 @@
   --color-sand: #e8d6bd;
   --color-muted: #66756f;
   --font-sans: "Noto Sans Arabic", "Noto Kufi Arabic", Tahoma, Arial, sans-serif;
+  --color-surface-canvas: #f3f6fa;
+  --color-surface-raised: #ffffff;
+  --color-surface-soft: #eef3f8;
+  --color-text-primary: #11243a;
+  --color-text-muted: #5d6b7c;
+  --color-border-default: #d7e0ea;
+  --color-border-strong: #b7c4d3;
+  --color-brand-navy: #0d2940;
+  --color-brand-navy-raised: #143b59;
+  --color-action-primary: #2d55c7;
+  --color-action-primary-hover: #2145ad;
+  --color-path-language: #08756e;
+  --color-path-language-soft: #dff4f1;
+  --color-path-study: #6c3d99;
+  --color-path-study-soft: #f0e8f7;
+  --color-progress-milestone: #b5d743;
+  --color-progress-current: #f17c5c;
+  --color-content-source: #925f12;
+  --color-content-source-soft: #faf1dc;
+  --color-feedback-success: #18724d;
+  --color-feedback-success-soft: #e1f3e9;
+  --color-feedback-danger: #b42318;
+  --color-focus-ring: #f3a712;
 }
 
 :root {
@@ -29,6 +52,68 @@
   --radius-sm: 0.9rem;
   --radius-md: 1.5rem;
   --radius-lg: 2.25rem;
+
+  /* PD-004 production semantic tokens. Components consume these roles. */
+  --color-surface-canvas: #f3f6fa;
+  --color-surface-raised: #ffffff;
+  --color-surface-soft: #eef3f8;
+  --color-text-primary: #11243a;
+  --color-text-muted: #5d6b7c;
+  --color-border-default: #d7e0ea;
+  --color-border-strong: #b7c4d3;
+  --color-brand-navy: #0d2940;
+  --color-brand-navy-raised: #143b59;
+  --color-action-primary: #2d55c7;
+  --color-action-primary-hover: #2145ad;
+  --color-path-language: #08756e;
+  --color-path-language-soft: #dff4f1;
+  --color-path-study: #6c3d99;
+  --color-path-study-soft: #f0e8f7;
+  --color-progress-milestone: #b5d743;
+  --color-progress-current: #f17c5c;
+  --color-content-source: #925f12;
+  --color-content-source-soft: #faf1dc;
+  --color-feedback-success: #18724d;
+  --color-feedback-success-soft: #e1f3e9;
+  --color-feedback-danger: #b42318;
+  --color-focus-ring: #f3a712;
+
+  --font-arabic-ui: "Noto Sans Arabic", Tahoma, Arial, sans-serif;
+  --font-arabic-display: "Noto Kufi Arabic", "Noto Sans Arabic", Tahoma, Arial, sans-serif;
+  --font-latin-ui: Arial, sans-serif;
+  --type-ui-body: 1rem;
+  --type-ui-label: 0.875rem;
+  --type-ui-caption: 0.8125rem;
+  --line-ui-body: 1.7;
+  --line-reading: 1.85;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  --radius-control: 0.75rem;
+  --radius-compact: 0.5625rem;
+  --radius-surface: 1.125rem;
+  --radius-feature: 1.375rem;
+  --border-default: 1px solid var(--color-border-default);
+  --shadow-surface: 0 8px 26px rgba(13, 41, 64, 0.08);
+  --shadow-feature: 0 22px 70px rgba(13, 41, 64, 0.14);
+  --duration-fast: 140ms;
+  --duration-feedback: 200ms;
+  --duration-panel: 260ms;
+  --layout-shell-max: 90rem;
+  --layout-content-max: 82.5rem;
+  --layout-reading-max: 47.5rem;
+  --layout-sidebar: 14.875rem;
+  --layout-rail: 5.125rem;
 }
 
 * { box-sizing: border-box; }
@@ -255,4 +340,25 @@ a:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
+
+/* Shared production interaction requirements. */
+:where(button, a, input, textarea, select, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+
+:where(button, input, textarea, select):disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
