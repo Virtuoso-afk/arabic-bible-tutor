@@ -13,7 +13,7 @@
 - Do not copy Bible passages or other educational content without documented permission.
 - Every future resource must carry source, owner, license, language, and permitted-use metadata.
 - Never present generated assistance as authoritative teaching or completed functionality.
-- Preserve the open product decision between teaching Arabic through Bible materials and teaching the Bible in Arabic until research resolves it.
+- Preserve PD-001's separation between Arabic-language learning through Bible materials and Bible study in Arabic. Shared infrastructure must not collapse their curricula, assessments, mastery models, or progress dimensions.
 
 ## UI conventions
 

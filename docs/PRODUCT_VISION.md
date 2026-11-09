@@ -2,18 +2,18 @@
 
 ## Purpose
 
-Build an Arabic-first learning platform that helps learners understand, practise, and reflect through structured courses and responsible AI assistance. The first vertical explores Bible-based Arabic learning, while the foundation remains useful for other subjects, resources, and teaching methods.
+Build an Arabic-first learning platform that helps learners understand, practise, and reflect through structured courses and responsible AI assistance. The first vertical contains two approved learning paths—Arabic language learning through licensed Bible passages and Bible study in Arabic—while the foundation remains useful for other subjects, resources, and teaching methods.
 
 The provisional product name **مدار** is a working label. It should be validated with Arabic-speaking learners and teachers before brand investment.
 
-## Product question to resolve
+## Approved first-vertical structure
 
-The first vertical currently has two plausible teaching models:
+The first vertical has two separate teaching models:
 
 1. **Teach Arabic through Bible passages.** Learning outcomes focus on language skills; passages are licensed instructional resources.
 2. **Teach the Bible in Arabic.** Learning outcomes focus on biblical knowledge; Arabic is the delivery language.
 
-Mission 00A does not choose between them. Research must identify the primary learner, their goal, the teacher's role, the appropriate learning outcomes, and the content rights available. The domain model therefore separates a course's subject and learning outcomes from its language and resources.
+PD-001 approves both paths. They share platform infrastructure but retain separate curricula, teaching strategies, assessment systems, mastery definitions, and progress dimensions. Research must still identify the first pilot path, primary learner profiles, teacher or guardian roles, appropriate learning outcomes, and content rights. The domain model therefore separates a course's subject and outcomes from its instructional language and resources.
 
 ## Principles
 

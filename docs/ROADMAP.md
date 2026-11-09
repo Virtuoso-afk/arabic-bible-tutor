@@ -4,41 +4,68 @@ The roadmap advances only after the preceding assumptions are tested. Dates and 
 
 ## Mission 00A — Foundation and first runnable UI
 
+**Status:** Checkpointed
+
 - Next.js, TypeScript, Tailwind, linting, type checking, build, and browser smoke tests.
-- Arabic-first responsive landing page with honest preview states.
-- Subject-neutral product model and architecture documentation.
+- Arabic-first responsive technical prototype with honest preview states.
+- Subject-neutral platform concepts and architecture documentation.
 - No accounts, database, AI calls, production services, or copyrighted passages.
 
-## Recommended Mission 00B — Product and curriculum discovery
+The Mission 00A interface and provisional “مدار” identity are not approved visual references.
 
-- Interview a small set of target learners, Arabic educators, and Bible educators.
-- Decide the first learning outcome and define one narrow learner journey.
-- Secure or create a tiny licensed sample content set and record provenance.
-- Write an assessment rubric and AI-assistance boundaries before building a tutor.
-- Test the current Arabic copy, provisional identity, typography, and mobile usability.
+## Mission 00B — Product definition and foundation closeout
 
-**Exit evidence:** one named learner segment, one measurable outcome, one teacher-reviewed sample lesson, documented content rights, and a decision on the first teaching model.
+**Status:** In progress
 
-## Mission 01 — Lesson prototype
+- Record PD-001, PD-002, and PD-003.
+- Specify both initial paths, including learner profiles, outcomes, curriculum boundaries, and shared versus separate capabilities.
+- Produce original, teacher-reviewable conceptual sample lessons without reproducing unlicensed passages.
+- Specify grounded AI tutoring, editorial review, privacy, safety, evaluation, and progress behavior.
+- Define content licensing, provenance, translation, canon, institutional-context, and correction policies.
+- Map MVP learner flows, contextual assistance, practice, completion, and recovery states.
+- Close the mission with a validated, committed, clean foundation.
 
-- Implement a local, fixture-backed course and lesson flow.
-- Add semantic domain types for courses, lessons, activities, resources, and progress.
-- Test navigation, reading comfort, keyboard access, and lesson completion locally.
-- Keep data in versioned fixtures; do not add a database until the shape stabilizes.
+## Mission 00C — Design exploration and approval
 
-## Mission 02 — Persistence and private pilot readiness
+Explore PD-002 and PD-003 from first principles before implementing a redesign:
 
-- Evaluate Supabase/PostgreSQL against the validated data and privacy requirements.
-- Add authentication only for a defined pilot role model.
-- Implement resource provenance and license enforcement.
-- Add privacy, retention, abuse, and incident-response requirements.
+- brand and visual identity directions;
+- color palettes and semantic design tokens;
+- Arabic typography options with licensing and self-hosting implications;
+- responsive navigation for mobile, tablet, and desktop;
+- landing page and learner onboarding;
+- learning dashboard, course discovery, and course detail;
+- lesson player, meaningful exercises, feedback, and completion states;
+- contextual AI tutor within lesson and source boundaries;
+- progress, mastery, achievements, profile, and settings;
+- empty, loading, offline, error, and completion states;
+- motion and microinteraction guidance, including reduced motion;
+- accessibility specifications for color, focus, keyboard, screen reader, and touch behavior.
 
-## Mission 03 — Constrained tutoring experiment
+The exploration must define one shared visual language and lesson framework while preserving separate curricula, assessments, and progress dimensions. Do not implement the redesign until the product owner approves the Mission 00C direction.
 
-- Build a server-only AI gateway behind a feature flag and strict cost limits.
-- Ground responses in approved lesson resources and expose citations and uncertainty.
-- Evaluate educational quality and safety with teachers before learner access.
+**Exit evidence:** approved brand direction, design tokens, Arabic typography and licensing decision, responsive specifications for core surfaces and system states, interaction and motion guidance, and accessibility review.
 
-## Later possibilities
+## Mission 01A — Approved frontend redesign implementation
 
-Teachers, group classrooms, live voice/video, collaborative whiteboards, payments, and multiple subjects remain hypotheses. Each needs its own evidence, risk assessment, and mission; none belongs in the initial MVP by default.
+- Implement only the Mission 00C direction approved by the product owner.
+- Build fixture-backed landing, onboarding, dashboard, discovery, course, lesson, tutor, progress, profile, settings, and system-state surfaces within agreed MVP scope.
+- Preserve clear separation between the two curricula and assessment models.
+- Keep content original or explicitly licensed and integrations local or mocked.
+
+## Mission 01B — Responsive and interaction QA
+
+- Validate Arabic RTL behavior on representative mobile, tablet, and desktop widths.
+- Test keyboard, screen reader, contrast, touch targets, reduced motion, loading, offline, error, and recovery behavior.
+- Verify interaction states, exercise feedback, progress communication, and subtle celebrations without coercive mechanics.
+- Resolve browser and device issues before adding live services.
+
+## Later missions
+
+1. **Grounded content:** approve a licensed content corpus, provenance workflow, editorial roles, citations, and correction process.
+2. **AI tutoring:** implement a server-only grounded tutor behind evaluation gates, safety controls, and cost limits.
+3. **Authentication:** introduce only the validated learner, educator, guardian, and administrator roles needed by the pilot.
+4. **Learning progress:** persist attempts, mastery evidence, remediation, and path-specific progress with explicit privacy and retention rules.
+5. **Private pilot:** operate a small, reviewed pilot with support, incident response, learning evaluation, and stop criteria.
+
+Teachers, group classrooms, live voice/video, collaborative whiteboards, payments, and additional subjects remain later hypotheses requiring separate evidence and approval.

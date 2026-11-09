@@ -4,7 +4,7 @@ This file records decisions that materially shape the foundation. Revisit them w
 
 ## D-001 — Keep the teaching model open
 
-**Status:** Accepted for Mission 00A
+**Status:** Superseded by PD-001
 
 **Decision:** Separate subject, learning outcomes, language, and resources. Do not encode “Arabic through the Bible” or “Bible in Arabic” as the platform model.
 
@@ -54,9 +54,42 @@ This file records decisions that materially shape the foundation. Revisit them w
 
 **Reason:** Bible translations and educational resources have different copyright terms. The platform must never assume religious text is automatically public domain.
 
+## PD-001 — Support two separate initial learning paths
+
+**Status:** Approved and binding
+
+**Decision:** The first vertical supports two distinct learning paths:
+
+1. **Learn Arabic language using Bible passages.** Arabic-language acquisition is the primary outcome. Bible passages are licensed instructional resources selected for linguistic and pedagogical suitability.
+2. **Study the Bible in Arabic with an AI tutor.** Bible knowledge and interpretation within an approved curriculum are the primary outcomes. Arabic is the instructional language.
+
+Both paths share the platform's course, lesson, resource, tutoring-session, and progress infrastructure. They retain separate curricula, teaching strategies, assessment rubrics, mastery models, and learning-progress dimensions. A learner's progress in one path must not imply mastery in the other.
+
+**Reason:** Supporting both approved learner intents avoids forcing one educational model onto materially different goals while preserving a maintainable shared platform.
+
+## PD-002 — Redesign the product experience from scratch
+
+**Status:** Approved and binding
+
+**Decision:** Mission 00A's landing page and provisional “مدار” identity are foundation artifacts, not approved visual references. Mission 00C must explore a complete UX/UI direction from first principles. Implementation begins only after the product owner approves that exploration.
+
+**Reason:** The foundation proved the technical workflow but did not establish the final brand, information architecture, interaction model, or visual system.
+
+## PD-003 — Hybrid premium modern × thoughtfully gamified learning
+
+**Status:** Approved and binding for Mission 00C
+
+**Decision:** Combine the craft, restraint, and cohesion of premium modern educational software with thoughtful gamified learning. The experience must be Arabic-first and natively RTL, mobile-first with equally polished tablet and desktop layouts, and coherent across both initial paths and future subjects.
+
+Gamification must communicate meaningful progress, achievable milestones, mastery, and subtle celebration without pressure, childishness, excessive gradients, or decorative overload. Learning centers on purposeful exercises rather than generic chat. Motion and microinteractions must support comprehension and feedback, respect reduced-motion preferences, and preserve accessible colors, keyboard operation, visible focus, and touch-friendly targets.
+
+**Mission boundary:** Mission 00B records and specifies the product direction. Mission 00C explores the brand, design system, typography and licensing, navigation, core learner surfaces, responsive behavior, accessibility, motion, and system states. No redesign may be implemented until the product owner approves Mission 00C.
+
+**Reason:** This direction can provide a distinctive, credible educational experience with motivating feedback while maintaining professional trust and serving different curricula through one visual language.
+
 ## Open decisions
 
-- Is the first outcome Arabic proficiency, biblical understanding, or a deliberately combined curriculum?
+- Which approved learning path should lead the first pilot?
 - Who is the first learner, and is a teacher or parent part of the workflow?
 - Which Arabic register, dialect support, and accessibility accommodations are required?
 - Which Bible translation or original materials can be licensed for the pilot?

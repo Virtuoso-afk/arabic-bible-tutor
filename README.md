@@ -1,8 +1,8 @@
 # مدار — Arabic-first learning platform
 
-Mission 00A establishes a small, runnable foundation for an Arabic-first educational platform. The first vertical will explore Bible-based Arabic learning, but the product still needs to decide whether its primary outcome is teaching Arabic through Bible materials or teaching the Bible in Arabic. The application and domain language intentionally support either direction and future subjects.
+Mission 00A establishes a small, runnable foundation for an Arabic-first educational platform. The first vertical supports two separate paths: learning Arabic through appropriately licensed Bible passages and studying the Bible in Arabic. They share platform infrastructure while retaining separate curricula, assessments, and progress dimensions.
 
-The current release is a polished landing-page prototype. It does not include real AI, accounts, a database, paid services, copyrighted passages, or working product actions.
+The current release is a technical landing-page prototype. Its provisional “مدار” identity and visual design are not approved references for the Mission 00C redesign. It does not include real AI, accounts, a database, paid services, copyrighted passages, or working product actions.
 
 ## Technology
 
