@@ -81,7 +81,7 @@ Mission 00C produced Modern Academy, Learning Quest, and Contemporary Scholar pr
 
 ### Mission 01A-1 — Design-system foundations and application shell
 
-**Status:** Implemented locally; pending Maestro review
+**Status:** Complete and locally checkpointed
 
 - Translate the approved visual language into semantic production tokens with accessible focus and reduced-motion behavior.
 - Document the Arabic typography and licensing strategy without adding an unverified remote font dependency.
@@ -92,11 +92,20 @@ Mission 00C produced Modern Academy, Learning Quest, and Contemporary Scholar pr
 
 ### Mission 01A-2 — Public and onboarding surfaces
 
-**Status:** Recommended next checkpoint
+**Status:** Implemented locally; pending Maestro review
 
-- Implement the approved landing and learner-entry surfaces using the production tokens, primitives, and shell conventions.
-- Keep both learning paths explicit and use reviewed fixture content only.
-- Add no authentication, persistence, analytics, AI provider, or production service without its own approved mission scope.
+- Implement the approved landing and two working learner-path entry surfaces using production tokens and primitives.
+- Keep both learning paths explicit through typed original fixtures and separate outcomes, lesson topics, and activities.
+- Validate real local navigation, path switching, honest demonstration labels, RTL reflow, focus, and overflow at 390, 768, and 1440 px.
+- Add no authentication, persistence, analytics, AI provider, dashboard, enrollment, or production service.
+
+### Mission 01A-3 — Learner home
+
+**Status:** Recommended next checkpoint; requires Maestro review before starting
+
+- Implement the approved fixture-backed learner dashboard and course journey.
+- Keep Path A and Path B progress dimensions visibly separate.
+- Reuse the 01A-1 shell and the path configuration established in 01A-2.
 
 ## Mission 01B — Responsive and interaction QA
 

@@ -1,0 +1,18 @@
+.card { display: grid; grid-template-columns: 4.25rem 1fr; min-height: 25rem; overflow: hidden; position: relative; }
+.card::before { content: ""; height: .3rem; inset: 0 0 auto; position: absolute; }
+.language::before { background: var(--color-path-language); }
+.study::before { background: var(--color-path-study); }
+.marker { align-items: center; border-radius: var(--radius-surface); display: flex; font-size: 1.75rem; font-weight: 900; grid-row: 1/6; height: 3.75rem; justify-content: center; width: 3.75rem; }
+.language .marker { background: var(--color-path-language-soft); color: var(--color-path-language); }
+.study .marker { background: var(--color-path-study-soft); color: var(--color-path-study); }
+.card h3 { font-size: clamp(1.35rem,2.5vw,1.75rem); line-height: 1.55; margin: var(--space-4) 0 var(--space-2); }
+.card p { color: var(--color-text-muted); line-height: var(--line-ui-body); margin: 0; }
+.card ul { display: grid; gap: var(--space-2); list-style: none; margin: var(--space-5) 0; padding: 0; }
+.card li { color: var(--color-text-muted); font-size: var(--type-ui-label); padding-inline-start: var(--space-5); position: relative; }
+.card li::before { color: var(--color-feedback-success); content: "✓"; font-weight: 900; inset-inline-start: 0; position: absolute; }
+.action { justify-self: start; padding-inline: 0; }
+
+@media (max-width: 47.99rem) {
+  .card { grid-template-columns: 3.5rem 1fr; min-height: auto; }
+  .marker { font-size: 1.4rem; height: 3rem; width: 3rem; }
+}

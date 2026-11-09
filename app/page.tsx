@@ -1,116 +1,72 @@
-import { BrandMark } from "@/components/brand-mark";
-import { BookIcon, ChatIcon, PathIcon, SparkIcon } from "@/components/icons";
-import { LearningVisual } from "@/components/learning-visual";
-import { PreviewCard } from "@/components/preview-card";
+import type { Metadata } from "next";
+import { LearningJourney } from "@/components/public/learning-journey";
+import { PathCard } from "@/components/public/path-card";
+import { PublicHeader } from "@/components/public/public-header";
+import { Badge } from "@/components/ui/badge";
+import { ButtonLink } from "@/components/ui/button";
+import { Container } from "@/components/ui/container";
+import { learningPaths } from "@/lib/learning-paths";
+import styles from "./landing.module.css";
+
+export const metadata: Metadata = {
+  title: "نَسَق — تعلّم عربي منظّم",
+  description: "معاينة لمنصة عربية تجمع التعلّم المنظّم والتمارين والمساندة السياقية ضمن مسارين تعليميين مستقلين.",
+};
+
+const methodSteps = [
+  { number: "١", title: "هدف واضح", description: "تعرف النتيجة التعليمية قبل أن تبدأ." },
+  { number: "٢", title: "ممارسة ذات معنى", description: "تنجز نشاطًا مرتبطًا بالمهارة أو الفكرة." },
+  { number: "٣", title: "دليل تقدّم", description: "تفهم ما أظهرته المحاولة وما يحتاج مراجعة." },
+];
 
 export default function Home() {
   return (
-    <main>
-      <header className="site-header shell">
-        <a className="brand" href="#main-content" aria-label="مدار، انتقل إلى المحتوى الرئيسي">
-          <BrandMark />
-          <span className="brand__name">مدار</span>
-          <span className="brand__provisional">اسم مبدئي</span>
-        </a>
-        <a className="quiet-link" href="#preview">استكشف التصوّر</a>
-      </header>
+    <main className={styles.page}>
+      <PublicHeader />
 
-      <section className="hero shell" id="main-content">
-        <div className="hero__copy">
-          <div className="eyebrow"><SparkIcon /> تجربة تعليمية قيد التشكّل</div>
-          <h1>مساحة تعلّم عربية<br /><span>تنمو مع فضولك.</span></h1>
-          <p className="hero__lead">
-            دروس واضحة، موارد موثوقة، ومساندة ذكية تساعد المتعلّم على الفهم
-            والتأمل—بالعربية، وبإيقاع يناسبه.
-          </p>
-          <div className="hero__actions">
-            <a className="primary-link" href="#experience">شاهد كيف تعمل الفكرة <span aria-hidden="true">←</span></a>
-            <span className="demo-note"><span aria-hidden="true" /> نموذج استكشافي، لا توجد خدمات فعّالة بعد</span>
+      <Container className={styles.hero}>
+        <div className={styles.heroCopy}>
+          <Badge tone="milestone">تعلّم عربي منظّم · بمساندة ذكية مسؤولة</Badge>
+          <h1>تقدّمٌ له معنى.<br /><em>وتعلّمٌ يبقى معك.</em></h1>
+          <p className={styles.lead}>دروس قصيرة وعميقة، تمارين تفاعلية، ومؤشرات إتقان تشرح ما تعلّمته فعلًا. ابدأ بتطوير العربية أو دراسة الكتاب بالعربية ضمن مسارين مستقلين.</p>
+          <div className={styles.heroActions}>
+            <ButtonLink href="#paths">استكشف المسارين <span aria-hidden="true">←</span></ButtonLink>
+            <ButtonLink href="#method" variant="secondary">تعرّف إلى منهج التعلّم</ButtonLink>
           </div>
+          <p className={styles.demoNote}><span aria-hidden="true">◌</span> عرض تجريبي للمراجعة فقط؛ لا حسابات أو تسجيل أو ذكاء اصطناعي فعّال في هذه المرحلة.</p>
         </div>
-        <div className="hero__art">
-          <div className="hero-card hero-card--back" aria-hidden="true" />
-          <div className="hero-card">
-            <div className="hero-card__header">
-              <span className="hero-card__symbol"><BookIcon /></span>
-              <div><small>مسار تجريبي</small><strong>اقرأ · افهم · ناقش</strong></div>
-            </div>
-            <div className="arabic-sample" aria-label="نموذج نص تعليمي غير مقتبس">
-              <span>سؤال اليوم</span>
-              <p>كيف تتغيّر قراءتنا للنص عندما ننتبه إلى السياق والكلمات؟</p>
-            </div>
-            <div className="progress-row">
-              <span>خطوتك الحالية</span><strong>١ من ٣</strong>
-              <div><i /></div>
-            </div>
+        <LearningJourney />
+      </Container>
+
+      <section className={styles.paths} id="paths">
+        <Container>
+          <div className={styles.sectionHeading}>
+            <div><Badge tone="milestone">مساران · منصة واحدة</Badge><h2>اختر النتيجة التي تريدها</h2></div>
+            <p>تظل المناهج والتقييمات والتقدّم منفصلة، بينما تشترك التجربة في الوضوح والأدوات التعليمية.</p>
           </div>
-          <span className="floating-chip floating-chip--one"><SparkIcon /> شرح يناسب مستواك</span>
-          <span className="floating-chip floating-chip--two"><PathIcon /> تقدّم واضح</span>
-        </div>
+          <div className={styles.pathGrid}>
+            <PathCard path={learningPaths["arabic-language"]} />
+            <PathCard path={learningPaths["bible-study"]} />
+          </div>
+        </Container>
       </section>
 
-      <section className="principles shell" aria-label="مبادئ التجربة">
-        <div><strong>عربي أولًا</strong><span>لغة وتصميم واتجاه طبيعي</span></div>
-        <div><strong>تعلّم موجّه</strong><span>خطوات صغيرة ذات هدف واضح</span></div>
-        <div><strong>ذكاء مسؤول</strong><span>مساندة شفافة تحت إشراف المنهج</span></div>
-      </section>
-
-      <section className="experience shell" id="experience">
-        <div className="section-copy">
-          <p className="section-kicker">تجربة مرنة من البداية</p>
-          <h2>المحتوى يحدّد المسار،<br />والمنصة تدعم التعلّم.</h2>
-          <p>
-            صُمّمت البنية لتخدم مقررات وموضوعات متعددة. يبدأ كل مسار بمورد
-            مرخّص، ثم يقدّم أنشطة وأسئلة ومساندة يمكن للمعلم والمنهج ضبطها.
-          </p>
-          <ol className="compact-steps">
-            <li><span>١</span><div><strong>اختر مسارًا</strong><small>هدف واضح ومستوى مناسب</small></div></li>
-            <li><span>٢</span><div><strong>تعلّم بالممارسة</strong><small>قراءة وأسئلة وأنشطة قصيرة</small></div></li>
-            <li><span>٣</span><div><strong>راجع تقدّمك</strong><small>ملاحظات مفهومة وخطوة تالية</small></div></li>
+      <section className={styles.method} id="method">
+        <Container className={styles.methodGrid}>
+          <div className={styles.methodCopy}><Badge tone="milestone">دورة تعلّم هادئة</Badge><h2>اعرف ما ستتعلّمه، جرّبه، ثم أثبته.</h2><p>تظهر المساندة في اللحظة التي تحتاجها، داخل هدف ومورد ونشاط واضح. الحوار لا يحل محل الدرس أو التمرين.</p></div>
+          <ol className={styles.methodSteps}>
+            {methodSteps.map((step) => <li key={step.number}><b>{step.number}</b><span><strong>{step.title}</strong><small>{step.description}</small></span></li>)}
           </ol>
-        </div>
-        <LearningVisual />
+        </Container>
       </section>
 
-      <section className="preview-section" id="preview">
-        <div className="shell">
-          <div className="section-heading">
-            <div><p className="section-kicker">لمحة عن المنتج</p><h2>أداتان، ورحلة تعلّم واحدة</h2></div>
-            <p>هذه واجهات تصوّرية لتوضيح الاتجاه، ولا تدّعي وجود وظائف مكتملة.</p>
-          </div>
-          <div className="preview-grid">
-            <PreviewCard
-              eyebrow="مسار منظّم"
-              title="دروس موجّهة"
-              description="وحدات قصيرة تربط الهدف بالمورد والنشاط، وتمنح المتعلّم خطوة تالية واضحة."
-              icon={<BookIcon />}
-              steps={["تمهيد وسياق", "قراءة أو مشاهدة", "نشاط ومراجعة"]}
-              tone="sage"
-            />
-            <PreviewCard
-              eyebrow="مساندة ضمن السياق"
-              title="معلّم ذكي"
-              description="حوار تعليمي مقيد بالمادة المعتمدة، يشرح ويسأل ويصرّح بحدود إجاباته."
-              icon={<ChatIcon />}
-              steps={["اسأل بلغتك", "احصل على شرح متدرّج", "ارجع إلى المورد"]}
-              tone="clay"
-            />
-          </div>
-        </div>
-      </section>
+      <section id="future"><Container className={styles.future}>
+        <span aria-hidden="true" className={styles.futureMark}>+</span>
+        <div><Badge tone="milestone">بنية تمتد إلى ما بعد المسار الأول</Badge><h2>مقررات جديدة، بلغة بصرية واحدة.</h2><p>صُممت البطاقات والرحلات والتمارين لتخدم لغات وموضوعات مستقبلية دون ربط هوية المنصة بمادة واحدة.</p></div>
+        <span className={styles.futureStatus}>قريبًا · بعد التحقق التربوي</span>
+      </Container></section>
 
-      <section className="closing shell">
-        <BrandMark />
-        <p className="section-kicker">البداية، لا النهاية</p>
-        <h2>نبني أساسًا بسيطًا<br />لتجارب تعليمية أعمق.</h2>
-        <p>النسخة الحالية عرض للاتجاه البصري والمعماري. ستُختبر فرضيات المنهج مع معلّمين ومتعلّمين قبل بناء الوظائف التالية.</p>
-        <span className="closing__badge">الإصدار الاستكشافي · 00A</span>
-      </section>
-
-      <footer className="site-footer shell">
-        <span>مدار · هوية مبدئية لمنصة تعلّم عربية</span>
-        <span>صُمّم للوصول والوضوح والثقة</span>
-      </footer>
+      <footer className={styles.footer}><Container className={styles.footerInner}><span>نَسَق · هوية مبدئية قيد التحقق</span><span>محتوى تجريبي أصلي · دون خدمات فعّالة</span></Container></footer>
     </main>
   );
 }

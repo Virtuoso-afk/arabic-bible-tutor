@@ -1,0 +1,19 @@
+.header { background: rgba(255,255,255,.94); border-bottom: 1px solid rgba(215,224,234,.72); position: relative; z-index: 20; }
+.inner { align-items: center; display: flex; justify-content: space-between; min-height: 5.25rem; }
+.brand { align-items: center; display: inline-flex; flex: 0 0 auto; gap: var(--space-3); min-height: 2.75rem; }
+.brand > span { font-family: var(--font-arabic-display); font-size: 1.3rem; font-weight: 900; line-height: 1.25; }
+.brand small { color: var(--color-text-muted); display: block; font-family: var(--font-arabic-ui); font-size: .6875rem; font-weight: 650; }
+.mark { fill: none; height: 2.75rem; stroke: var(--color-action-primary); stroke-linecap: round; stroke-width: 3; width: 2.75rem; }
+.mark circle:first-of-type { fill: var(--color-progress-milestone); stroke: var(--color-brand-navy); }
+.mark circle:last-of-type { fill: var(--color-progress-current); stroke: var(--color-brand-navy); }
+.navigation { align-items: center; display: flex; gap: var(--space-8); }
+.navigation a { align-items: center; border-radius: var(--radius-compact); display: inline-flex; font-size: var(--type-ui-label); font-weight: 750; min-height: 2.75rem; padding: .65rem .25rem; }
+.navigation a:hover { color: var(--color-action-primary); }
+.action { flex: 0 0 auto; }
+
+@media (max-width: 64rem) { .navigation { display: none; } }
+@media (max-width: 32rem) {
+  .inner { min-height: 4.75rem; }
+  .brand small { display: none; }
+  .action { padding-inline: var(--space-3); }
+}
