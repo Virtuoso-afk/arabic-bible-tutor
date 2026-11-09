@@ -1,0 +1,198 @@
+* { box-sizing: border-box; }
+
+html { color-scheme: light; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: "Noto Sans Arabic", "Noto Kufi Arabic", Tahoma, Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input { font: inherit; }
+
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 3px solid var(--focus, #f59e0b);
+  outline-offset: 3px;
+}
+
+a { color: inherit; text-decoration: none; }
+
+[hidden] { display: none !important; }
+
+.preview-toolbar {
+  align-items: center;
+  background: #101828;
+  color: #fff;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  min-height: 58px;
+  padding: 8px 16px;
+  position: relative;
+  z-index: 100;
+}
+
+.preview-toolbar strong { font-size: 13px; }
+
+.preview-tabs { display: flex; gap: 6px; }
+
+.preview-tabs button {
+  background: transparent;
+  border: 1px solid #475467;
+  border-radius: 999px;
+  color: #d0d5dd;
+  cursor: pointer;
+  min-height: 38px;
+  padding: 6px 12px;
+}
+
+.preview-tabs button[aria-selected="true"] {
+  background: #fff;
+  border-color: #fff;
+  color: #101828;
+}
+
+.capture .preview-toolbar { display: none; }
+
+.concept-screen { min-height: 100vh; overflow: hidden; }
+
+.screen-shell {
+  margin-inline: auto;
+  max-width: 1320px;
+  width: calc(100% - 64px);
+}
+
+.screen-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-height: 78px;
+}
+
+.concept-brand { align-items: center; display: inline-flex; gap: 11px; font-weight: 900; }
+
+.concept-brand small {
+  display: block;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0;
+  opacity: .58;
+}
+
+.brand-symbol {
+  align-items: center;
+  display: inline-flex;
+  height: 38px;
+  justify-content: center;
+  position: relative;
+  width: 38px;
+}
+
+.concept-label {
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  opacity: .74;
+  padding: 5px 9px;
+}
+
+.desktop-links { align-items: center; display: flex; gap: 26px; font-size: 12px; font-weight: 700; }
+.screen-actions { align-items: center; display: flex; gap: 9px; }
+
+.avatar {
+  align-items: center;
+  border-radius: 50%;
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 900;
+  height: 38px;
+  justify-content: center;
+  width: 38px;
+}
+
+.icon-button {
+  align-items: center;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  display: inline-flex;
+  height: 38px;
+  justify-content: center;
+  opacity: .72;
+  width: 38px;
+}
+
+.path-chip, .status-chip {
+  align-items: center;
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 10px;
+  font-weight: 850;
+  gap: 6px;
+  padding: 6px 10px;
+}
+
+.path-dot { border-radius: 50%; height: 7px; width: 7px; }
+
+.btn {
+  align-items: center;
+  border: 0;
+  border-radius: 12px;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 850;
+  gap: 9px;
+  justify-content: center;
+  min-height: 46px;
+  padding: 10px 18px;
+}
+
+.btn-round { border-radius: 999px; }
+.btn[aria-disabled="true"] { cursor: default; opacity: .62; }
+
+.mobile-bottom-nav { display: none; }
+
+.sr-only {
+  clip: rect(0,0,0,0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@media (max-width: 700px) {
+  .preview-toolbar { align-items: flex-start; flex-direction: column; }
+  .preview-tabs { overflow-x: auto; width: 100%; }
+  .preview-tabs button { flex: 0 0 auto; }
+  .screen-shell { width: calc(100% - 32px); }
+  .screen-header { min-height: 66px; }
+  .desktop-links, .desktop-only { display: none !important; }
+  .concept-label { display: none; }
+  .mobile-bottom-nav {
+    align-items: center;
+    backdrop-filter: blur(16px);
+    bottom: 10px;
+    display: flex;
+    inset-inline: 12px;
+    justify-content: space-around;
+    min-height: 62px;
+    padding: 7px;
+    position: fixed;
+    z-index: 50;
+  }
+  .mobile-bottom-nav span { align-items: center; display: flex; flex-direction: column; font-size: 9px; gap: 3px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

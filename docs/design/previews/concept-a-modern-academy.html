@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Concept A — Modern Academy</title>
+  <link rel="stylesheet" href="preview-base.css">
+  <style>
+    :root {
+      --navy: #102a43; --navy-2: #183f5d; --blue: #1e63d6; --cyan: #0f9f92;
+      --violet: #7656c9; --paper: #f6f8fb; --white: #fff; --ink: #132238;
+      --muted: #64748b; --line: #dce4ed; --success: #137a55; --focus: #f59e0b;
+    }
+    body { background: var(--paper); color: var(--ink); }
+    .a-screen { background: var(--paper); }
+    .a-header { border-bottom: 1px solid var(--line); }
+    .a-brand .brand-symbol { background: var(--navy); border-radius: 11px; color: #fff; }
+    .a-brand .brand-symbol::before, .a-brand .brand-symbol::after { border: 2px solid #7dd3fc; border-radius: 50%; content:""; position:absolute; }
+    .a-brand .brand-symbol::before { height: 18px; width: 18px; }
+    .a-brand .brand-symbol::after { border-color: #fff; height: 6px; width: 6px; }
+    .a-avatar { background:#dce8ff; color:var(--blue); }
+    .a-primary { background:var(--blue); color:#fff; box-shadow:0 8px 20px rgba(30,99,214,.2); }
+    .a-secondary { background:#fff; border:1px solid var(--line); color:var(--ink); }
+    .a-landing { background:linear-gradient(180deg,#fff 0,#f6f8fb 62%); }
+    .a-hero { align-items:center; display:grid; gap:72px; grid-template-columns:1.05fr .95fr; min-height:590px; padding-block:58px 76px; }
+    .a-eyebrow { color:var(--blue); font-size:11px; font-weight:900; letter-spacing:.02em; }
+    .a-hero h1 { font-size:clamp(48px,5.7vw,82px); letter-spacing:-.065em; line-height:1.12; margin:18px 0; }
+    .a-hero h1 span { color:var(--blue); }
+    .a-lead { color:var(--muted); font-size:17px; line-height:2; max-width:610px; }
+    .a-hero-actions { align-items:center; display:flex; gap:12px; margin-top:28px; }
+    .a-trust { color:var(--muted); font-size:10px; margin-top:18px; }
+    .a-board { background:#fff; border:1px solid var(--line); border-radius:28px; box-shadow:0 32px 80px rgba(16,42,67,.14); min-height:430px; padding:24px; position:relative; }
+    .a-board::before { background:var(--navy); border-radius:24px; content:""; inset:18px -18px -18px 18px; position:absolute; z-index:-1; }
+    .a-board-top { align-items:center; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; padding-bottom:18px; }
+    .a-board-top strong { font-size:14px; }
+    .a-mini-ring { align-items:center; background:conic-gradient(var(--cyan) 0 68%,#e8eef4 68%); border-radius:50%; display:flex; height:62px; justify-content:center; width:62px; }
+    .a-mini-ring::after { align-items:center; background:#fff; border-radius:50%; content:"٦٨٪"; display:flex; font-size:11px; font-weight:900; height:47px; justify-content:center; width:47px; }
+    .a-lesson-row { align-items:center; background:#f8fafc; border:1px solid #e7edf4; border-radius:16px; display:grid; gap:14px; grid-template-columns:44px 1fr auto; margin-top:14px; padding:14px; }
+    .a-lesson-row .num { align-items:center; background:#e8f0ff; border-radius:12px; color:var(--blue); display:flex; font-size:11px; font-weight:900; height:44px; justify-content:center; }
+    .a-lesson-row strong { display:block; font-size:12px; }
+    .a-lesson-row small { color:var(--muted); font-size:9px; }
+    .a-lesson-row i { color:var(--success); font-size:11px; font-style:normal; font-weight:900; }
+    .a-paths { border-top:1px solid var(--line); display:grid; gap:18px; grid-template-columns:1fr 1fr; padding-block:36px 64px; }
+    .a-path { background:#fff; border:1px solid var(--line); border-radius:20px; display:grid; gap:18px; grid-template-columns:auto 1fr auto; padding:22px; }
+    .a-path-icon { align-items:center; border-radius:15px; display:flex; font-size:20px; height:52px; justify-content:center; width:52px; }
+    .path-a .a-path-icon { background:#dff6f2; color:var(--cyan); }
+    .path-b .a-path-icon { background:#eee9fb; color:var(--violet); }
+    .a-path h2 { font-size:17px; margin:0 0 5px; }
+    .a-path p { color:var(--muted); font-size:10px; line-height:1.7; margin:0; }
+    .a-path .arrow { align-self:center; color:var(--muted); }
+
+    .a-app { background:#f4f7fb; min-height:100vh; }
+    .a-app-grid { display:grid; grid-template-columns:240px 1fr; min-height:calc(100vh - 1px); }
+    .a-sidebar { background:var(--navy); color:#fff; display:flex; flex-direction:column; padding:24px 20px; }
+    .a-sidebar .concept-brand { margin-bottom:42px; }
+    .a-sidebar-nav { display:grid; gap:7px; }
+    .a-sidebar-nav span { border-radius:10px; color:#c7d4e1; font-size:11px; padding:11px 13px; }
+    .a-sidebar-nav .active { background:rgba(255,255,255,.11); color:#fff; font-weight:800; }
+    .a-sidebar-foot { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.1); border-radius:14px; margin-top:auto; padding:14px; }
+    .a-sidebar-foot small { color:#afc4d5; font-size:9px; }
+    .a-sidebar-foot strong { display:block; font-size:12px; margin-top:4px; }
+    .a-main { padding:24px 36px 48px; }
+    .a-app-top { align-items:center; display:flex; justify-content:space-between; min-height:54px; }
+    .a-app-top h1 { font-size:25px; margin:0; }
+    .a-app-top p { color:var(--muted); font-size:10px; margin:4px 0 0; }
+    .a-dashboard-grid { display:grid; gap:18px; grid-template-columns:1.4fr .8fr; margin-top:22px; }
+    .a-card { background:#fff; border:1px solid var(--line); border-radius:18px; padding:20px; }
+    .a-continue { background:linear-gradient(135deg,var(--navy),var(--navy-2)); color:#fff; min-height:235px; overflow:hidden; position:relative; }
+    .a-continue::after { border:46px solid rgba(125,211,252,.09); border-radius:50%; content:""; height:240px; inset:-70px auto auto -55px; position:absolute; width:240px; }
+    .a-continue .path-chip { background:rgba(255,255,255,.12); }
+    .a-continue h2 { font-size:27px; margin:26px 0 8px; max-width:480px; }
+    .a-continue p { color:#c5d4e2; font-size:11px; line-height:1.8; max-width:520px; }
+    .a-continue .btn { background:#fff; color:var(--navy); margin-top:20px; }
+    .a-progress-card { align-items:center; display:flex; flex-direction:column; justify-content:center; text-align:center; }
+    .a-progress-ring { align-items:center; background:conic-gradient(var(--blue) 0 72%,#e9eef4 72%); border-radius:50%; display:flex; height:124px; justify-content:center; width:124px; }
+    .a-progress-ring div { align-items:center; background:#fff; border-radius:50%; display:flex; flex-direction:column; height:96px; justify-content:center; width:96px; }
+    .a-progress-ring strong { font-size:25px; }
+    .a-progress-ring small { color:var(--muted); font-size:8px; }
+    .a-bottom-grid { display:grid; gap:18px; grid-template-columns:1fr 1fr 1fr; margin-top:18px; }
+    .a-stat strong { display:block; font-size:20px; margin-top:14px; }
+    .a-stat small { color:var(--muted); font-size:9px; }
+    .a-meter { background:#e9eef4; border-radius:99px; height:7px; margin-top:14px; overflow:hidden; }
+    .a-meter i { background:var(--cyan); border-radius:inherit; display:block; height:100%; width:64%; }
+
+    .a-lesson-layout { display:grid; grid-template-columns:210px minmax(400px,1fr) 300px; min-height:100vh; }
+    .a-outline { background:#fff; border-left:1px solid var(--line); padding:24px 18px; }
+    .a-outline h2 { font-size:13px; margin:26px 0 14px; }
+    .a-step { align-items:flex-start; display:flex; gap:9px; margin:14px 0; }
+    .a-step b { align-items:center; background:#eaf0f6; border-radius:50%; color:var(--muted); display:flex; flex:0 0 auto; font-size:9px; height:26px; justify-content:center; width:26px; }
+    .a-step.active b { background:var(--blue); color:#fff; }
+    .a-step span { font-size:10px; line-height:1.5; }
+    .a-lesson-content { background:#f7f9fc; padding:24px 34px 60px; }
+    .a-breadcrumb { color:var(--muted); font-size:9px; }
+    .a-lesson-content h1 { font-size:30px; margin:24px 0 8px; }
+    .a-objective { color:var(--muted); font-size:11px; line-height:1.8; }
+    .a-exercise { background:#fff; border:1px solid var(--line); border-radius:22px; margin-top:24px; padding:26px; }
+    .a-exercise-head { align-items:center; display:flex; justify-content:space-between; }
+    .a-exercise h2 { font-size:17px; margin:18px 0 6px; }
+    .a-exercise p { color:var(--muted); font-size:10px; }
+    .a-word-grid { display:grid; gap:10px; grid-template-columns:repeat(2,1fr); margin-top:20px; }
+    .a-word { border:1px solid var(--line); border-radius:12px; font-size:16px; font-weight:800; padding:16px; text-align:center; }
+    .a-word.selected { background:#e9f0ff; border-color:var(--blue); color:var(--blue); }
+    .a-exercise-actions { align-items:center; border-top:1px solid var(--line); display:flex; justify-content:space-between; margin-top:22px; padding-top:18px; }
+    .a-exercise-actions small { color:var(--muted); font-size:9px; }
+    .a-tutor { background:#fff; border-right:1px solid var(--line); display:flex; flex-direction:column; padding:24px 18px; }
+    .a-tutor-title { align-items:center; display:flex; gap:10px; }
+    .a-tutor-title b { align-items:center; background:#e8f0ff; border-radius:11px; color:var(--blue); display:flex; height:38px; justify-content:center; width:38px; }
+    .a-tutor-title strong { display:block; font-size:12px; }
+    .a-tutor-title small { color:var(--success); font-size:8px; }
+    .a-message { border-radius:14px 4px 14px 14px; font-size:10px; line-height:1.8; margin-top:28px; padding:14px; }
+    .a-message.tutor { background:#f0f4f8; }
+    .a-citation { border-right:3px solid var(--cyan); color:var(--muted); font-size:9px; margin-top:10px; padding:8px 10px; }
+    .a-suggestions { display:flex; flex-wrap:wrap; gap:7px; margin-top:18px; }
+    .a-suggestions span { border:1px solid var(--line); border-radius:999px; color:var(--blue); font-size:8px; padding:6px 8px; }
+    .a-tutor-input { border:1px solid var(--line); border-radius:12px; color:var(--muted); font-size:9px; margin-top:auto; min-height:44px; padding:12px; }
+    .a-mobile-nav { background:rgba(255,255,255,.94); border:1px solid var(--line); border-radius:18px; box-shadow:0 12px 34px rgba(16,42,67,.14); color:var(--muted); }
+    .a-mobile-nav .active { color:var(--blue); font-weight:900; }
+
+    @media (max-width:700px) {
+      .a-hero { gap:34px; grid-template-columns:1fr; min-height:auto; padding-block:40px 48px; }
+      .a-hero h1 { font-size:44px; }
+      .a-lead { font-size:14px; }
+      .a-hero-actions { align-items:stretch; flex-direction:column; }
+      .a-board { min-height:355px; padding:16px; }
+      .a-board::before { inset:12px -9px -12px 9px; }
+      .a-paths { grid-template-columns:1fr; padding-bottom:100px; }
+      .a-path { grid-template-columns:auto 1fr; }
+      .a-path .arrow { display:none; }
+      .a-app-grid { display:block; }
+      .a-sidebar { display:none; }
+      .a-main { padding:16px 16px 92px; }
+      .a-app-top h1 { font-size:21px; }
+      .a-dashboard-grid { grid-template-columns:1fr; }
+      .a-continue { min-height:260px; }
+      .a-bottom-grid { grid-template-columns:1fr 1fr; }
+      .a-bottom-grid .a-card:last-child { grid-column:1/-1; }
+      .a-lesson-layout { display:block; }
+      .a-outline { display:none; }
+      .a-lesson-content { padding:20px 16px 370px; }
+      .a-lesson-content h1 { font-size:24px; }
+      .a-word-grid { grid-template-columns:1fr 1fr; }
+      .a-exercise { padding:18px; }
+      .a-tutor { border:1px solid var(--line); border-radius:22px 22px 0 0; bottom:0; box-shadow:0 -15px 40px rgba(16,42,67,.13); height:330px; inset-inline:0; padding:18px; position:absolute; }
+      .a-tutor-input { margin-top:16px; }
+    }
+  </style>
+</head>
+<body data-concept-name="Modern Academy">
+  <div class="preview-toolbar" role="region" aria-label="أدوات معاينة المفهوم">
+    <strong>المفهوم A · Modern Academy · إثبات تصميم مستقل</strong>
+    <div class="preview-tabs" role="tablist" aria-label="اختر الشاشة">
+      <button type="button" role="tab" data-target="landing">الصفحة الرئيسية</button>
+      <button type="button" role="tab" data-target="dashboard">لوحة المتعلم</button>
+      <button type="button" role="tab" data-target="lesson">الدرس والمعلّم</button>
+    </div>
+  </div>
+
+  <main class="concept-screen a-screen a-landing" data-preview="landing">
+    <header class="screen-header screen-shell a-header">
+      <div class="concept-brand a-brand"><span class="brand-symbol">●</span><span>أفق<small>اسم تصوّري للمقارنة فقط</small></span></div>
+      <nav class="desktop-links" aria-label="الرئيسية"><span>المسارات</span><span>كيف نتعلّم</span><span>عن المنصة</span></nav>
+      <div class="screen-actions"><span class="concept-label">Modern Academy</span><span class="btn a-secondary">استكشف المسارات</span></div>
+    </header>
+    <section class="a-hero screen-shell">
+      <div>
+        <p class="a-eyebrow">منصة تعليم عربية · مدعومة بمساندة ذكية مسؤولة</p>
+        <h1>تعلّم بوضوح.<br><span>أتقن بثقة.</span></h1>
+        <p class="a-lead">مسارات منظمة، تمارين هادفة، وتقدّم يمكنك فهمه. اختر بين تطوير العربية أو دراسة الكتاب المقدس بالعربية ضمن منهجين مستقلين.</p>
+        <div class="a-hero-actions"><span class="btn btn-round a-primary">اختر مسارك ←</span><span class="btn btn-round a-secondary">شاهد تجربة الدرس</span></div>
+        <p class="a-trust">◉ مصادر معتمدة &nbsp; ◉ تقدّم بلا ضغط &nbsp; ◉ تصميم عربي أصيل</p>
+      </div>
+      <div class="a-board" aria-label="معاينة لوحة تعلّم">
+        <div class="a-board-top"><div><small class="a-eyebrow">خطتك اليوم</small><strong>خطوتان واضحتان نحو الإتقان</strong></div><div class="a-mini-ring"></div></div>
+        <div class="a-lesson-row"><span class="num">01</span><div><strong>تمييز أفعال الماضي</strong><small>العربية من خلال مرجع كتابي · ١٢ دقيقة</small></div><i>مكتمل ✓</i></div>
+        <div class="a-lesson-row"><span class="num">02</span><div><strong>ترتيب أحداث النص</strong><small>تمرين تفاعلي · ٨ دقائق</small></div><span>ابدأ ←</span></div>
+        <div class="a-lesson-row"><span class="num">03</span><div><strong>مراجعة ذكية</strong><small>مبنية على أدائك · ٥ دقائق</small></div><span>لاحقًا</span></div>
+      </div>
+    </section>
+    <section class="a-paths screen-shell" aria-label="المساران التعليميان">
+      <article class="a-path path-a"><div class="a-path-icon">ض</div><div><h2>أتعلّم العربية</h2><p>لغة ومفردات وفهم مقروء من خلال مواد كتابية مرخّصة.</p></div><span class="arrow">←</span></article>
+      <article class="a-path path-b"><div class="a-path-icon">✦</div><div><h2>أدرس الكتاب بالعربية</h2><p>سياق ومعرفة واستدلال بالمصدر مع معلّم ذكي منضبط.</p></div><span class="arrow">←</span></article>
+    </section>
+  </main>
+
+  <main class="concept-screen a-app" data-preview="dashboard" hidden>
+    <div class="a-app-grid">
+      <aside class="a-sidebar">
+        <div class="concept-brand a-brand"><span class="brand-symbol">●</span><span>أفق<small>مساحتك التعليمية</small></span></div>
+        <nav class="a-sidebar-nav" aria-label="لوحة المتعلم"><span class="active">▦ &nbsp; نظرة عامة</span><span>◫ &nbsp; مساراتي</span><span>◎ &nbsp; التقدّم والإتقان</span><span>◇ &nbsp; الإنجازات</span><span>○ &nbsp; استكشف الدورات</span></nav>
+        <div class="a-sidebar-foot"><small>الهدف الأسبوعي</small><strong>٢ من ٣ دروس</strong><div class="a-meter"><i></i></div></div>
+      </aside>
+      <section class="a-main">
+        <header class="a-app-top"><div><h1>مرحبًا، مريم</h1><p>خطوة مركّزة اليوم أفضل من ساعات بلا هدف.</p></div><div class="screen-actions"><span class="icon-button">⌕</span><span class="icon-button">♢</span><span class="avatar a-avatar">مر</span></div></header>
+        <div class="a-dashboard-grid">
+          <article class="a-card a-continue"><span class="path-chip"><span class="path-dot" style="background:#5eead4"></span>مسار العربية</span><h2>ترتيب الأحداث بأفعال الماضي</h2><p>أكملت التمهيد. تابع من تمرين الترتيب واحصل على تغذية راجعة مرتبطة بهدف الدرس.</p><span class="btn">تابع من حيث توقفت ←</span></article>
+          <article class="a-card a-progress-card"><div class="a-progress-ring"><div><strong>٧٢٪</strong><small>تقدّم المقرر</small></div></div><h3>بقي درسان</h3><small style="color:var(--muted)">الإتقان يُحسب من أدلة متعددة</small></article>
+        </div>
+        <div class="a-bottom-grid">
+          <article class="a-card a-stat"><span class="status-chip" style="background:#e8f0ff;color:var(--blue)">المفردات</span><strong>١٨ كلمة</strong><small>١٤ مستقرة · ٤ للمراجعة</small><div class="a-meter"><i style="width:78%;background:var(--blue)"></i></div></article>
+          <article class="a-card a-stat"><span class="status-chip" style="background:#dff6f2;color:var(--cyan)">الفهم المقروء</span><strong>٣ أدلة</strong><small>آخر تحسن: ترتيب الأحداث</small><div class="a-meter"><i></i></div></article>
+          <article class="a-card a-stat"><span class="status-chip" style="background:#f4edff;color:var(--violet)">المعلم الذكي</span><strong>مراجعة واحدة</strong><small>تلميح مقترح قبل الدرس القادم</small></article>
+        </div>
+      </section>
+    </div>
+    <nav class="mobile-bottom-nav a-mobile-nav" aria-label="تنقل الهاتف"><span class="active">▦<b>الرئيسية</b></span><span>◫<b>مساراتي</b></span><span>◎<b>التقدّم</b></span><span>○<b>حسابي</b></span></nav>
+  </main>
+
+  <main class="concept-screen a-app" data-preview="lesson" hidden>
+    <div class="a-lesson-layout">
+      <aside class="a-outline">
+        <div class="concept-brand a-brand"><span class="brand-symbol">●</span><span>أفق<small>مشغّل الدرس</small></span></div>
+        <h2>ترتيب الأحداث</h2>
+        <div class="a-step"><b>✓</b><span>هدف الدرس</span></div><div class="a-step"><b>✓</b><span>لاحظ النمط</span></div><div class="a-step active"><b>٣</b><span>تدرّب: أفعال الماضي</span></div><div class="a-step"><b>٤</b><span>رتّب الأحداث</span></div><div class="a-step"><b>٥</b><span>تحقق من الفهم</span></div>
+      </aside>
+      <section class="a-lesson-content">
+        <p class="a-breadcrumb">مسار العربية / المستوى المبكر / الدرس ٣</p>
+        <span class="path-chip" style="background:#dff6f2;color:var(--cyan)"><span class="path-dot" style="background:var(--cyan)"></span>مهارة لغوية · أفعال الماضي</span>
+        <h1>أي الكلمات تدلّ على فعلٍ ماضٍ؟</h1>
+        <p class="a-objective">اختر الكلمتين اللتين تصفان حدثًا وقع وانتهى. هذا تمرين أصلي ولا يعرض نصًا كتابيًا.</p>
+        <article class="a-exercise">
+          <div class="a-exercise-head"><span class="status-chip" style="background:#f0f4f8;color:var(--muted)">السؤال ٢ من ٤</span><span style="font-size:10px;color:var(--muted)">تلميح متاح ◌</span></div>
+          <h2>اختر إجابتين</h2><p>فكّر: هل تصف الكلمة حدثًا تمّ في الزمن الماضي؟</p>
+          <div class="a-word-grid"><div class="a-word selected">دَخَلَ</div><div class="a-word">الطَّالِبُ</div><div class="a-word selected">كَتَبَ</div><div class="a-word">السُّؤَالُ</div></div>
+          <div class="a-exercise-actions"><small>اختياران من اختيارين</small><span class="btn a-primary" aria-disabled="true">تحقّق من الإجابة</span></div>
+        </article>
+      </section>
+      <aside class="a-tutor">
+        <div class="a-tutor-title"><b>✦</b><div><strong>المعلّم السياقي</strong><small>متصل بهدف هذا الدرس</small></div></div>
+        <div class="a-message tutor">لاحظ معنى الكلمة وحركتها في الجملة. أيٌّ منها يخبرنا أن شيئًا حدث بالفعل؟</div>
+        <div class="a-citation">المصدر: قاعدة الدرس · صيغة الماضي · نسخة ١</div>
+        <div class="a-suggestions"><span>مثال أبسط</span><span>اشرح الصيغة</span><span>تلميح فقط</span></div>
+        <div class="a-tutor-input" aria-disabled="true">اكتب سؤالك عن هذا التمرين… &nbsp; ◁</div>
+      </aside>
+    </div>
+  </main>
+  <script src="preview.js"></script>
+</body>
+</html>
