@@ -1,0 +1,21 @@
+.page { background: var(--color-surface-canvas); color: var(--color-text-primary); min-height: 100svh; }
+.stateContainer { align-items: center; display: flex; min-height: calc(100svh - 5.25rem); padding-block: var(--space-12); }
+.stateCard { align-items: center; background: var(--color-surface-raised); border: var(--border-default); border-radius: var(--radius-feature); box-shadow: var(--shadow-surface); display: grid; gap: var(--space-8); grid-template-columns: 8rem 1fr; margin-inline: auto; max-width: 55rem; padding: clamp(1.5rem, 5vw, 4rem); width: 100%; }
+.marker { align-items: center; background: var(--color-surface-soft); border-radius: var(--radius-feature); color: var(--color-action-primary); display: flex; font-family: var(--font-latin-ui); font-size: 2.5rem; font-weight: 900; height: 8rem; justify-content: center; width: 8rem; }
+.copy { min-width: 0; }
+.eyebrow { color: var(--color-content-source); font-size: var(--type-ui-caption); font-weight: 900; margin: 0; }
+.copy h1 { font-family: var(--font-arabic-display); font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.35; margin: var(--space-3) 0; }
+.copy > p:not(.eyebrow) { color: var(--color-text-muted); line-height: var(--line-reading); margin: 0; }
+.copy small { background: var(--color-surface-soft); border-radius: var(--radius-control); color: var(--color-text-muted); display: block; line-height: var(--line-ui-body); margin-top: var(--space-5); padding: var(--space-4); }
+.actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
+.connectivity { align-items: center; background: var(--color-content-source-soft); border-bottom: 1px solid #e3c785; color: var(--color-text-primary); display: flex; gap: var(--space-4); justify-content: center; padding: var(--space-3) var(--space-6); position: relative; z-index: 100; }
+.connectivity strong { color: var(--color-content-source); flex: 0 0 auto; }
+.connectivity span { font-size: var(--type-ui-caption); line-height: 1.6; }
+@media (max-width: 47.99rem) {
+  .stateContainer { align-items: start; min-height: calc(100svh - 4.75rem); }
+  .stateCard { grid-template-columns: 1fr; }
+  .marker { height: 5rem; width: 5rem; }
+  .actions { align-items: stretch; flex-direction: column; }
+  .actions > * { width: 100%; }
+  .connectivity { align-items: start; flex-direction: column; gap: var(--space-1); }
+}

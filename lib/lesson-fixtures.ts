@@ -1,0 +1,268 @@
+import type { DemoLessonDefinition } from "./lesson-schema";
+
+export const lessonFixtures: readonly DemoLessonDefinition[] = [
+  {
+    schemaVersion: "1.0",
+    fixtureVersion: "2026.11.01-a",
+    id: "apply-sequence",
+    courseId: "arabic-sequence",
+    pathId: "arabic-language",
+    title: "رتّب الأحداث بأفعال الماضي",
+    estimatedMinutes: 12,
+    objectives: [
+      { id: "lang-past-sequence", text: "تمييز فعل الماضي واختيار رابط تسلسل مناسب في أمثلة عربية أصلية." },
+    ],
+    blocks: [
+      {
+        id: "lang-objective",
+        layer: "objective",
+        label: "هدف لغوي",
+        title: "نقيس فهم اللغة",
+        body: "يركّز هذا الدرس على صيغة الماضي وترتيب الأحداث، ولا يقيس معرفة قصة كتابية أو موقفًا دينيًا.",
+      },
+      {
+        id: "lang-reference",
+        layer: "source-reference",
+        label: "مرجع سياقي فقط",
+        title: "مرقس ٤: ٣٥–٤١",
+        body: "يعرّف المرجع سياق الدرس المقترح. لا يعرض هذا النموذج نص ترجمة أو يقتبس منه.",
+        provenance: {
+          owner: "فريق المنهج التجريبي",
+          authoredBy: "أمثلة عربية أصلية",
+          reviewedBy: "بانتظار مراجعة معلّم لغة عربية",
+          licenseStatus: "لا يوجد نص كتابي معروض أو حق استخدام مدّعى",
+          sourceReference: "Mark 4:35–41",
+        },
+      },
+      {
+        id: "lang-guidance",
+        layer: "educator-guidance",
+        label: "إرشاد تربوي مؤلَّف",
+        title: "راقب زمن الفعل أولًا",
+        body: "الفعل الماضي يصف حدثًا وقع وانتهى. بعد تحديد الأفعال، ابحث عن الكلمة التي توضّح ترتيبها.",
+      },
+    ],
+    activities: [
+      {
+        id: "identify-past-verb",
+        type: "single-choice",
+        title: "تعرّف إلى فعل الماضي",
+        prompt: "أي كلمة تصف فعلًا وقع وانتهى؟",
+        instruction: "اختر الكلمة التي تحمل معنى الحدث الماضي في المثال الأصلي: عادَ سامرٌ إلى البيت ثمَّ يكتبُ ملاحظاته.",
+        choices: [
+          { id: "returned", label: "عادَ", description: "فعل يصف حدثًا اكتمل." },
+          { id: "then", label: "ثمَّ", description: "رابط يدل على ترتيب الأحداث." },
+          { id: "writes", label: "يكتبُ", description: "فعل مضارع في هذا المثال." },
+        ],
+        evaluation: {
+          expectedAnswerId: "returned",
+          correctHeading: "صحيح؛ «عادَ» فعل ماضٍ.",
+          correctExplanation: "الصيغة تصف حدث العودة بوصفه مكتملًا. أما «ثمَّ» فرابط، و«يكتبُ» فعل مضارع.",
+          incorrectHeading: "راجع وظيفة الكلمة وزمنها.",
+          incorrectExplanation: "ابحث عن كلمة تصف حدثًا اكتمل، وليس رابطًا أو فعلًا يحدث الآن.",
+        },
+        hints: ["اسأل: أي كلمة يمكن أن أسبقها بعبارة «أمس»؟", "قارن بين «عادَ» و«يكتبُ»: الأولى تصف حدثًا مكتملًا."],
+        remediation: "اقرأ المثال ببطء، وحدد الحدث قبل أن تحدد كلمة الترتيب.",
+        evidence: {
+          objectiveId: "lang-past-sequence",
+          assessedSkill: "تمييز فعل الماضي",
+          completionMeaning: "اختار المتعلّم تصنيفًا صحيحًا بعد تغذية راجعة متاحة.",
+          masteryCaveat: "إكمال هذا النشاط دليل جلسة واحد، وليس حكمًا بإتقان المهارة.",
+        },
+        tutorGuidance: "ركّز على شكل الفعل ووظيفته في المثال. استخدم التلميح الأول قبل المقارنة المباشرة.",
+      },
+      {
+        id: "choose-sequence-marker",
+        type: "single-choice",
+        title: "اختر رابط التسلسل",
+        prompt: "أي كلمة توضّح أن الحدث الثاني جاء بعد الأول؟",
+        instruction: "أكمل المثال الأصلي: فتحَت ليلى الدفتر، ___ كتبتْ الفكرة الرئيسة.",
+        choices: [
+          { id: "because", label: "لأنَّ", description: "تربط سببًا بنتيجة." },
+          { id: "then", label: "ثمَّ", description: "تربط حدثين متتابعين." },
+          { id: "but", label: "لكنْ", description: "توضح مخالفة أو استدراكًا." },
+        ],
+        evaluation: {
+          expectedAnswerId: "then",
+          correctHeading: "صحيح؛ «ثمَّ» توضّح التتابع.",
+          correctExplanation: "فتح الدفتر وقع أولًا، والكتابة جاءت بعده. الرابط يصف الترتيب دون إضافة سبب أو مخالفة.",
+          incorrectHeading: "الرابط المختار لا يعبّر عن التتابع.",
+          incorrectExplanation: "لا نحتاج سببًا أو استدراكًا هنا؛ نحتاج كلمة تجعل الحدث الثاني لاحقًا للأول.",
+        },
+        hints: ["اقرأ الجملتين كخطوتين على خط زمني.", "الكلمة المطلوبة هي «ثمَّ»، لأنها تضع الكتابة بعد فتح الدفتر."],
+        remediation: "حوّل الجملة إلى خطوتين مرقمتين: ١ فتح الدفتر، ٢ كتابة الفكرة.",
+        evidence: {
+          objectiveId: "lang-past-sequence",
+          assessedSkill: "استخدام روابط التسلسل",
+          completionMeaning: "اختار المتعلّم رابطًا يطابق ترتيب حدثين أصليين.",
+          masteryCaveat: "لا يثبت مثال واحد القدرة على استخدام الرابط في إنتاج حر.",
+        },
+        tutorGuidance: "اطلب من المتعلّم تسمية الحدث الأول والثاني قبل عرض التلميح المباشر.",
+      },
+      {
+        id: "read-sequence",
+        type: "single-choice",
+        title: "استنتج ترتيب الحدثين",
+        prompt: "ماذا حدث أخيرًا في المثال؟",
+        instruction: "اقرأ: وصلَ القطارُ، ثمَّ نزلَ المسافرون. اختر الحدث الأخير.",
+        choices: [
+          { id: "train-arrived", label: "وصل القطار", description: "الحدث المذكور قبل رابط الترتيب." },
+          { id: "passengers-left", label: "نزل المسافرون", description: "الحدث المذكور بعد «ثمَّ»." },
+          { id: "not-stated", label: "لم يُذكر ترتيب", description: "اختيار يعني أن المثال لا يوضح التتابع." },
+        ],
+        evaluation: {
+          expectedAnswerId: "passengers-left",
+          correctHeading: "صحيح؛ نزول المسافرين هو الحدث الأخير.",
+          correctExplanation: "جاء هذا الحدث بعد «ثمَّ»، ولذلك يليه زمنيًا. اعتمدت الإجابة على بنية الجملة نفسها.",
+          incorrectHeading: "ارجع إلى موضع «ثمَّ».",
+          incorrectExplanation: "الكلمة تقسم المثال إلى حدث أول وحدث تالٍ؛ ابحث عما ورد بعدها.",
+        },
+        hints: ["ضع خطًا بعد «ثمَّ» واقرأ الجزء التالي.", "الحدث بعد «ثمَّ» هو «نزل المسافرون»."],
+        remediation: "أعد صياغة المثال ذهنيًا باستخدام «أولًا» و«أخيرًا».",
+        evidence: {
+          objectiveId: "lang-past-sequence",
+          assessedSkill: "فهم ترتيب أحداث مقروءة",
+          completionMeaning: "حدد المتعلّم الحدث الأخير بالاستناد إلى رابط لغوي.",
+          masteryCaveat: "الإكمال لا يساوي قياسًا شاملًا للفهم المقروء.",
+        },
+        tutorGuidance: "وجّه الانتباه إلى موقع رابط الترتيب من دون كشف الاختيار قبل التلميح الثاني.",
+      },
+    ],
+  },
+  {
+    schemaVersion: "1.0",
+    fixtureVersion: "2026.11.01-b",
+    id: "context-map",
+    courseId: "context-and-evidence",
+    pathId: "bible-study",
+    title: "من الملاحظة إلى الدليل",
+    estimatedMinutes: 15,
+    objectives: [
+      { id: "study-source-reasoning", text: "تمييز الملاحظة من التفسير وربط إجابة بإحالة مصدر واضحة." },
+    ],
+    blocks: [
+      {
+        id: "study-objective",
+        layer: "objective",
+        label: "هدف دراسة المصدر",
+        title: "نقيس الاستدلال، لا الاعتقاد",
+        body: "يتدرّب المتعلّم على التنقل في المرجع وتصنيف طبقة العبارة. لا تُقيَّم القناعة أو الهوية أو الاستجابة التعبدية.",
+      },
+      {
+        id: "study-reference",
+        layer: "source-reference",
+        label: "بيانات مرجع",
+        title: "لوقا ١٠: ٢٥–٣٧",
+        body: "المرجع محدد للمراجعة خارج هذا النموذج. لا يُعرض نص الترجمة ولا تُدّعى صلاحية إعادة استخدامه.",
+        provenance: {
+          owner: "فريق المنهج التجريبي",
+          authoredBy: "أمثلة تصنيف أصلية",
+          reviewedBy: "بانتظار مراجعة معلّم كتاب ومحرر مصادر",
+          licenseStatus: "مرجع فقط؛ لا نص كتابي منسوخ",
+          sourceReference: "Luke 10:25–37",
+        },
+      },
+      {
+        id: "study-guidance",
+        layer: "educator-guidance",
+        label: "قاعدة من إعداد المقرر",
+        title: "سمِّ طبقة كل عبارة",
+        body: "الملاحظة تصف ما يمكن التحقق منه في بنية المصدر. التفسير يقترح معنى، وإرشاد المقرر يشرح طريقة العمل.",
+      },
+    ],
+    activities: [
+      {
+        id: "navigate-reference",
+        type: "single-choice",
+        title: "اقرأ بيانات المرجع",
+        prompt: "أي جزء من الإحالة يحدد نطاق الأعداد؟",
+        instruction: "استخدم بيانات المرجع المعروضة: لوقا ١٠: ٢٥–٣٧. لا تحتاج إلى نص ترجمة للإجابة.",
+        choices: [
+          { id: "book", label: "لوقا", description: "اسم السفر في الإحالة." },
+          { id: "chapter", label: "١٠", description: "رقم الإصحاح." },
+          { id: "verses", label: "٢٥–٣٧", description: "بداية نطاق الأعداد ونهايته." },
+        ],
+        evaluation: {
+          expectedAnswerId: "verses",
+          correctHeading: "صحيح؛ «٢٥–٣٧» هو نطاق الأعداد.",
+          correctExplanation: "تتكون الإحالة من اسم السفر ثم الإصحاح ثم نطاق الأعداد. هذا تمرين تنقل في المصدر، لا تفسير للمحتوى.",
+          incorrectHeading: "راجع ترتيب عناصر الإحالة.",
+          incorrectExplanation: "ميّز اسم السفر عن رقم الإصحاح وعن الرقمين المتصلين بعلامة نطاق.",
+        },
+        hints: ["ابحث عن رقمين بينهما شرطة.", "«٢٥–٣٧» يحدد العدد الأول والعدد الأخير."],
+        remediation: "قسّم الإحالة إلى ثلاثة أجزاء: سفر، إصحاح، أعداد.",
+        evidence: {
+          objectiveId: "study-source-reasoning",
+          assessedSkill: "التنقل في المرجع",
+          completionMeaning: "حدد المتعلّم نطاق الأعداد في إحالة معروضة.",
+          masteryCaveat: "هذا الدليل لا يثبت القدرة على التنقل في جميع نظم الإحالة.",
+        },
+        tutorGuidance: "اشرح بنية الإحالة فقط، ولا تستنتج محتوى النص غير المعروض.",
+      },
+      {
+        id: "classify-observation",
+        type: "single-choice",
+        title: "ميّز الملاحظة من التفسير",
+        prompt: "أي عبارة تمثل ملاحظة يمكن فحصها في مصدر متاح؟",
+        instruction: "صنّف نوع العبارة من دون اعتبار أي مثال اقتباسًا من نص كتابي.",
+        choices: [
+          { id: "interpretation", label: "يدعو المرجع إلى معنى واحد لا يحتمل النقاش.", description: "ادعاء تفسيري يحتاج إلى أساس معلن." },
+          { id: "observation", label: "تذكر بطاقة المصدر انتقالًا بين متحدثين.", description: "وصف لبنية يمكن فحصها عند توفر المصدر." },
+          { id: "guidance", label: "ينبغي أن يدوّن المتعلّم سؤاله قبل القراءة.", description: "إرشاد تعليمي من إعداد المقرر." },
+        ],
+        evaluation: {
+          expectedAnswerId: "observation",
+          correctHeading: "صحيح؛ العبارة تصف بنية قابلة للفحص.",
+          correctExplanation: "هي لا تفرض معنى ولا توجّه سلوك المتعلّم. عند توفر مصدر مرخّص يمكن التحقق من انتقال المتحدثين مباشرة.",
+          incorrectHeading: "هذا الاختيار تفسير أو إرشاد، لا ملاحظة.",
+          incorrectExplanation: "اسأل إن كانت العبارة تصف شيئًا ظاهرًا يمكن تحديد موضعه، أم تضيف معنى أو تعليمات.",
+        },
+        hints: ["ابحث عن العبارة التي تصف بنية، لا معنى أو توجيهًا.", "الملاحظة هنا هي العبارة التي تصف انتقالًا بين متحدثين."],
+        remediation: "صنّف الأفعال: «تذكر» يصف، «يدعو» يفسر، و«ينبغي» يوجه.",
+        evidence: {
+          objectiveId: "study-source-reasoning",
+          assessedSkill: "تمييز طبقات المحتوى",
+          completionMeaning: "صنّف المتعلّم مثالًا أصليًا بوصفه ملاحظة.",
+          masteryCaveat: "التصنيف دليل تكويني واحد، وليس تقييمًا للعقيدة أو إتقانًا نهائيًا.",
+        },
+        tutorGuidance: "استخدم سؤال التحقق: هل يمكن تحديد موضع العبارة في المصدر من دون إضافة معنى؟",
+      },
+      {
+        id: "choose-evidence",
+        type: "single-choice",
+        title: "اختر استجابة مسندة",
+        prompt: "أي استجابة تحافظ على الفرق بين الدليل والتفسير؟",
+        instruction: "اختر صياغة تعليمية متحفظة تربط الادعاء بطبقة معلنة.",
+        choices: [
+          { id: "absolute", label: "هذا هو المعنى الوحيد المؤكد للمرجع.", description: "يقين غير مسند ولا يعلن إطار التفسير." },
+          { id: "bounded", label: "وفق قاعدة المقرر، هذه ملاحظة بنيوية؛ أمّا معناها فيحتاج إلى تفسير مسند.", description: "يفصل بين الملاحظة وقاعدة المقرر والتفسير." },
+          { id: "belief", label: "الإجابة الصحيحة هي ما يؤمن به المتعلّم.", description: "يحوّل الاعتقاد الشخصي إلى درجة تعليمية." },
+        ],
+        evaluation: {
+          expectedAnswerId: "bounded",
+          correctHeading: "صحيح؛ الصياغة تعلن حدود كل طبقة.",
+          correctExplanation: "تسند التصنيف إلى قاعدة المقرر، وتترك التفسير بحاجة إلى مصدر وإطار معلنين، ولا تقيّم اعتقاد المتعلّم.",
+          incorrectHeading: "الصياغة لا تحافظ على حدود الدليل.",
+          incorrectExplanation: "تجنب اليقين غير المسند وتقييم الاعتقاد. ابحث عن جواب يسمّي قاعدة المقرر وحدود التفسير.",
+        },
+        hints: ["استبعد أي جواب يقيّم الإيمان أو يدعي يقينًا بلا مصدر.", "اختر العبارة التي تبدأ بـ«وفق قاعدة المقرر» وتعلن أن التفسير يحتاج سندًا."],
+        remediation: "اكتب ثلاث خانات ذهنية: ما لوحظ، من وضع القاعدة، وما يحتاج تفسيرًا.",
+        evidence: {
+          objectiveId: "study-source-reasoning",
+          assessedSkill: "الاستدلال المسند",
+          completionMeaning: "اختار المتعلّم صياغة تفصل الملاحظة عن التفسير.",
+          masteryCaveat: "الإكمال لا يثبت موقفًا دينيًا ولا اعتمادًا أكاديميًا.",
+        },
+        tutorGuidance: "ذكّر بحدود طبقات المحتوى وبأن الاعتقاد الشخصي ليس موضوع التقييم.",
+      },
+    ],
+  },
+] as const;
+
+export function getLesson(courseId: string, lessonId: string) {
+  return lessonFixtures.find((lesson) => lesson.courseId === courseId && lesson.id === lessonId);
+}
+
+export function getLessonForCourse(courseId: string) {
+  return lessonFixtures.find((lesson) => lesson.courseId === courseId);
+}

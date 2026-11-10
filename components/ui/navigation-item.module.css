@@ -1,0 +1,27 @@
+.item {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  display: flex;
+  gap: var(--space-3);
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  padding: var(--space-2) var(--space-3);
+  transition: background-color var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+.item svg { flex: 0 0 auto; height: 1.25rem; width: 1.25rem; }
+.label { font-size: var(--type-ui-label); font-weight: 700; }
+.status { color: #9fb4c3; font-size: 0.6875rem; margin-inline-start: auto; }
+.sidebar { color: #b4c5d1; }
+.sidebar:hover:not([aria-disabled="true"]) { background: rgba(255,255,255,.06); color: #fff; }
+.sidebar.active { background: rgba(255,255,255,.11); color: #fff; }
+.sidebar.active svg { color: var(--color-progress-milestone); }
+.mobile { color: var(--color-text-muted); flex-direction: column; gap: var(--space-1); justify-content: center; padding: var(--space-1) var(--space-2); }
+.mobile .label { font-size: 0.75rem; }
+.mobile.active { color: var(--color-action-primary); }
+.item[aria-disabled="true"] { opacity: .56; }
+
+@media (min-width: 48rem) and (max-width: 74.99rem) {
+  .sidebar { justify-content: center; padding-inline: var(--space-2); }
+  .sidebar .label, .sidebar .status { clip: rect(0,0,0,0); clip-path: inset(50%); height: 1px; overflow: hidden; position: absolute; white-space: nowrap; width: 1px; }
+}

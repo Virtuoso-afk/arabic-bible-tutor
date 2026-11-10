@@ -1,0 +1,16 @@
+.journey { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); list-style: none; margin: var(--space-8) 0 0; padding: 0; position: relative; }
+.journey::before { background: var(--color-border-default); content: ""; height: .2rem; inset: 1.35rem 10% auto; position: absolute; }
+.journey li { align-items: center; display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; position: relative; text-align: center; z-index: 1; }
+.journey li > span { align-items: center; background: var(--color-surface-soft); border: .2rem solid var(--color-surface-raised); border-radius: 50%; box-shadow: 0 0 0 1px var(--color-border-default); color: var(--color-text-muted); display: flex; font-weight: 900; height: 2.75rem; justify-content: center; width: 2.75rem; }
+.journey strong, .journey small { display: block; }
+.journey strong { font-size: var(--type-ui-label); }
+.journey small { color: var(--color-text-muted); font-size: var(--type-ui-caption); margin-top: var(--space-1); }
+.journey .complete > span { background: var(--color-path-language); color: #fff; }
+.journey .current > span { background: var(--color-progress-current); box-shadow: 0 0 0 .45rem rgba(241,124,92,.16); color: #fff; }
+.journey .review > span { background: var(--color-progress-milestone); color: var(--color-brand-navy); }
+
+@media (max-width: 47.99rem) {
+  .journey { gap: var(--space-4); grid-template-columns: 1fr; }
+  .journey::before { height: calc(100% - 3rem); inset: 1.5rem 1.3rem auto auto; width: .2rem; }
+  .journey li { align-items: center; display: grid; grid-template-columns: 2.75rem 1fr; text-align: start; }
+}

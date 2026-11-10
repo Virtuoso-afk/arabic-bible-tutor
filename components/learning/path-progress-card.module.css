@@ -1,0 +1,10 @@
+.card { border-top: .3rem solid var(--path-accent); display: grid; gap: var(--space-5); }
+.language { --path-accent: var(--color-path-language); }
+.study { --path-accent: var(--color-path-study); }
+.heading { align-items: center; display: grid; gap: var(--space-3); grid-template-columns: 3.5rem 1fr; }
+.marker { align-items: center; background: var(--path-soft); border-radius: var(--radius-control); color: var(--path-accent); display: flex; font-size: 1.35rem; font-weight: 900; height: 3.5rem; justify-content: center; }
+.language .marker { --path-soft: var(--color-path-language-soft); }
+.study .marker { --path-soft: var(--color-path-study-soft); }
+.heading h3 { font-size: 1.2rem; margin: var(--space-2) 0 0; }
+.skills { display: grid; gap: var(--space-4); }
+.card > p { color: var(--color-text-muted); font-size: var(--type-ui-caption); line-height: 1.65; margin: 0; }

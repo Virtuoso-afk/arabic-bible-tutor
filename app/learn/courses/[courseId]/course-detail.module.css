@@ -1,0 +1,44 @@
+.page { --path-accent: var(--color-path-language); padding-block: var(--space-6) var(--space-16); }
+.study { --path-accent: var(--color-path-study); }
+.breadcrumbs { align-items: center; color: var(--color-text-muted); display: flex; flex-wrap: wrap; font-size: var(--type-ui-label); gap: var(--space-2); min-height: 2.75rem; }
+.breadcrumbs a { align-items: center; color: var(--color-action-primary); display: inline-flex; min-height: 2.75rem; }
+.hero { align-items: stretch; display: grid; gap: var(--space-6); grid-template-columns: minmax(0,1.3fr) minmax(18rem,.7fr); padding-block: var(--space-8) var(--space-16); }
+.hero h1 { font-family: var(--font-arabic-display); font-size: clamp(2.5rem,5vw,4.5rem); line-height: 1.3; margin: var(--space-4) 0; }
+.hero > div > p { color: var(--color-text-muted); font-size: 1.08rem; line-height: var(--line-ui-body); margin: 0; max-width: 50rem; }
+.meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-6); }
+.meta span { background: var(--color-surface-raised); border: var(--border-default); border-radius: var(--radius-control); color: var(--color-text-muted); font-size: var(--type-ui-caption); padding: var(--space-2) var(--space-3); }
+.availability { align-content: start; display: grid; gap: var(--space-4); }
+.availability h2 { font-size: 1.3rem; margin: 0; }
+.availability p { color: var(--color-text-muted); line-height: var(--line-ui-body); margin: 0; }
+.darkAvailability p { color: #b8c9d5; }
+.section { border-top: var(--border-default); padding-block: var(--space-12); }
+.sectionHeading h2 { font-size: clamp(1.7rem,3vw,2.3rem); margin: var(--space-3) 0; }
+.sectionHeading > p { color: var(--color-text-muted); line-height: var(--line-ui-body); margin: 0; }
+.outcomes { display: grid; gap: var(--space-4); grid-template-columns: repeat(3,minmax(0,1fr)); list-style: none; margin: var(--space-8) 0 0; padding: 0; }
+.outcomes li { background: var(--color-surface-raised); border: var(--border-default); border-radius: var(--radius-surface); line-height: var(--line-ui-body); padding: var(--space-6); }
+.outcomes li::before { color: var(--path-accent); content: "✓"; font-weight: 900; margin-inline-end: var(--space-2); }
+.curriculum { border-top: .3rem solid var(--path-accent); scroll-margin-top: var(--space-5); }
+.lessonList { display: grid; gap: var(--space-3); margin-top: var(--space-8); }
+.lessonList article { align-items: center; background: var(--color-surface-soft); border-radius: var(--radius-control); display: grid; gap: var(--space-4); grid-template-columns: 2.5rem 1fr auto; padding: var(--space-4); scroll-margin-top: var(--space-5); }
+.lessonList article > span { color: var(--path-accent); font-family: var(--font-latin-ui); font-size: var(--type-ui-caption); font-weight: 800; }
+.lessonList h3 { font-size: 1rem; margin: 0; }
+.lessonList p { color: var(--color-text-muted); font-size: var(--type-ui-label); margin: var(--space-1) 0 0; }
+.lessonList small { color: var(--color-text-muted); font-size: var(--type-ui-caption); }
+.notes { display: grid; gap: var(--space-5); grid-template-columns: repeat(2,minmax(0,1fr)); margin-top: var(--space-5); }
+.notes h2 { font-size: 1.2rem; margin: var(--space-3) 0; }
+.notes p { color: var(--color-text-muted); line-height: var(--line-ui-body); margin: 0; }
+.switcher { align-items: center; border-top: .3rem solid var(--path-accent); display: flex; gap: var(--space-8); justify-content: space-between; margin-top: var(--space-12); }
+.switcher h2 { font-size: 1.35rem; margin: var(--space-3) 0; }
+.switcher p { color: var(--color-text-muted); margin: 0; }
+.switcher > div:last-child { display: flex; flex: 0 0 auto; gap: var(--space-2); }
+
+@media (max-width: 74.99rem) { .hero { grid-template-columns: 1fr; } .outcomes { grid-template-columns: 1fr; } }
+@media (max-width: 47.99rem) {
+  .page { padding-block: var(--space-5) var(--space-12); }
+  .hero { padding-block: var(--space-5) var(--space-12); }
+  .notes { grid-template-columns: 1fr; }
+  .lessonList article { align-items: start; grid-template-columns: 2.5rem 1fr; }
+  .lessonList small { grid-column: 2; }
+  .switcher { align-items: stretch; flex-direction: column; }
+  .switcher > div:last-child { align-items: stretch; flex-direction: column; }
+}

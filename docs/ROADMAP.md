@@ -1,0 +1,161 @@
+# Roadmap
+
+The roadmap advances only after the preceding assumptions are tested. Dates and feature promises are intentionally absent.
+
+## Mission 00A — Foundation and first runnable UI
+
+**Status:** Checkpointed
+
+- Next.js, TypeScript, Tailwind, linting, type checking, build, and browser smoke tests.
+- Arabic-first responsive technical prototype with honest preview states.
+- Subject-neutral platform concepts and architecture documentation.
+- No accounts, database, AI calls, production services, or copyrighted passages.
+
+The Mission 00A interface and provisional “مدار” identity are not approved visual references.
+
+## Mission 00B — Product definition and foundation closeout
+
+**Status:** Complete; pending Maestro review
+
+- Record PD-001, PD-002, and PD-003.
+- Specify both initial paths, including learner profiles, outcomes, curriculum boundaries, and shared versus separate capabilities.
+- Produce original, teacher-reviewable conceptual sample lessons without reproducing unlicensed passages.
+- Specify grounded AI tutoring, editorial review, privacy, safety, evaluation, and progress behavior.
+- Define content licensing, provenance, translation, canon, institutional-context, and correction policies.
+- Map MVP learner flows, contextual assistance, practice, completion, and recovery states.
+- Close the mission with a validated, committed, clean foundation.
+
+Mission 00B specifications:
+
+- [First vertical](FIRST_VERTICAL.md)
+- [Conceptual sample lessons](SAMPLE_LESSON.md)
+- [AI tutor specification](AI_TUTOR_SPEC.md)
+- [Content policy](CONTENT_POLICY.md)
+- [Learner flow](LEARNER_FLOW.md)
+
+## Mission 00C — Design exploration and approval
+
+**Status:** Complete; three directions reviewed and PD-004 synthesis direction approved
+
+Explore PD-002 and PD-003 from first principles before implementing a redesign:
+
+- brand and visual identity directions;
+- color palettes and semantic design tokens;
+- Arabic typography options with licensing and self-hosting implications;
+- responsive navigation for mobile, tablet, and desktop;
+- landing page and learner onboarding;
+- learning dashboard, course discovery, and course detail;
+- lesson player, meaningful exercises, feedback, and completion states;
+- contextual AI tutor within lesson and source boundaries;
+- progress, mastery, achievements, profile, and settings;
+- empty, loading, offline, error, and completion states;
+- motion and microinteraction guidance, including reduced motion;
+- accessibility specifications for color, focus, keyboard, screen reader, and touch behavior.
+
+The exploration must define one shared visual language and lesson framework while preserving separate curricula, assessments, and progress dimensions. Do not implement the redesign until the product owner approves the Mission 00C direction.
+
+**Exit evidence:** approved brand direction, design tokens, Arabic typography and licensing decision, responsive specifications for core surfaces and system states, interaction and motion guidance, and accessibility review.
+
+Mission 00C produced Modern Academy, Learning Quest, and Contemporary Scholar proofs. PD-004 selects a refined A+B hybrid with selected C study components.
+
+## Mission 00C-S — Final hybrid design synthesis
+
+**Status:** Complete; visual execution approved through PD-005 and locally checkpointed
+
+- Synthesize PD-004 into one visual language rather than a patchwork of the three explorations.
+- Define the provisional identity, semantic tokens, Arabic typography, responsive behavior, component states, content-layer labels, motion, and accessibility requirements.
+- Produce standalone landing, dashboard, and interactive lesson proofs at mobile, tablet, and desktop widths.
+- Demonstrate separate path progress, course journey, humane achievement, source context, educator guidance, exercise feedback, progressive hints, and contextual tutor behavior.
+- Provide a route, component, token, testing, and sequencing handoff for Mission 01A.
+
+**Exit gate:** passed. PD-005 approves the Mission 00C-S proof as the production frontend reference, subject to the existing product, accessibility, content, privacy, and security requirements.
+
+## Mission 01A — Approved frontend redesign implementation
+
+**Status:** In progress through bounded implementation checkpoints
+
+- Implement only the Mission 00C direction approved by the product owner.
+- Build fixture-backed landing, onboarding, dashboard, discovery, course, lesson, tutor, progress, profile, settings, and system-state surfaces within agreed MVP scope.
+- Preserve clear separation between the two curricula and assessment models.
+- Keep content original or explicitly licensed and integrations local or mocked.
+
+### Mission 01A-1 — Design-system foundations and application shell
+
+**Status:** Complete and locally checkpointed
+
+- Translate the approved visual language into semantic production tokens with accessible focus and reduced-motion behavior.
+- Document the Arabic typography and licensing strategy without adding an unverified remote font dependency.
+- Build reusable buttons, links, surfaces, badges, progress, form fields, containers, and navigation items.
+- Build one typed responsive application shell: desktop sidebar, tablet icon rail, and mobile bottom navigation.
+- Validate RTL semantics, active and disabled navigation, keyboard focus, reduced motion, and horizontal overflow at 390, 768, and 1440 px.
+- Preserve the Mission 00C-S proofs and defer complete product screens and live functionality.
+
+### Mission 01A-2 — Public and onboarding surfaces
+
+**Status:** Complete and locally checkpointed
+
+- Implement the approved landing and two working learner-path entry surfaces using production tokens and primitives.
+- Keep both learning paths explicit through typed original fixtures and separate outcomes, lesson topics, and activities.
+- Validate real local navigation, path switching, honest demonstration labels, RTL reflow, focus, and overflow at 390, 768, and 1440 px.
+- Add no authentication, persistence, analytics, AI provider, dashboard, enrollment, or production service.
+
+### Mission 01A-3 — Learner home
+
+**Status:** Implemented locally; pending Maestro review
+
+- Implement the approved fixture-backed learner dashboard, course journey, catalog, and course details.
+- Derive demonstration progress and achievements from explicit evidence fixtures while keeping completion separate from mastery.
+- Keep Path A and Path B course ownership, skill dimensions, and evidence visibly separate.
+- Validate real navigation, active responsive shell states, keyboard focus, and overflow at 390, 768, and 1440 px.
+
+### Mission 01A-4 — Lesson framework
+
+**Status:** Implemented locally; pending Maestro review
+
+- Implement two complete fixture-backed lessons with a shared typed schema, deterministic evaluation, progressive hints, retry, explanatory feedback, completion, and reset.
+- Keep authored content separate from session-only interaction evidence and preserve completion as distinct from mastery.
+- Provide contextual authored guidance with explicit disclosure that AI is disconnected; add no provider, fake chat, or conversation storage.
+- Connect available course and dashboard destinations to real lesson routes while preserving unavailable course states.
+- Validate path-specific assessment, keyboard semantics, focus management, refresh reset, path independence, and responsive overflow.
+
+### Mission 01A-5 — Learner support and contextual tutor states
+
+**Status:** Implemented locally; pending Maestro review
+
+- Implement separate Path A and Path B progress dimensions, review suggestions, and compact private achievement examples from named fixture evidence.
+- Keep fixture progress visibly separate from session-only lesson attempts; no identity, preference, evidence, or progress persistence exists.
+- Add a demonstration profile and temporary reading preferences that affect only the mounted page and reset on refresh.
+- Extend contextual lesson guidance with nine deterministic states for grounding, hints, citation metadata, insufficient evidence, source failure, educator review, correction, tutor failure, and return to authored guidance.
+- Validate operational navigation, keyboard and focus behavior, Arabic RTL metadata, reduced motion, route integrity, runtime behavior, and responsive overflow.
+
+### Recommended Mission 01A-6 — System states and frontend consolidation
+
+**Status:** Implemented locally; pending Maestro review
+
+- Consolidate truthful loading, not-found, recoverable-error, connectivity, empty, and unavailable treatments across implemented frontend surfaces.
+- Connect each public path entry to its matching course catalog and verify complete Path A and Path B journeys through lesson completion.
+- Harden generated dynamic routes, fixture relationships, browser-history and reload disclosure, navigation, and deterministic tutor failure behavior.
+- Audit product claims, content layers, source rights, accessibility, responsive layouts, and the approved visual system without introducing services or persistence.
+
+Mission 01A is now integrated as a complete fixture-backed frontend milestone. Production services, validated curriculum, manual assistive-technology review, and physical-device QA remain gated work.
+
+## Mission 01B — Responsive and interaction QA
+
+**Status:** Automated Chromium QA complete locally; physical-device, assistive-technology, Firefox, and WebKit verification outstanding
+
+- Validate Arabic RTL behavior on representative mobile, tablet, and desktop widths.
+- Test keyboard, screen reader, contrast, touch targets, reduced motion, loading, offline, error, and recovery behavior.
+- Verify interaction states, exercise feedback, progress communication, and subtle celebrations without coercive mechanics.
+- Resolve browser and device issues before adding live services.
+
+Mission 01B adds a production-server QA suite covering axe WCAG-tagged rules, both keyboard-complete lessons, focus management, Arabic/RTL stress, widths from 320 to 1920 CSS pixels, text resize and reflow, route failures, offline recovery, deterministic rapid interaction, no persistence, and unexpected network/runtime activity. Three P2 defects were fixed: unusable lesson reflow under 200% root text, invisible programmatic focus on status regions, and fixed mobile utility overlap on focused feedback. The Chromium demonstration is ready for Maestro review; manual device/AT sign-off and the blocked Firefox/WebKit engine runs remain required before any production or pilot gate.
+
+## Later missions
+
+1. **Grounded content:** approve a licensed content corpus, provenance workflow, editorial roles, citations, and correction process.
+2. **AI tutoring:** implement a server-only grounded tutor behind evaluation gates, safety controls, and cost limits.
+3. **Authentication:** introduce only the validated learner, educator, guardian, and administrator roles needed by the pilot.
+4. **Learning progress:** persist attempts, mastery evidence, remediation, and path-specific progress with explicit privacy and retention rules.
+5. **Private pilot:** operate a small, reviewed pilot with support, incident response, learning evaluation, and stop criteria.
+
+Teachers, group classrooms, live voice/video, collaborative whiteboards, payments, and additional subjects remain later hypotheses requiring separate evidence and approval.

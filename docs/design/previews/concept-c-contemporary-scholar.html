@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Concept C — Contemporary Scholar</title>
+  <link rel="stylesheet" href="preview-base.css">
+  <style>
+    :root {
+      --oxblood:#6d2536; --oxblood-2:#4d1826; --olive:#5e6f43; --gold:#b88a3b;
+      --paper:#f4efe5; --paper-2:#ebe3d5; --white:#fffdf8; --ink:#2f2a27;
+      --muted:#756c65; --line:#d8cdbd; --plum:#76506a; --focus:#b45f06;
+    }
+    body { background:var(--paper); color:var(--ink); }
+    .c-screen { background:var(--paper); }
+    .c-header { border-bottom:1px solid var(--line); }
+    .c-brand .brand-symbol { border:1px solid var(--oxblood); border-radius:50%; color:var(--oxblood); }
+    .c-brand .brand-symbol::before { content:"ر"; font-family:"Noto Kufi Arabic",sans-serif; font-size:17px; font-weight:900; }
+    .c-brand .brand-symbol::after { border:1px solid var(--gold); border-radius:50%; content:""; inset:4px; position:absolute; }
+    .c-landing { background:var(--paper); }
+    .c-hero { display:grid; grid-template-columns:1fr 72px 1fr; min-height:650px; padding-block:58px 74px; }
+    .c-copy { align-self:center; padding-inline-end:56px; }
+    .c-eyebrow { color:var(--oxblood); font-size:10px; font-weight:900; letter-spacing:.05em; }
+    .c-copy h1 { font-family:"Noto Kufi Arabic","Noto Sans Arabic",sans-serif; font-size:clamp(44px,5vw,72px); font-weight:700; letter-spacing:-.055em; line-height:1.3; margin:18px 0 22px; }
+    .c-copy h1 span { color:var(--oxblood); }
+    .c-copy p { color:var(--muted); font-size:15px; line-height:2.15; max-width:590px; }
+    .c-actions { align-items:center; display:flex; gap:14px; margin-top:28px; }
+    .c-primary { background:var(--oxblood); border-radius:3px; color:#fff; }
+    .c-link { border-bottom:1px solid var(--ink); font-size:11px; font-weight:800; padding:8px 0; }
+    .c-rule { align-items:center; display:flex; flex-direction:column; gap:12px; }
+    .c-rule::before, .c-rule::after { background:var(--line); content:""; flex:1; width:1px; }
+    .c-rule span { color:var(--gold); font-size:17px; }
+    .c-editorial { align-self:center; background:var(--white); border:1px solid var(--line); box-shadow:14px 18px 0 var(--paper-2); min-height:470px; padding:34px; position:relative; }
+    .c-editorial::before { border:1px solid var(--gold); content:""; inset:8px; pointer-events:none; position:absolute; }
+    .c-edition { align-items:flex-start; display:flex; justify-content:space-between; }
+    .c-edition small { color:var(--muted); font-size:8px; }
+    .c-edition strong { display:block; font-size:12px; margin-top:3px; }
+    .c-folio { color:var(--gold); font-family:serif; font-size:30px; }
+    .c-prompt { border-block:1px solid var(--line); margin-block:28px; padding-block:28px; }
+    .c-prompt span { color:var(--oxblood); font-size:9px; font-weight:900; }
+    .c-prompt h2 { font-size:24px; line-height:1.7; margin:8px 0 0; }
+    .c-notes { display:grid; gap:15px; grid-template-columns:1fr 1fr; }
+    .c-note { border-right:2px solid var(--olive); padding-right:12px; }
+    .c-note b { display:block; font-size:10px; }
+    .c-note small { color:var(--muted); font-size:8px; }
+    .c-paths { background:var(--white); border-block:1px solid var(--line); padding-block:36px 64px; }
+    .c-path-grid { display:grid; gap:0; grid-template-columns:1fr 1fr; }
+    .c-path { padding:24px 30px; position:relative; }
+    .c-path + .c-path { border-right:1px solid var(--line); }
+    .c-path .roman { color:var(--gold); font-family:serif; font-size:15px; }
+    .c-path h2 { font-family:"Noto Kufi Arabic",sans-serif; font-size:20px; margin:10px 0 6px; }
+    .c-path p { color:var(--muted); font-size:10px; line-height:1.8; }
+    .c-path.a h2 { color:var(--olive); }
+    .c-path.b h2 { color:var(--plum); }
+
+    .c-app { background:var(--paper); min-height:100vh; }
+    .c-top { background:var(--white); border-bottom:1px solid var(--line); }
+    .c-user { background:var(--oxblood); color:#fff; }
+    .c-main { padding-block:34px 90px; }
+    .c-heading { align-items:end; display:flex; justify-content:space-between; }
+    .c-heading .date { color:var(--oxblood); font-size:10px; font-weight:900; }
+    .c-heading h1 { font-family:"Noto Kufi Arabic",sans-serif; font-size:29px; margin:7px 0 0; }
+    .c-heading p { color:var(--muted); font-size:10px; }
+    .c-dashboard { display:grid; gap:22px; grid-template-columns:1.4fr .6fr; margin-top:28px; }
+    .c-sheet { background:var(--white); border:1px solid var(--line); box-shadow:8px 10px 0 var(--paper-2); padding:28px; }
+    .c-current { min-height:390px; position:relative; }
+    .c-current::after { border:1px solid var(--gold); content:""; inset:9px; pointer-events:none; position:absolute; }
+    .c-current-top { align-items:flex-start; display:flex; justify-content:space-between; position:relative; z-index:2; }
+    .c-path-mark { border-right:3px solid var(--olive); padding-right:10px; }
+    .c-path-mark small { color:var(--muted); display:block; font-size:8px; }
+    .c-path-mark strong { color:var(--olive); font-size:11px; }
+    .c-seal { align-items:center; border:1px solid var(--gold); border-radius:50%; color:var(--oxblood); display:flex; flex-direction:column; height:68px; justify-content:center; width:68px; }
+    .c-seal strong { font-size:16px; }
+    .c-seal small { font-size:7px; }
+    .c-current h2 { font-family:"Noto Kufi Arabic",sans-serif; font-size:27px; line-height:1.55; margin:44px 0 10px; max-width:570px; position:relative; z-index:2; }
+    .c-current p { color:var(--muted); font-size:10px; line-height:1.9; max-width:600px; position:relative; z-index:2; }
+    .c-current .btn { margin-top:22px; position:relative; z-index:2; }
+    .c-side { display:grid; gap:22px; }
+    .c-mastery h3, .c-reading h3 { font-size:13px; margin:0 0 18px; }
+    .c-bar { display:grid; gap:12px; }
+    .c-bar-row { display:grid; font-size:9px; gap:7px; grid-template-columns:75px 1fr 28px; }
+    .c-bar-row i { background:#e9e1d4; height:5px; margin-top:5px; overflow:hidden; }
+    .c-bar-row i::after { background:var(--olive); content:""; display:block; height:100%; width:var(--value); }
+    .c-reading { background:var(--oxblood); color:#fff; }
+    .c-reading p { color:#e6cdd3; font-size:9px; line-height:1.8; }
+    .c-reading .btn { background:#fff; border-radius:2px; color:var(--oxblood); }
+    .c-log { display:grid; gap:0; grid-template-columns:1fr 1fr 1fr; margin-top:22px; }
+    .c-log article { background:transparent; border-block:1px solid var(--line); padding:20px; }
+    .c-log article + article { border-right:1px solid var(--line); }
+    .c-log small { color:var(--muted); font-size:8px; }
+    .c-log strong { display:block; font-size:17px; margin-top:7px; }
+    .c-mobile-nav { background:rgba(255,253,248,.96); border:1px solid var(--line); border-radius:4px; box-shadow:0 8px 28px rgba(47,42,39,.12); color:var(--muted); }
+    .c-mobile-nav .active { color:var(--oxblood); font-weight:900; }
+
+    .c-lesson { background:var(--paper); min-height:100vh; }
+    .c-lesson-layout { display:grid; grid-template-columns:210px minmax(420px,720px) 1fr; margin-inline:auto; max-width:1380px; min-height:calc(100vh - 76px); }
+    .c-marginalia { border-left:1px solid var(--line); padding:28px 18px; }
+    .c-marginalia h2 { color:var(--oxblood); font-size:11px; margin:0 0 24px; }
+    .c-index { display:grid; gap:16px; }
+    .c-index div { color:var(--muted); display:grid; font-size:9px; gap:8px; grid-template-columns:22px 1fr; }
+    .c-index b { color:var(--gold); font-family:serif; }
+    .c-index .active { color:var(--ink); font-weight:900; }
+    .c-page { background:var(--white); border-inline:1px solid var(--line); padding:34px 44px 60px; }
+    .c-page-meta { align-items:center; border-bottom:1px solid var(--line); color:var(--muted); display:flex; font-size:8px; justify-content:space-between; padding-bottom:15px; }
+    .c-page h1 { font-family:"Noto Kufi Arabic",sans-serif; font-size:28px; line-height:1.55; margin:30px 0 10px; }
+    .c-page > p { color:var(--muted); font-size:10px; line-height:1.9; }
+    .c-observation { background:#f8f4ec; border-right:3px solid var(--gold); margin-block:24px; padding:17px; }
+    .c-observation small { color:var(--gold); font-size:8px; font-weight:900; }
+    .c-observation p { font-size:11px; line-height:1.8; margin:8px 0 0; }
+    .c-classify { display:grid; gap:10px; margin-top:20px; }
+    .c-claim { align-items:center; border:1px solid var(--line); display:grid; font-size:10px; gap:12px; grid-template-columns:1fr auto; padding:14px; }
+    .c-claim span { border:1px solid var(--line); color:var(--muted); font-size:8px; padding:5px 8px; }
+    .c-claim.selected { background:#f0f2e9; border-color:#a9b693; }
+    .c-claim.selected span { background:var(--olive); border-color:var(--olive); color:#fff; }
+    .c-page-actions { align-items:center; border-top:1px solid var(--line); display:flex; justify-content:space-between; margin-top:26px; padding-top:18px; }
+    .c-page-actions small { color:var(--muted); font-size:8px; }
+    .c-tutor { padding:28px 24px; }
+    .c-tutor-card { background:var(--oxblood-2); color:#fff; min-height:570px; padding:24px; position:sticky; top:20px; }
+    .c-tutor-label { color:#e0b5bf; font-size:8px; font-weight:900; letter-spacing:.04em; }
+    .c-tutor-card h2 { font-family:"Noto Kufi Arabic",sans-serif; font-size:17px; margin:9px 0 22px; }
+    .c-tutor-message { border-top:1px solid rgba(255,255,255,.18); color:#f0dfe3; font-size:10px; line-height:1.9; padding-top:20px; }
+    .c-source-note { background:rgba(255,255,255,.08); border-right:2px solid var(--gold); color:#d9c4c8; font-size:8px; margin-top:15px; padding:10px; }
+    .c-question-list { display:grid; gap:8px; margin-top:22px; }
+    .c-question-list span { border-bottom:1px solid rgba(255,255,255,.16); color:#fff; font-size:9px; padding:9px 0; }
+    .c-tutor-input { border:1px solid rgba(255,255,255,.22); color:#cdaeb5; font-size:9px; margin-top:52px; padding:12px; }
+
+    @media(max-width:700px) {
+      .c-hero { display:block; min-height:auto; padding-block:42px 50px; }
+      .c-copy { padding:0; }
+      .c-copy h1 { font-size:42px; }
+      .c-copy p { font-size:14px; }
+      .c-rule { display:none; }
+      .c-editorial { margin-top:38px; min-height:420px; padding:26px 22px; }
+      .c-actions { align-items:flex-start; flex-direction:column; }
+      .c-path-grid { grid-template-columns:1fr; }
+      .c-path + .c-path { border-right:0; border-top:1px solid var(--line); }
+      .c-main { padding:24px 0 92px; }
+      .c-heading { align-items:flex-start; flex-direction:column; gap:12px; }
+      .c-heading h1 { font-size:23px; }
+      .c-dashboard { grid-template-columns:1fr; }
+      .c-current { min-height:420px; padding:23px; }
+      .c-current h2 { font-size:23px; margin-top:34px; }
+      .c-side { grid-template-columns:1fr; }
+      .c-log { grid-template-columns:1fr; }
+      .c-log article + article { border-right:0; border-top:0; }
+      .c-lesson-layout { display:block; min-height:auto; }
+      .c-marginalia { display:none; }
+      .c-page { border:0; padding:24px 16px 28px; }
+      .c-page h1 { font-size:23px; }
+      .c-tutor { padding:14px 16px 90px; }
+      .c-tutor-card { min-height:430px; position:static; }
+      .c-tutor-input { margin-top:30px; }
+    }
+  </style>
+</head>
+<body data-concept-name="Contemporary Scholar">
+  <div class="preview-toolbar" role="region" aria-label="أدوات معاينة المفهوم"><strong>المفهوم C · Contemporary Scholar · إثبات تصميم مستقل</strong><div class="preview-tabs" role="tablist"><button type="button" role="tab" data-target="landing">الصفحة الرئيسية</button><button type="button" role="tab" data-target="dashboard">لوحة المتعلم</button><button type="button" role="tab" data-target="lesson">الدرس والمعلّم</button></div></div>
+
+  <main class="concept-screen c-screen c-landing" data-preview="landing">
+    <header class="screen-header screen-shell c-header"><div class="concept-brand c-brand"><span class="brand-symbol"></span><span>رِواق<small>اسم تصوّري للمقارنة فقط</small></span></div><nav class="desktop-links"><span>المساران</span><span>المكتبة</span><span>منهج التعلّم</span></nav><div class="screen-actions"><span class="concept-label">Contemporary Scholar</span><span class="c-link">دخول المتعلّم</span></div></header>
+    <section class="c-hero screen-shell"><div class="c-copy"><p class="c-eyebrow">تعلّم عربي معاصر · بعناية الباحث ووضوح المعلّم</p><h1>معرفةٌ تُقرأ،<br><span>وتُفهم، وتبقى.</span></h1><p>مساحة تعليمية هادئة تجمع القراءة المتأنية، التمرين الهادف، والمساندة الذكية الموثّقة—لتطوير العربية أو دراسة الكتاب بالعربية.</p><div class="c-actions"><span class="btn c-primary">استكشف المسارين ←</span><span class="c-link">كيف تعمل التجربة؟</span></div></div><div class="c-rule"><span>✦</span></div><article class="c-editorial"><div class="c-edition"><div><small>دفتر تعلّم · نموذج أصلي</small><strong>ملاحظة · ممارسة · استدلال</strong></div><span class="c-folio">٠١</span></div><div class="c-prompt"><span>سؤال الدرس</span><h2>كيف نميّز ما نلاحظه في المصدر عمّا نستنتجه منه؟</h2></div><div class="c-notes"><div class="c-note"><b>اقرأ بتركيز</b><small>المصدر وطبقته واضحة دائمًا</small></div><div class="c-note"><b>ابنِ الدليل</b><small>تقدّمك مرتبط بما تُظهره</small></div></div></article></section>
+    <section class="c-paths"><div class="c-path-grid screen-shell"><article class="c-path a"><span class="roman">I</span><h2>العربية من خلال النص</h2><p>مسار لغوي يقيس المفردات، البنية، والفهم باستقلال عن المعرفة السابقة بالمحتوى.</p></article><article class="c-path b"><span class="roman">II</span><h2>دراسة الكتاب بالعربية</h2><p>مسار معرفي يميّز المصدر والسياق والتفسير، ويستند إلى منهج ومراجع معتمدة.</p></article></div></section>
+  </main>
+
+  <main class="concept-screen c-app" data-preview="dashboard" hidden>
+    <div class="c-top"><header class="screen-header screen-shell"><div class="concept-brand c-brand"><span class="brand-symbol"></span><span>رِواق<small>دفتر المتعلّم</small></span></div><nav class="desktop-links"><span>دفتر اليوم</span><span>المقررات</span><span>سجل التقدّم</span><span>المكتبة</span></nav><div class="screen-actions"><span class="icon-button">⌕</span><span class="avatar c-user">مر</span></div></header></div>
+    <section class="c-main screen-shell"><div class="c-heading"><div><span class="date">الأحد · ٩ نوفمبر</span><h1>صباح المعرفة، مريم</h1></div><p>مساحتك هادئة. أمامك درس واحد مقترح ومراجعة اختيارية.</p></div><div class="c-dashboard"><article class="c-sheet c-current"><div class="c-current-top"><div class="c-path-mark"><small>المسار النشط</small><strong>العربية من خلال النص</strong></div><div class="c-seal"><strong>٧٢٪</strong><small>من المقرر</small></div></div><h2>ترتيب الأحداث<br>بأفعال الماضي</h2><p>تعود إلى تمرين التصنيف، ثم تنتقل إلى مثال جديد يثبت انتقال المهارة خارج سياق المرجع.</p><span class="btn c-primary">افتح الدرس من موضعك ←</span></article><aside class="c-side"><article class="c-sheet c-mastery"><h3>دلائل التعلّم</h3><div class="c-bar"><div class="c-bar-row"><span>المفردات</span><i style="--value:78%"></i><b>٧٨</b></div><div class="c-bar-row"><span>البنية</span><i style="--value:61%"></i><b>٦١</b></div><div class="c-bar-row"><span>الفهم</span><i style="--value:69%"></i><b>٦٩</b></div></div></article><article class="c-sheet c-reading"><h3>مراجعة قصيرة</h3><p>أربع كلمات تحتاج إلى تثبيت قبل الدرس التالي. لا خسارة إن اخترت التأجيل.</p><span class="btn">ابدأ المراجعة</span></article></aside></div><div class="c-log"><article><small>دروس مكتملة</small><strong>٦ دروس</strong></article><article><small>أدلة إتقان</small><strong>١٢ دليلًا</strong></article><article><small>السؤال المحفوظ</small><strong>١ للمعلّم</strong></article></div></section>
+    <nav class="mobile-bottom-nav c-mobile-nav"><span class="active">⌂<b>الدفتر</b></span><span>◫<b>المقررات</b></span><span>◎<b>التقدّم</b></span><span>○<b>حسابي</b></span></nav>
+  </main>
+
+  <main class="concept-screen c-lesson" data-preview="lesson" hidden>
+    <div class="c-top"><header class="screen-header screen-shell"><div class="concept-brand c-brand"><span class="brand-symbol"></span><span>رِواق<small>جلسة دراسة</small></span></div><div class="desktop-links"><span>حفظ وخروج</span><span class="path-chip" style="background:#eee7ef;color:var(--plum)">دراسة الكتاب بالعربية</span></div></header></div>
+    <div class="c-lesson-layout"><aside class="c-marginalia"><h2>من الملاحظة إلى الفكرة</h2><div class="c-index"><div><b>I</b><span>تهيئة المصدر</span></div><div><b>II</b><span>لاحظ قبل أن تفسّر</span></div><div class="active"><b>III</b><span>صنّف العبارات</span></div><div><b>IV</b><span>ابنِ الدليل</span></div><div><b>V</b><span>مراجعة</span></div></div></aside>
+      <section class="c-page"><div class="c-page-meta"><span>مرجع الدرس: لوقا ١٠: ٢٥–٣٧ · لا يُعرض النص في النموذج</span><span>الخطوة III / V</span></div><h1>هل العبارة ملاحظة<br>أم تفسير؟</h1><p>صنّف كل عبارة وفق مصدرها. العبارات هنا أصلية ومجردة لإثبات شكل التمرين فقط.</p><div class="c-observation"><small>قاعدة العمل</small><p>الملاحظة تصف ما يمكن الإشارة إليه في المصدر. التفسير يشرح المعنى ضمن المنهج المعتمد.</p></div><div class="c-classify"><div class="c-claim selected"><strong>العبارة الأولى تصف ترتيبًا ظاهرًا في المصدر.</strong><span>ملاحظة</span></div><div class="c-claim"><strong>العبارة الثانية تقترح معنى ضمن سياق المقرر.</strong><span>اختر التصنيف</span></div><div class="c-claim"><strong>العبارة الثالثة تذكر خلفية من ملاحظة المحرر.</strong><span>اختر التصنيف</span></div></div><div class="c-page-actions"><small>اختيار واحد محفوظ · لا يؤثر الخلاف الشخصي في الدرجة</small><span class="btn c-primary" aria-disabled="true">تحقّق من الدليل</span></div></section>
+      <aside class="c-tutor"><div class="c-tutor-card"><span class="c-tutor-label">معلّم سياقي · ضمن مصادر الدرس</span><h2>أفكّر معك، ولا أستبدل المصدر</h2><div class="c-tutor-message">اسأل أولًا: هل أستطيع تحديد موضع العبارة في المصدر نفسه؟ إن لم أستطع، فربما تكون تفسيرًا أو ملاحظة سياقية.</div><div class="c-source-note">قاعدة التصنيف · إعداد المقرر · نسخة ١</div><div class="c-question-list"><span>وضّح الفرق بمثال أصلي ←</span><span>ساعدني دون كشف الإجابة ←</span><span>أين أراجع المصدر؟ ←</span></div><div class="c-tutor-input" aria-disabled="true">اكتب سؤالًا عن هذه الخطوة…</div></div></aside></div>
+  </main>
+  <script src="preview.js"></script>
+</body>
+</html>

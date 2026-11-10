@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PD-004 — refined hybrid design proof</title>
+  <link rel="stylesheet" href="pd004-hybrid.css">
+</head>
+<body>
+  <div class="review-bar" role="region" aria-label="أدوات مراجعة إثبات التصميم">
+    <div><strong>PD-004 · Refined hybrid</strong><span>إثبات تصميم مستقل · لا يمثل منتجًا عاملًا</span></div>
+    <div class="review-tabs" role="tablist" aria-label="اختر شاشة المراجعة">
+      <button type="button" role="tab" data-target="landing">الرئيسية</button>
+      <button type="button" role="tab" data-target="dashboard">لوحة المتعلّم</button>
+      <button type="button" role="tab" data-target="lesson">الدرس التفاعلي</button>
+    </div>
+  </div>
+
+  <main class="screen landing" data-screen="landing">
+    <header class="public-header shell">
+      <a class="brand" href="#landing-main" aria-label="نَسَق، انتقل إلى المحتوى">
+        <svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true"><path d="M8 28c4-11 12-17 27-17"/><path d="M10 34c8-3 16-2 24 3"/><circle cx="33" cy="11" r="4"/><circle cx="10" cy="34" r="4"/></svg>
+        <span>نَسَق<small>هوية تجريبية للمراجعة</small></span>
+      </a>
+      <nav class="public-nav" aria-label="التنقل الرئيسي"><button data-scroll="paths">المسارات</button><button data-scroll="method">منهج التعلّم</button><button data-scroll="future">دورات المستقبل</button></nav>
+      <button class="button button-quiet" type="button" data-go="dashboard">معاينة تجربة المتعلّم</button>
+    </header>
+
+    <section class="hero shell" id="landing-main">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> تعلّم عربي منظّم · بمساندة ذكية مسؤولة</p>
+        <h1>تقدّمٌ له معنى.<br><em>وتعلّمٌ يبقى معك.</em></h1>
+        <p class="hero-lead">دروس قصيرة وعميقة، تمارين تفاعلية، ومؤشرات إتقان تشرح ما تعلّمته فعلًا. ابدأ بتطوير العربية أو دراسة الكتاب بالعربية ضمن مسارين مستقلين.</p>
+        <div class="hero-actions"><button class="button button-primary" type="button" data-scroll="paths">استكشف المسارين <span aria-hidden="true">←</span></button><button class="button button-secondary" type="button" data-go="lesson">شاهد نموذج الدرس</button></div>
+        <p class="demo-note"><span aria-hidden="true">◌</span> نموذج بصري للمراجعة فقط؛ لا حسابات أو ذكاء اصطناعي حقيقي في هذه المرحلة.</p>
+      </div>
+      <div class="hero-journey" aria-label="معاينة رحلة تعلّم من أربع محطات">
+        <div class="journey-top"><div><span class="micro-label">رحلتك هذا الأسبوع</span><strong>من الفهم إلى الاستخدام</strong></div><span class="progress-pill">٣ من ٤</span></div>
+        <svg class="journey-line" viewBox="0 0 620 190" role="img" aria-label="مسار تقدّم بأربع محطات"><path d="M565 34 C470 34 480 150 360 150 S210 42 65 112"/><circle cx="565" cy="34" r="18" class="done"/><circle cx="410" cy="142" r="18" class="done"/><circle cx="255" cy="105" r="22" class="current"/><circle cx="65" cy="112" r="17" class="future"/><path class="tick" d="m558 34 5 5 10-12"/><path class="tick" d="m403 142 5 5 10-12"/></svg>
+        <div class="journey-labels"><span><b>١</b>لاحظ</span><span><b>٢</b>تدرّب</span><span class="active"><b>٣</b>طبّق</span><span><b>٤</b>أثبت</span></div>
+        <div class="journey-callout"><span class="callout-icon">✓</span><div><small>آخر إنجاز</small><strong>ميّزت بين الملاحظة والتفسير</strong></div><span class="earned">دليل إتقان</span></div>
+      </div>
+    </section>
+
+    <section class="path-section shell" id="paths" aria-labelledby="paths-title">
+      <div class="section-heading"><div><p class="eyebrow"><span></span> مساران · منصة واحدة</p><h2 id="paths-title">اختر النتيجة التي تريدها</h2></div><p>تظل المناهج والتقييمات والتقدّم منفصلة، بينما تشترك التجربة في الوضوح والأدوات التعليمية.</p></div>
+      <div class="path-grid">
+        <article class="path-card language-card"><div class="path-icon" aria-hidden="true">ض</div><span class="path-label">المسار A · تعلّم اللغة</span><h3>أتعلّم العربية من خلال مراجع كتابية</h3><p>مفردات وبنية وفهم مقروء وتعبير، باستخدام مواد مرخّصة ومراجعة تربويًا.</p><ul><li>تمارين لغوية عملية</li><li>تقدّم حسب المهارة</li><li>تغذية راجعة قابلة للتطبيق</li></ul><button type="button" class="text-action" data-go="dashboard">عاين المسار <span aria-hidden="true">←</span></button></article>
+        <article class="path-card study-card"><div class="path-icon" aria-hidden="true">◇</div><span class="path-label">المسار B · دراسة المحتوى</span><h3>أدرس الكتاب بالعربية مع معلّم سياقي</h3><p>فهم للسياق واستدلال بالمصدر ضمن منهج معلن، مع فصل واضح بين المصدر والشرح.</p><ul><li>مصادر وإحالات واضحة</li><li>تقييم للاستدلال لا للمعتقد</li><li>معلّم ذكي ضمن حدود الدرس</li></ul><button type="button" class="text-action" data-go="lesson">عاين المسار <span aria-hidden="true">←</span></button></article>
+      </div>
+    </section>
+
+    <section class="method-section" id="method"><div class="shell method-grid"><div><p class="eyebrow light"><span></span> دورة تعلّم هادئة</p><h2>اعرف ما ستتعلّمه، جرّبه، ثم أثبته.</h2><p>تظهر المساندة في اللحظة التي تحتاجها. لا يحلّ الحوار العام محل الدرس أو التمرين.</p></div><div class="method-steps"><article><b>١</b><span><strong>هدف واضح</strong><small>تعرف النتيجة قبل أن تبدأ</small></span></article><article><b>٢</b><span><strong>ممارسة ذات معنى</strong><small>نشاط مرتبط بالمهارة</small></span></article><article><b>٣</b><span><strong>دليل تقدّم</strong><small>تفسير لما أتقنته وما يحتاج مراجعة</small></span></article></div></div></section>
+
+    <section class="future-section shell" id="future"><span class="future-mark">+</span><div><p class="eyebrow"><span></span> بنية تمتد إلى ما بعد المسار الأول</p><h2>مقررات جديدة، بلغة بصرية واحدة.</h2><p>صُممت البطاقات والرحلات والتمارين لتخدم لغات وموضوعات مستقبلية دون ربط هوية المنصة بمادة واحدة.</p></div><span class="future-chip">قريبًا · بعد التحقق التربوي</span></section>
+  </main>
+
+  <main class="screen app-screen" data-screen="dashboard" hidden>
+    <div class="app-layout">
+      <aside class="side-nav">
+        <a class="brand brand-inverse" href="#" data-go="landing"><svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true"><path d="M8 28c4-11 12-17 27-17"/><path d="M10 34c8-3 16-2 24 3"/><circle cx="33" cy="11" r="4"/><circle cx="10" cy="34" r="4"/></svg><span>نَسَق<small>مساحة المتعلّم</small></span></a>
+        <nav aria-label="لوحة المتعلّم"><button class="active" type="button"><span>⌂</span>الرئيسية</button><button type="button"><span>▤</span>مساراتي</button><button type="button"><span>◎</span>التقدّم</button><button type="button"><span>◇</span>الإنجازات</button><button type="button"><span>＋</span>استكشف</button></nav>
+        <div class="weekly-card"><div><small>خطة مرنة</small><span>هذا الأسبوع</span></div><strong>٢ <small>/ ٣ دروس</small></strong><div class="mini-meter"><i></i></div><p>يمكنك تعديل الهدف دون خسارة أي تقدّم.</p></div>
+      </aside>
+      <section class="app-main">
+        <header class="app-header"><div><p>الأحد، ٩ نوفمبر</p><h1>مرحبًا، مريم</h1><span>لديك خطوة مركّزة ومراجعة قصيرة مقترحة اليوم.</span></div><div class="header-tools"><button class="round-control" type="button" aria-label="البحث">⌕</button><button class="round-control" type="button" aria-label="التنبيهات">♢</button><span class="avatar">مر</span></div></header>
+
+        <div class="dashboard-layout">
+          <section class="dashboard-primary">
+            <article class="continue-card">
+              <div class="continue-meta"><span class="path-badge language"><i></i> مسار العربية</span><span>الدرس ٤ من ٦</span></div>
+              <h2>رتّب الأحداث باستخدام أفعال الماضي</h2><p>تابع من تمرين التطبيق. إجابتك الأخيرة محفوظة ضمن هذا النموذج فقط.</p>
+              <div class="continue-bottom"><button class="button button-light" type="button" data-go="lesson">تابع من موضعك <span aria-hidden="true">←</span></button><span><b>١٢</b> دقيقة تقريبًا</span></div>
+              <div class="orb orb-one" aria-hidden="true"></div><div class="orb orb-two" aria-hidden="true"></div>
+            </article>
+
+            <article class="course-journey-card">
+              <div class="card-heading"><div><span class="micro-label">رحلة المقرر</span><h2>من الفهم إلى التعبير</h2></div><span class="subtle-chip">٦٨٪ مكتمل</span></div>
+              <div class="course-route" aria-label="أربع محطات في رحلة المقرر">
+                <div class="route-track"><i></i></div>
+                <article class="route-stop complete"><span>✓</span><b>المفردات</b><small>مستقرة</small></article>
+                <article class="route-stop complete"><span>✓</span><b>البنية</b><small>مستقرة</small></article>
+                <article class="route-stop current"><span>٣</span><b>الفهم</b><small>المحطة الحالية</small></article>
+                <article class="route-stop"><span>٤</span><b>التعبير</b><small>التالي</small></article>
+              </div>
+              <div class="route-note"><span>✦</span><p><strong>محطة اليوم</strong> طبّق المهارة في مثال جديد لتحويلها إلى دليل إتقان.</p></div>
+            </article>
+
+            <div class="path-progress-grid">
+              <article class="progress-card language-progress"><div class="progress-title"><span class="path-icon small">ض</span><div><small>المسار A</small><h3>تعلّم العربية</h3></div><strong>٦٨٪</strong></div><div class="skill-row"><span>المفردات</span><i><b style="--value:78%"></b></i><em>٧٨</em></div><div class="skill-row"><span>البنية</span><i><b style="--value:64%"></b></i><em>٦٤</em></div><div class="skill-row"><span>الفهم</span><i><b style="--value:69%"></b></i><em>٦٩</em></div></article>
+              <article class="progress-card study-progress"><div class="progress-title"><span class="path-icon small">◇</span><div><small>المسار B</small><h3>دراسة الكتاب</h3></div><strong>٣١٪</strong></div><div class="skill-row"><span>السياق</span><i><b style="--value:46%"></b></i><em>٤٦</em></div><div class="skill-row"><span>المصدر</span><i><b style="--value:38%"></b></i><em>٣٨</em></div><div class="skill-row"><span>الاستدلال</span><i><b style="--value:24%"></b></i><em>٢٤</em></div></article>
+            </div>
+          </section>
+          <aside class="dashboard-side">
+            <article class="side-card review-card"><div class="card-heading"><div><span class="micro-label">مراجعة مقترحة</span><h3>ثبّت ٤ مفاهيم</h3></div><span class="time-chip">٥ د</span></div><p>مراجعة قصيرة مبنية على محاولاتك. يمكنك تأجيلها دون عقوبة.</p><button class="button button-secondary full" type="button">ابدأ المراجعة</button></article>
+            <article class="side-card achievement-card"><div class="achievement-mark">✦</div><span class="micro-label">إنجاز جديد</span><h3>قارئ متأنٍ</h3><p>راجعت المصدر قبل طلب التفسير في ثلاثة أنشطة.</p><small>إنجاز خاص بك · لا توجد لوحة ترتيب</small></article>
+            <article class="side-card evidence-card"><span class="micro-label">هذا الأسبوع</span><div><strong>٣</strong><span>أدلة تعلّم</span></div><div><strong>٤٢</strong><span>دقيقة مركّزة</span></div><p>الوقت للمعلومة فقط؛ لا يدخل في الإتقان.</p></article>
+          </aside>
+        </div>
+      </section>
+    </div>
+    <nav class="mobile-nav" aria-label="التنقل على الهاتف"><button class="active" type="button"><span>⌂</span>الرئيسية</button><button type="button"><span>▤</span>مساراتي</button><button type="button"><span>◎</span>التقدّم</button><button type="button"><span>○</span>حسابي</button></nav>
+  </main>
+
+  <main class="screen lesson-screen" data-screen="lesson" hidden>
+    <header class="lesson-header">
+      <a class="brand compact" href="#" data-go="landing"><svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true"><path d="M8 28c4-11 12-17 27-17"/><path d="M10 34c8-3 16-2 24 3"/><circle cx="33" cy="11" r="4"/><circle cx="10" cy="34" r="4"/></svg><span>نَسَق<small>مشغّل الدرس</small></span></a>
+      <div class="lesson-header-center"><span>الخطوة ٣ من ٥</span><div class="lesson-progress"><i></i></div><b>٦٠٪</b></div>
+      <div class="lesson-header-actions"><span class="save-state">● محفوظ محليًا في النموذج</span><button class="button button-quiet" type="button" data-go="dashboard">حفظ وخروج</button></div>
+    </header>
+    <div class="lesson-layout">
+      <aside class="lesson-outline">
+        <span class="path-badge study"><i></i> دراسة الكتاب بالعربية</span><h2>من الملاحظة إلى الفكرة</h2><p>درس تجريبي · ١٨ دقيقة</p>
+        <ol><li class="complete"><b>✓</b><span>تهيئة المرجع<small>مكتمل</small></span></li><li class="complete"><b>✓</b><span>اقرأ قبل أن تفسّر<small>مكتمل</small></span></li><li class="current"><b>٣</b><span>صنّف العبارة<small>أنت هنا</small></span></li><li><b>٤</b><span>ابنِ الدليل<small>التالي</small></span></li><li><b>٥</b><span>راجع فهمك<small>ختام الدرس</small></span></li></ol>
+        <button class="outline-help" type="button" data-hint-toggle><span>؟</span><div><strong>أحتاج تلميحًا</strong><small>يكشف الفكرة تدريجيًا</small></div></button>
+      </aside>
+
+      <section class="lesson-content" id="lesson-main">
+        <div class="lesson-breadcrumb">المقرر: قراءة المصدر بوعي <span>›</span> الوحدة الثانية <span>›</span> النشاط ٣</div>
+        <div class="source-context"><div class="source-icon">§</div><div><span class="layer-label source">مرجع المصدر</span><h2>لوقا ١٠: ٢٥–٣٧</h2><p>لا يُعرض نص المرجع في هذا الإثبات. سيظهر النص فقط عند توفر ترخيص موثق وإسناد كامل.</p></div><button type="button" class="source-meta">بيانات المصدر</button></div>
+        <header class="activity-header"><span class="activity-type">تمرين تصنيف · محاولة غير محدودة</span><h1>أي عبارة تصف ملاحظة يمكن إسنادها إلى المصدر؟</h1><p>اختر العبارة التي تصف بنية ظاهرة في المرجع قبل تقديم معنى أو تفسير.</p></header>
+
+        <aside class="educator-note"><span class="layer-label educator">إرشاد المعلّم</span><p>الملاحظة تجيب: «ماذا يعرض المصدر؟». التفسير يجيب: «ماذا يعني ذلك ضمن سياق ومنهج محددين؟»</p></aside>
+
+        <fieldset class="answer-list"><legend class="sr-only">اختر العبارة التي تمثل ملاحظة مصدرية</legend>
+          <button class="answer" type="button" data-answer="interpretation"><span class="choice-letter">أ</span><span><strong>يقدّم المرجع معنى واحدًا لا يمكن فهمه بطريقة أخرى.</strong><small>تحتوي العبارة على حكم تفسيري مطلق.</small></span><i aria-hidden="true"></i></button>
+          <button class="answer" type="button" data-answer="observation"><span class="choice-letter">ب</span><span><strong>يعرض المرجع حوارًا يتبعه انتقال إلى مثال سردي.</strong><small>تصف العبارة ترتيبًا يمكن التحقق منه في المصدر.</small></span><i aria-hidden="true"></i></button>
+          <button class="answer" type="button" data-answer="guidance"><span class="choice-letter">ج</span><span><strong>توضح ملاحظة المقرر خلفية تاريخية تساعد على القراءة.</strong><small>هذه معلومة من إعداد المقرر وليست من المصدر نفسه.</small></span><i aria-hidden="true"></i></button>
+        </fieldset>
+
+        <div class="hint-panel" hidden><div><span>تلميح ١ من ٢</span><strong>ابحث عن العبارة التي تصف ترتيبًا، لا معنى.</strong><p>اسأل: هل أستطيع الإشارة إلى بنية العبارة داخل المرجع دون إضافة شرح؟</p></div><button type="button" data-hint-next>تلميح أوضح</button></div>
+
+        <div class="feedback-panel" hidden role="status"><span class="feedback-icon">✓</span><div><span class="layer-label feedback">تغذية راجعة على النشاط</span><h2>اختيار صحيح؛ فرّقت بين الوصف والتفسير.</h2><p>العبارة تصف انتقالًا بنيويًا يمكن التحقق منه. لا تطلب منك الموافقة على تفسير أو استجابة تعبدية.</p><div class="mastery-evidence"><span>أضيف دليل تعلّم</span><strong>تمييز طبقات المحتوى · نامٍ</strong></div></div></div>
+
+        <div class="lesson-actions"><button class="button button-secondary" type="button" data-hint-toggle>أرني تلميحًا</button><div><span class="attempt-note">اختر إجابة للمتابعة</span><button class="button button-primary" type="button" data-check-answer>تحقّق من الإجابة</button></div></div>
+      </section>
+
+      <aside class="tutor-panel">
+        <div class="tutor-heading"><span class="tutor-mark">✦</span><div><strong>المعلّم السياقي</strong><small><i></i> نموذج محاكاة · ضمن هذا الدرس</small></div><button type="button" aria-label="تصغير لوحة المعلّم">—</button></div>
+        <div class="tutor-scope"><strong>ما الذي يعرفه الآن؟</strong><span>هدف النشاط</span><span>محاولتك الحالية</span><span>المصادر المعتمدة للدرس</span></div>
+        <div class="tutor-message"><span class="layer-label ai">شرح مولّد تجريبيًا</span><p>ابدئي بالسؤال عن مصدر كل عبارة: هل هي من المرجع، أم من إعداد المقرر، أم تفسير يحتاج إلى دليل؟</p><div class="citation"><b>إحالة</b><span>قاعدة التصنيف · إعداد المقرر · النسخة ١</span></div></div>
+        <div class="prompt-list"><button type="button" data-prompt="hint">ساعدني دون كشف الإجابة</button><button type="button" data-prompt="layers">وضّح طبقات المحتوى</button><button type="button" data-prompt="source">أين أراجع المصدر؟</button></div>
+        <div class="tutor-response" hidden role="status"></div>
+        <form class="tutor-input"><label for="tutor-question">اسأل عن هذه الخطوة</label><div><input id="tutor-question" type="text" placeholder="اكتب سؤالًا مرتبطًا بالنشاط…"><button type="submit" aria-label="إرسال السؤال">←</button></div><small>لا يجيب هذا النموذج خارج سياق الدرس.</small></form>
+      </aside>
+    </div>
+    <nav class="lesson-mobile-bar"><button type="button" data-hint-toggle><span>؟</span>تلميح</button><span>الخطوة ٣ من ٥</span><button type="button" data-tutor-scroll><span>✦</span>المعلّم</button></nav>
+  </main>
+  <script src="pd004-hybrid.js"></script>
+</body>
+</html>

@@ -1,256 +1,66 @@
-# Arabic Bible Reading Tutor 🎓📖
+# مدار — Arabic-first learning platform
 
-A frontend-only web application for teaching Arabic reading using biblical texts with browser-based speech recognition and text-to-speech technology.
+Mission 00A establishes a small, runnable foundation for an Arabic-first educational platform. The first vertical supports two separate paths: learning Arabic through appropriately licensed Bible passages and studying the Bible in Arabic. They share platform infrastructure while retaining separate curricula, assessments, and progress dimensions.
 
-## 🌟 Features
+The current release is a technical landing-page prototype. Its provisional “مدار” identity and visual design are not approved references for the Mission 00C redesign. It does not include real AI, accounts, a database, paid services, copyrighted passages, or working product actions.
 
-- **Browser-Based Speech Recognition**: Uses Web Speech API for Arabic speech recognition
-- **Built-in Text-to-Speech**: Enhanced browser TTS with optimized Arabic voice selection
-- **Biblical Text Database**: Verses from Old and New Testament in Arabic with and without diacritics
-- **Progressive Learning**: Beginner, intermediate, and advanced difficulty levels
-- **Real-time Audio Visualization**: Visual feedback for pronunciation quality
-- **Responsive Arabic UI**: Full RTL support with Arabic fonts
-- **Frontend-Only**: No backend required, deploys easily on static hosting platforms
+## Technology
 
-## 🚀 Quick Start - Vercel Deployment (Recommended)
+- Next.js App Router and React
+- TypeScript in strict mode
+- Tailwind CSS with shared design tokens
+- ESLint and Playwright smoke tests
+- System Arabic font stack with no remote asset dependency
 
-This project is optimized for deployment on Vercel as a static frontend application.
+Dependencies are pinned exactly and locked in `package-lock.json`. TypeScript 6.0.3 and ESLint 9.39.5 are used because the current Next.js lint stack does not yet support TypeScript 7 or ESLint 10. Supabase/PostgreSQL and server-side AI integration are documented future options; they are not installed or configured.
 
-### 1. Prerequisites
-- GitHub account  
-- Vercel account (free)
-- Modern browser with Web Speech API support (Chrome, Edge, Safari)
+## Local development
 
-### 2. Set up AWS Credentials
-1. **Create AWS IAM User**:
-   - Go to AWS Console → IAM → Users → Create User
-   - Grant Polly permissions with this policy:
-   ```json
-   {
-     "Version": "2012-10-17",
-     "Statement": [
-       {
-         "Effect": "Allow",
-         "Action": [
-           "polly:SynthesizeSpeech",
-           "polly:DescribeVoices"
-         ],
-         "Resource": "*"
-       }
-     ]
-   }
-   ```
-   - Save the Access Key ID and Secret Access Key
+Requirements:
 
-### 3. Deploy to Vercel
-1. **Fork this repository** to your GitHub account
-2. **Import to Vercel**:
-   - Go to [vercel.com](https://vercel.com)
-   - Click "Import Project"
-   - Select your forked repository
-   - Choose "Node.js" as the framework preset
-   - Deploy!
+- Node.js 22 or newer
+- npm 11 or a compatible npm release
+- Chromium for browser tests
 
-3. **Add Environment Variables in Vercel**:
-   - Go to your project dashboard
-   - Settings → Environment Variables
-   - Add these variables:
-     - `AWS_ACCESS_KEY_ID` = your AWS access key
-     - `AWS_SECRET_ACCESS_KEY` = your AWS secret key  
-     - `AWS_REGION` = us-east-1 (or your preferred region)
+Install from the lockfile and start the development server:
 
-4. **Redeploy**: Your app will now use high-quality AWS Polly voices!
-
-5. **Access your app**: Vercel will provide you with a URL like `https://your-app.vercel.app`
-
-### 4. Local Development
 ```bash
-# Clone your forked repository
-git clone https://github.com/your-username/arabic-bible-tutor.git
-cd arabic-bible-tutor
-
-# Install dependencies
-npm install
-
-# Set up environment variables
-cp .env.example .env
-# Edit .env with your AWS credentials
-
-# Run with Vercel CLI (recommended for testing serverless functions)
-npm install -g vercel
-vercel dev
-
-# Alternative: Serve static files (AWS TTS won't work)
-python3 -m http.server 8000
-
-# Open in browser
-open http://localhost:3000  # for vercel dev
-# or http://localhost:8000   # for static server
+npm ci
+npm run dev
 ```
 
-## 🛠️ Browser Compatibility
+Open `http://localhost:3000`.
 
-### Recommended Browsers
-- **Chrome/Chromium** (Best support for Web Speech API)
-- **Microsoft Edge** (Good Arabic speech recognition)
-- **Safari** (macOS/iOS - Good Arabic TTS voices)
+## Checks
 
-### Required Browser Features
-- Web Speech API (for speech recognition)
-- Speech Synthesis API (for text-to-speech)
-- Web Audio API (for audio visualization)
-- Microphone access permission
-
-## 🎯 Usage
-
-1. **Grant microphone permission** when prompted
-2. **Click "ابدأ القراءة" (Start Reading)** to begin
-3. **Read the displayed Arabic text** aloud
-4. **Get instant feedback** on pronunciation accuracy
-5. **Navigate** between verses using next/previous buttons
-6. **Adjust settings** using the gear icon:
-   - Accuracy threshold
-   - Font size
-   - Speech rate
-   - Show/hide diacritics
-
-## 📱 Features Overview
-
-### Speech Recognition
-- Uses browser's native speech recognition
-- Optimized for Arabic language
-- Real-time interim results
-- Automatic silence detection
-- Manual stop option
-
-### Text-to-Speech
-- Enhanced browser TTS with Arabic voice prioritization
-- Adjustable speech rate (0.5x - 1.2x)
-- Voice quality scoring
-- Fallback voice selection
-
-### Learning System
-- Progressive difficulty levels
-- Accuracy scoring (70-95% threshold)
-- Multiple attempts (up to 3)
-- Automatic progression on success
-- Visual feedback and highlighting
-
-### Audio Visualization
-- Real-time waveform display
-- Volume level monitoring
-- Visual recording indicators
-
-## 🔧 Technical Details
-
-### Architecture
-- **Frontend-Only**: Pure HTML, CSS, JavaScript
-- **No Backend**: All processing done in browser
-- **Static Hosting**: Compatible with any static hosting service
-- **Progressive Web App**: Can be installed on mobile devices
-
-### Browser APIs Used
-- Web Speech API (`webkitSpeechRecognition`)
-- Speech Synthesis API (`speechSynthesis`)
-- Web Audio API (`AudioContext`)
-- MediaDevices API (`getUserMedia`)
-
-### File Structure
-```
-├── index.html              # Main application page
-├── styles.css             # Application styles (RTL Arabic UI)
-├── app.js                 # Main application logic
-├── bible-texts.js         # Biblical text database
-├── audio-processor.js     # Audio processing and TTS
-├── speech-recognition.js  # Speech recognition handling
-├── vercel.json           # Vercel deployment configuration
-└── audio/                # Audio assets directory
+```bash
+npm run lint       # ESLint
+npm run typecheck  # TypeScript strict-mode check
+npm test           # Playwright at mobile and desktop widths
+npm run build      # Production build
 ```
 
-## 🌍 Deployment Options
+Run every check in sequence with `npm run check`.
 
-### Vercel (Recommended)
-- Automatic deployments from Git
-- Global CDN
-- Custom domains
-- Analytics
-- Perfect for static sites
+The Playwright configuration uses `/usr/bin/chromium` in the cloud workspace. On another machine, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to the local Chromium or Chrome executable before running `npm test`.
 
-### Other Static Hosting Options
-- **Netlify**: Similar to Vercel with Git integration
-- **GitHub Pages**: Free hosting for GitHub repositories
-- **Firebase Hosting**: Google's static hosting service
-- **Surge.sh**: Simple static hosting
+## Project structure
 
-### Manual Deployment
-1. Download/clone the repository
-2. Upload all files to any web server
-3. Ensure `index.html` is the default document
-4. Access via your domain/URL
+```text
+app/             App Router pages, metadata, and global design system
+components/      Reusable presentational components
+docs/            Product vision, decisions, architecture, and roadmap
+tests/           Browser smoke tests
+AGENTS.md        Engineering, testing, content, and safety conventions
+```
 
-## 📞 Browser Support Notes
+Start with [the product vision](docs/PRODUCT_VISION.md), [first-vertical specification](docs/FIRST_VERTICAL.md), [decisions](docs/DECISIONS.md), and [roadmap](docs/ROADMAP.md). The [architecture](docs/ARCHITECTURE.md), [sample lessons](docs/SAMPLE_LESSON.md), [AI tutor specification](docs/AI_TUTOR_SPEC.md), [content policy](docs/CONTENT_POLICY.md), and [learner flow](docs/LEARNER_FLOW.md) define the current foundation boundaries.
 
-### Chrome/Chromium
-- Best overall support
-- Excellent Arabic speech recognition
-- Good Arabic TTS voices (varies by OS)
+## Current boundaries
 
-### Microsoft Edge
-- Good speech recognition
-- Native Windows Arabic voices
-- Recommended for Windows users
+- All content in the UI is original placeholder copy.
+- Preview cards are clearly labelled and contain no fake buttons.
+- There are no API routes or environment variables in Mission 00A.
+- No deployment target or production service has been selected.
 
-### Safari (macOS/iOS)
-- Good Arabic TTS voices
-- Some Web Speech API limitations
-- Works best for TTS functionality
-
-### Firefox
-- Limited Web Speech API support
-- TTS works well
-- May require different speech recognition approach
-
-## 🎓 Educational Features
-
-### Difficulty Levels
-- **Beginner**: Simple verses with full diacritics
-- **Intermediate**: Mixed diacritics and complexity
-- **Advanced**: Minimal diacritics, complex texts
-
-### Learning Aids
-- Diacritics toggle (تشكيل)
-- Adjustable font sizes
-- Reference audio playback
-- Visual error highlighting
-- Progress tracking
-
-### Accessibility
-- Right-to-left (RTL) layout
-- High contrast text
-- Keyboard shortcuts
-- Screen reader compatible
-- Mobile-friendly interface
-
-## 🚀 Performance Tips
-
-1. **Use Chrome** for best speech recognition
-2. **Enable microphone permissions** before starting
-3. **Use in quiet environment** for better accuracy
-4. **Speak clearly and at moderate pace**
-5. **Ensure stable internet connection** for voice synthesis
-
-## 📝 License
-
-MIT License - Feel free to use for educational purposes.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test in multiple browsers
-5. Submit a pull request
-
----
-
-**Happy Learning! 📚✨**
+See `AGENTS.md` before making changes. In particular, do not introduce unlicensed passages, browser-exposed provider keys, or speculative infrastructure.

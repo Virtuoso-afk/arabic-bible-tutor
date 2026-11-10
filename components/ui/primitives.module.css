@@ -1,0 +1,106 @@
+.container {
+  margin-inline: auto;
+  max-width: var(--layout-content-max);
+  padding-inline: var(--space-8);
+  width: 100%;
+}
+
+.button {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: var(--type-ui-label);
+  font-weight: 800;
+  gap: var(--space-2);
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-4);
+  transition: background-color var(--duration-fast) ease, border-color var(--duration-fast) ease, color var(--duration-fast) ease, transform var(--duration-fast) ease;
+}
+
+.button:hover:not(:disabled) { transform: translateY(-1px); }
+.button:active:not(:disabled) { transform: translateY(0); }
+.button:disabled { opacity: 0.52; }
+.buttonPrimary { background: var(--color-action-primary); color: #fff; }
+.buttonPrimary:hover:not(:disabled) { background: var(--color-action-primary-hover); }
+.buttonSecondary { background: var(--color-surface-raised); border-color: var(--color-border-default); color: var(--color-text-primary); }
+.buttonQuiet { background: transparent; border-color: transparent; color: var(--color-action-primary); }
+
+.surface {
+  background: var(--color-surface-raised);
+  border: var(--border-default);
+  border-radius: var(--radius-surface);
+  color: var(--color-text-primary);
+  padding: var(--space-6);
+}
+.surfaceElevated { box-shadow: var(--shadow-surface); }
+.surfaceSoft { background: var(--color-surface-soft); }
+.surfaceNavy { background: var(--color-brand-navy); border-color: transparent; color: #fff; }
+
+.badge {
+  align-items: center;
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: var(--type-ui-caption);
+  font-weight: 800;
+  gap: var(--space-2);
+  line-height: 1.4;
+  min-height: 1.75rem;
+  padding: var(--space-1) var(--space-3);
+  width: fit-content;
+}
+.badge::before { background: currentColor; border-radius: 50%; content: ""; height: 0.42rem; width: 0.42rem; }
+.badgeNeutral { background: var(--color-surface-soft); color: var(--color-text-muted); }
+.badgeLanguage { background: var(--color-path-language-soft); color: var(--color-path-language); }
+.badgeStudy { background: var(--color-path-study-soft); color: var(--color-path-study); }
+.badgeMilestone { background: #edf5d2; color: #526908; }
+.badgeSuccess { background: var(--color-feedback-success-soft); color: var(--color-feedback-success); }
+
+.progressGroup { display: grid; gap: var(--space-2); }
+.progressHeader { align-items: center; display: flex; font-size: var(--type-ui-caption); justify-content: space-between; }
+.progressHeader span { color: var(--color-text-muted); }
+.progressHeader strong { color: var(--color-text-primary); }
+.progress {
+  appearance: none;
+  background: var(--color-surface-soft);
+  border: 0;
+  border-radius: 999px;
+  height: 0.5rem;
+  overflow: hidden;
+  width: 100%;
+}
+.progress::-webkit-progress-bar { background: var(--color-surface-soft); }
+.progress::-webkit-progress-value { background: var(--progress-color, var(--color-action-primary)); border-radius: 999px; }
+.progress::-moz-progress-bar { background: var(--progress-color, var(--color-action-primary)); border-radius: 999px; }
+.progressLanguage { --progress-color: var(--color-path-language); }
+.progressStudy { --progress-color: var(--color-path-study); }
+.progressMilestone { --progress-color: var(--color-progress-current); }
+
+.field { display: grid; gap: var(--space-2); }
+.field label { color: var(--color-text-primary); font-size: var(--type-ui-label); font-weight: 750; }
+.field input {
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  color: var(--color-text-primary);
+  font-size: var(--type-ui-body);
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-3);
+  width: 100%;
+}
+.field input::placeholder { color: var(--color-text-muted); opacity: 0.78; }
+.field input[aria-invalid="true"] { border-color: var(--color-feedback-danger); }
+.fieldHint { color: var(--color-text-muted); font-size: var(--type-ui-caption); line-height: 1.6; }
+.fieldError { color: var(--color-feedback-danger); }
+
+@media (max-width: 47.99rem) {
+  .container { padding-inline: var(--space-4); }
+  .surface { padding: var(--space-5); }
+  .button { min-height: 3rem; }
+}
+
+@media (min-width: 48rem) and (max-width: 74.99rem) {
+  .container { padding-inline: var(--space-6); }
+}

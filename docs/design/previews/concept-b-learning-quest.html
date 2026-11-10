@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Concept B — Learning Quest</title>
+  <link rel="stylesheet" href="preview-base.css">
+  <style>
+    :root {
+      --midnight:#171a31; --midnight-2:#232746; --cream:#fff9ee; --white:#fff;
+      --ink:#20233a; --muted:#6b7088; --line:#e6e2d9; --lime:#b9e85d; --aqua:#55d6c2;
+      --coral:#ff8066; --purple:#8668e8; --yellow:#ffd166; --focus:#ffb000;
+    }
+    body { background:var(--cream); color:var(--ink); }
+    .b-screen { background:var(--cream); }
+    .b-header { color:#fff; position:relative; z-index:3; }
+    .b-brand .brand-symbol { background:var(--lime); border-radius:50% 50% 16px 50%; color:var(--midnight); transform:rotate(-8deg); }
+    .b-brand .brand-symbol span { transform:rotate(8deg); }
+    .b-landing { background:var(--midnight); color:#fff; position:relative; }
+    .b-landing::before { background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px); background-size:24px 24px; content:""; inset:0; opacity:.25; position:absolute; }
+    .b-hero { display:grid; gap:30px; grid-template-columns:.88fr 1.12fr; min-height:620px; padding-block:54px 82px; position:relative; z-index:2; }
+    .b-copy { align-self:center; }
+    .b-kicker { align-items:center; color:var(--lime); display:flex; font-size:11px; font-weight:900; gap:8px; }
+    .b-kicker::before { background:var(--lime); border-radius:50%; content:""; height:8px; width:8px; }
+    .b-hero h1 { font-size:clamp(49px,6vw,86px); letter-spacing:-.07em; line-height:1.08; margin:16px 0 20px; }
+    .b-hero h1 em { color:var(--lime); font-style:normal; position:relative; }
+    .b-hero p { color:#c7c9d8; font-size:16px; line-height:2; max-width:590px; }
+    .b-actions { display:flex; gap:10px; margin-top:26px; }
+    .b-primary { background:var(--lime); color:var(--midnight); box-shadow:0 0 0 5px rgba(185,232,93,.12); }
+    .b-ghost { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); color:#fff; }
+    .b-map { min-height:520px; position:relative; }
+    .b-map-path { border:3px dashed rgba(255,255,255,.25); border-radius:49% 51% 57% 43%; inset:50px 80px 30px 60px; position:absolute; transform:rotate(8deg); }
+    .b-map-card { background:var(--cream); border:3px solid var(--midnight); border-radius:22px; box-shadow:8px 9px 0 rgba(0,0,0,.25); color:var(--ink); padding:15px; position:absolute; width:170px; z-index:2; }
+    .b-map-card b { display:block; font-size:13px; }
+    .b-map-card small { color:var(--muted); font-size:8px; }
+    .b-map-card i { align-items:center; border-radius:13px; display:flex; float:right; font-size:15px; height:38px; justify-content:center; margin-left:9px; width:38px; }
+    .b-map-card.one { inset:44px 12% auto auto; transform:rotate(4deg); }
+    .b-map-card.two { inset:200px auto auto 3%; transform:rotate(-5deg); }
+    .b-map-card.three { inset:auto 22% 22px auto; transform:rotate(3deg); }
+    .b-map-card.one i { background:#dff8f4; color:#159a87; }
+    .b-map-card.two i { background:#f0eaff; color:var(--purple); }
+    .b-map-card.three i { background:#fff0c8; color:#a56b00; }
+    .b-map-core { align-items:center; background:var(--coral); border:5px solid var(--midnight); border-radius:50%; box-shadow:8px 10px 0 rgba(0,0,0,.25); display:flex; flex-direction:column; height:155px; inset:50% auto auto 50%; justify-content:center; position:absolute; transform:translate(-50%,-50%) rotate(-5deg); width:155px; z-index:3; }
+    .b-map-core strong { font-size:20px; }
+    .b-map-core small { font-size:9px; }
+    .b-path-band { background:var(--cream); color:var(--ink); padding-block:26px 64px; position:relative; z-index:2; }
+    .b-path-grid { display:grid; gap:16px; grid-template-columns:1fr 1fr; }
+    .b-path { border:2px solid var(--midnight); border-radius:22px; box-shadow:5px 6px 0 var(--midnight); padding:22px; }
+    .b-path.a { background:#dff8f4; }
+    .b-path.b { background:#f0eaff; }
+    .b-path .tag { background:var(--midnight); border-radius:999px; color:#fff; font-size:9px; padding:5px 9px; }
+    .b-path h2 { font-size:21px; margin:18px 0 7px; }
+    .b-path p { color:var(--muted); font-size:10px; line-height:1.7; }
+
+    .b-app { background:#f7f3ea; min-height:100vh; }
+    .b-top { background:var(--midnight); color:#fff; }
+    .b-top .screen-header { min-height:72px; }
+    .b-user { background:var(--coral); color:#fff; }
+    .b-main { padding-block:28px 90px; }
+    .b-welcome { align-items:end; display:flex; justify-content:space-between; }
+    .b-welcome h1 { font-size:30px; margin:0; }
+    .b-welcome p { color:var(--muted); font-size:11px; margin:5px 0 0; }
+    .b-week { background:#fff; border:2px solid var(--midnight); border-radius:14px; box-shadow:3px 4px 0 var(--midnight); font-size:10px; font-weight:900; padding:10px 13px; }
+    .b-dash { display:grid; gap:20px; grid-template-columns:1.35fr .65fr; margin-top:24px; }
+    .b-journey { background:var(--midnight); border-radius:28px; color:#fff; min-height:420px; overflow:hidden; padding:26px; position:relative; }
+    .b-journey::before { background:var(--midnight-2); border-radius:50%; content:""; height:380px; inset:auto auto -140px -70px; position:absolute; width:380px; }
+    .b-journey-head { align-items:flex-start; display:flex; justify-content:space-between; position:relative; z-index:2; }
+    .b-journey-head h2 { font-size:22px; margin:7px 0; }
+    .b-journey-head p { color:#b8bbcc; font-size:9px; }
+    .b-level { align-items:center; background:var(--lime); border-radius:17px; color:var(--midnight); display:flex; flex:0 0 64px; flex-direction:column; font-size:8px; height:64px; justify-content:center; transform:rotate(4deg); width:64px; }
+    .b-level strong { font-size:20px; }
+    .b-checkpoints { display:flex; justify-content:space-between; margin-top:70px; padding-inline:20px; position:relative; z-index:2; }
+    .b-checkpoints::before { border-top:3px dashed #5b5f78; content:""; inset:28px 50px auto; position:absolute; z-index:-1; }
+    .b-point { align-items:center; display:flex; flex-direction:column; gap:8px; text-align:center; width:88px; }
+    .b-point i { align-items:center; background:#363a58; border:3px solid #777b92; border-radius:50%; display:flex; font-size:15px; height:56px; justify-content:center; width:56px; }
+    .b-point.done i { background:var(--aqua); border-color:#b2fff3; color:var(--midnight); }
+    .b-point.now i { background:var(--coral); border-color:#ffc3b7; box-shadow:0 0 0 8px rgba(255,128,102,.14); }
+    .b-point span { color:#c7c9d8; font-size:8px; }
+    .b-card { background:#fff; border:2px solid var(--midnight); border-radius:20px; box-shadow:4px 5px 0 var(--midnight); padding:20px; }
+    .b-side { display:grid; gap:18px; }
+    .b-goal h3, .b-badges h3 { font-size:14px; margin:0 0 12px; }
+    .b-goal-row { display:flex; gap:7px; }
+    .b-day { align-items:center; background:#f1eee7; border-radius:9px; display:flex; flex-direction:column; font-size:7px; gap:5px; padding:7px; width:34px; }
+    .b-day b { background:#d8d5ce; border-radius:50%; height:8px; width:8px; }
+    .b-day.done b { background:var(--aqua); }
+    .b-day.today { background:#fff0c8; border:1px solid #f2c14d; }
+    .b-badge-row { display:flex; gap:10px; }
+    .b-badge { align-items:center; background:#f2edff; border:1px solid #d7cdf8; border-radius:50%; color:var(--purple); display:flex; font-size:18px; height:50px; justify-content:center; width:50px; }
+    .b-lower { display:grid; gap:18px; grid-template-columns:1fr 1fr; margin-top:20px; }
+    .b-task { align-items:center; display:grid; gap:12px; grid-template-columns:48px 1fr auto; }
+    .b-task-icon { align-items:center; background:#dff8f4; border-radius:13px; color:#159a87; display:flex; height:48px; justify-content:center; }
+    .b-task strong { display:block; font-size:12px; }
+    .b-task small { color:var(--muted); font-size:8px; }
+    .b-task .btn { background:var(--midnight); color:#fff; min-height:38px; }
+    .b-mobile-nav { background:rgba(23,26,49,.96); border-radius:22px; color:#b7bacd; }
+    .b-mobile-nav .active { color:var(--lime); font-weight:900; }
+
+    .b-lesson { background:var(--midnight); color:#fff; min-height:100vh; padding-bottom:30px; }
+    .b-lesson .screen-header { border-bottom:1px solid rgba(255,255,255,.1); }
+    .b-lesson-shell { display:grid; gap:22px; grid-template-columns:1fr 330px; padding-top:24px; }
+    .b-lesson-stage { background:var(--cream); border-radius:26px; color:var(--ink); min-height:760px; overflow:hidden; }
+    .b-stage-top { align-items:center; background:#fff; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; padding:18px 24px; }
+    .b-stage-top strong { font-size:12px; }
+    .b-stage-progress { display:flex; gap:5px; }
+    .b-stage-progress i { background:#e0ddd6; border-radius:99px; height:6px; width:38px; }
+    .b-stage-progress .done { background:var(--aqua); }
+    .b-stage-progress .now { background:var(--coral); }
+    .b-stage-body { padding:34px; }
+    .b-stage-body .tag { background:#fff0c8; border-radius:999px; color:#8c6200; font-size:9px; font-weight:900; padding:6px 9px; }
+    .b-stage-body h1 { font-size:30px; margin:22px 0 8px; }
+    .b-stage-body > p { color:var(--muted); font-size:11px; line-height:1.8; }
+    .b-sort { display:grid; gap:12px; grid-template-columns:1fr 1fr; margin-top:28px; }
+    .b-bin { background:#fff; border:2px dashed #c5c2ba; border-radius:18px; min-height:230px; padding:16px; }
+    .b-bin h3 { font-size:12px; margin:0 0 14px; }
+    .b-token { background:#f3f0e8; border:1px solid #ddd8cf; border-radius:10px; font-size:11px; font-weight:800; margin-top:8px; padding:12px; }
+    .b-token.correct { background:#dff8f4; border-color:#7edccb; }
+    .b-feedback { align-items:center; background:#e8f9f5; border:1px solid #9be3d6; border-radius:14px; color:#126f62; display:flex; font-size:10px; gap:10px; margin-top:20px; padding:13px; }
+    .b-tutor-panel { display:flex; flex-direction:column; gap:14px; }
+    .b-tutor-head { background:var(--coral); border:2px solid #ffc3b7; border-radius:22px; color:var(--midnight); padding:20px; }
+    .b-tutor-head .spark { align-items:center; background:var(--midnight); border-radius:13px; color:var(--lime); display:flex; float:right; height:42px; justify-content:center; margin-left:10px; width:42px; }
+    .b-tutor-head h2 { font-size:15px; margin:2px 0; }
+    .b-tutor-head p { font-size:9px; line-height:1.6; margin:6px 0 0; }
+    .b-chat { background:var(--midnight-2); border:1px solid #414665; border-radius:22px; display:flex; flex:1; flex-direction:column; padding:18px; }
+    .b-chat-message { background:#303553; border-radius:16px 5px 16px 16px; color:#e1e3ee; font-size:10px; line-height:1.8; padding:14px; }
+    .b-source { border-right:3px solid var(--lime); color:#aeb2c9; font-size:8px; margin-top:12px; padding:7px 9px; }
+    .b-quick { display:grid; gap:7px; margin-top:16px; }
+    .b-quick span { border:1px solid #4c5274; border-radius:999px; color:#d4d7e6; font-size:8px; padding:7px 10px; }
+    .b-chat-input { background:#12152a; border:1px solid #4c5274; border-radius:12px; color:#8d92aa; font-size:9px; margin-top:auto; padding:12px; }
+
+    @media(max-width:700px) {
+      .b-header { border-bottom:1px solid rgba(255,255,255,.1); }
+      .b-hero { grid-template-columns:1fr; min-height:auto; padding-block:38px 52px; }
+      .b-hero h1 { font-size:46px; }
+      .b-hero p { font-size:14px; }
+      .b-actions { align-items:stretch; flex-direction:column; }
+      .b-map { min-height:410px; }
+      .b-map-card { width:142px; }
+      .b-map-card.one { inset-inline-end:0; }
+      .b-map-card.two { inset-inline-start:0; top:165px; }
+      .b-map-card.three { inset-inline-end:12%; }
+      .b-map-core { height:124px; width:124px; }
+      .b-path-grid { grid-template-columns:1fr; padding-bottom:76px; }
+      .b-main { padding:20px 0 94px; }
+      .b-welcome { align-items:flex-start; flex-direction:column; gap:14px; }
+      .b-welcome h1 { font-size:24px; }
+      .b-dash { grid-template-columns:minmax(0,1fr); min-width:0; }
+      .b-journey { min-height:430px; min-width:0; padding:20px 14px; width:100%; }
+      .b-journey-head { min-height:118px; min-width:0; position:relative; }
+      .b-journey-head > div:first-child { min-width:0; padding-left:74px; }
+      .b-level { left:0; position:absolute; top:0; transform:none; }
+      .b-checkpoints { margin-top:62px; padding-inline:0; }
+      .b-point { width:72px; }
+      .b-checkpoints::before { inset-inline:30px; }
+      .b-side { grid-template-columns:minmax(0,1fr); min-width:0; }
+      .b-lower { grid-template-columns:1fr; }
+      .b-lesson-shell { display:block; padding:16px 0 0; }
+      .b-lesson-stage { min-height:auto; }
+      .b-stage-body { padding:22px 16px; }
+      .b-stage-body h1 { font-size:24px; }
+      .b-sort { grid-template-columns:1fr; }
+      .b-bin { min-height:150px; }
+      .b-tutor-panel { margin-top:16px; }
+      .b-chat { min-height:330px; }
+    }
+  </style>
+</head>
+<body data-concept-name="Learning Quest">
+  <div class="preview-toolbar" role="region" aria-label="أدوات معاينة المفهوم">
+    <strong>المفهوم B · Learning Quest · إثبات تصميم مستقل</strong>
+    <div class="preview-tabs" role="tablist" aria-label="اختر الشاشة">
+      <button type="button" role="tab" data-target="landing">الصفحة الرئيسية</button><button type="button" role="tab" data-target="dashboard">لوحة المتعلم</button><button type="button" role="tab" data-target="lesson">الدرس والمعلّم</button>
+    </div>
+  </div>
+
+  <main class="concept-screen b-screen b-landing" data-preview="landing">
+    <header class="screen-header screen-shell b-header"><div class="concept-brand b-brand"><span class="brand-symbol"><span>↗</span></span><span>مسار<small>اسم تصوّري للمقارنة فقط</small></span></div><nav class="desktop-links"><span>اختر مسارك</span><span>تجربة التعلّم</span><span>المنهج</span></nav><span class="concept-label">Learning Quest</span></header>
+    <section class="b-hero screen-shell">
+      <div class="b-copy"><p class="b-kicker">رحلة واضحة. تقدّم حقيقي.</p><h1>كل درس<br><em>محطّة إتقان.</em></h1><p>تعلّم نشط يجمع التمارين القصيرة، المساندة السياقية، ومسار تقدّم ترى معناه—من دون ضغط أو مكافآت فارغة.</p><div class="b-actions"><span class="btn btn-round b-primary">ابدأ رحلتك ←</span><span class="btn btn-round b-ghost">قارن المسارين</span></div></div>
+      <div class="b-map" aria-label="خريطة رحلة تعلّم"><div class="b-map-path"></div><div class="b-map-card one"><i>ض</i><b>مهارة لغوية</b><small>لاحظ النمط</small></div><div class="b-map-card two"><i>✦</i><b>مساندة ذكية</b><small>تلميح في وقته</small></div><div class="b-map-card three"><i>✓</i><b>دليل إتقان</b><small>ما تعلمته فعلًا</small></div><div class="b-map-core"><small>رحلتك</small><strong>تبدأ هنا</strong></div></div>
+    </section>
+    <section class="b-path-band"><div class="b-path-grid screen-shell"><article class="b-path a"><span class="tag">المسار A</span><h2>العربية عبر النصوص</h2><p>مفردات وقواعد وفهم مقروء من خلال مواد كتابية مرخّصة، مع انتقال حقيقي إلى أمثلة جديدة.</p></article><article class="b-path b"><span class="tag">المسار B</span><h2>دراسة الكتاب بالعربية</h2><p>سياق وأدلة وفهم منظّم مع معلّم عربي سياقي يبيّن المصدر وحدود الإجابة.</p></article></div></section>
+  </main>
+
+  <main class="concept-screen b-app" data-preview="dashboard" hidden>
+    <div class="b-top"><header class="screen-header screen-shell"><div class="concept-brand b-brand"><span class="brand-symbol"><span>↗</span></span><span>مسار<small>لوحة الرحلة</small></span></div><nav class="desktop-links"><span>رحلتي</span><span>المسارات</span><span>الإنجازات</span></nav><div class="screen-actions"><span class="icon-button">⌕</span><span class="avatar b-user">مر</span></div></header></div>
+    <section class="b-main screen-shell"><div class="b-welcome"><div><h1>إلى أين اليوم، مريم؟</h1><p>لديك محطّة واحدة مقترحة. يمكنك تغييرها من دون خسارة.</p></div><span class="b-week">هدف مرن · ٢ من ٣ محطات</span></div>
+      <div class="b-dash"><article class="b-journey"><div class="b-journey-head"><div><span class="path-chip" style="background:rgba(85,214,194,.14);color:#77ead8">مسار العربية</span><h2>رحلة المستوى المبكر</h2><p>المحطة الحالية: ترتيب الأحداث بأفعال الماضي</p></div><div class="b-level"><small>المستوى</small><strong>٣</strong></div></div><div class="b-checkpoints"><div class="b-point done"><i>✓</i><span>لاحظ النمط</span></div><div class="b-point now"><i>٢</i><span>رتّب الأحداث</span></div><div class="b-point"><i>٣</i><span>انقل المهارة</span></div><div class="b-point"><i>◇</i><span>دليل الإتقان</span></div></div></article>
+        <aside class="b-side"><article class="b-card b-goal"><h3>إيقاع هذا الأسبوع</h3><div class="b-goal-row"><span class="b-day done">س<b></b></span><span class="b-day done">ح<b></b></span><span class="b-day today">ن<b></b></span><span class="b-day">ث<b></b></span><span class="b-day">ر<b></b></span></div><p style="color:var(--muted);font-size:8px;line-height:1.6">اقتراح مرن، لا سلسلة تُفقد.</p></article><article class="b-card b-badges"><h3>أدلة جديدة</h3><div class="b-badge-row"><span class="b-badge">ض</span><span class="b-badge" style="background:#fff0c8;color:#996500;border-color:#f2c14d">◎</span></div><p style="color:var(--muted);font-size:8px">تمييز الفعل · استخدام المصدر</p></article></aside></div>
+      <div class="b-lower"><article class="b-card b-task"><div class="b-task-icon">▶</div><div><strong>تابع: ترتيب الأحداث</strong><small>٨ دقائق · تلميح سياقي متاح</small></div><span class="btn">تابع</span></article><article class="b-card b-task"><div class="b-task-icon" style="background:#f0eaff;color:var(--purple)">✦</div><div><strong>مراجعة خفيفة</strong><small>٤ كلمات تحتاج إلى تثبيت</small></div><span class="btn">راجع</span></article></div>
+    </section><nav class="mobile-bottom-nav b-mobile-nav"><span class="active">⌂<b>رحلتي</b></span><span>◫<b>المسارات</b></span><span>◇<b>أدلّتي</b></span><span>○<b>حسابي</b></span></nav>
+  </main>
+
+  <main class="concept-screen b-lesson" data-preview="lesson" hidden>
+    <header class="screen-header screen-shell"><div class="concept-brand b-brand"><span class="brand-symbol"><span>↗</span></span><span>مسار<small>محطة التعلّم ٢/٤</small></span></div><div class="desktop-links"><span>خروج آمن</span><span class="path-chip" style="background:#2d3150;color:#77ead8">مسار العربية</span></div></header>
+    <div class="b-lesson-shell screen-shell"><section class="b-lesson-stage"><div class="b-stage-top"><strong>رتّب الأحداث بأفعال الماضي</strong><div class="b-stage-progress"><i class="done"></i><i class="done"></i><i class="now"></i><i></i><i></i></div></div><div class="b-stage-body"><span class="tag">تمرين تصنيف · ٢ من ٤</span><h1>ضع كل بطاقة في مكانها</h1><p>صنّف المثال الأصلي بحسب وظيفته. لا يظهر في هذه المعاينة أي نص كتابي.</p><div class="b-sort"><div class="b-bin"><h3>فعل ماضٍ</h3><div class="b-token correct">كَتَبَ</div><div class="b-token correct">دَخَلَ</div></div><div class="b-bin"><h3>اسم</h3><div class="b-token">الطَّالِبُ</div><div class="b-token">الجَوَابُ</div></div></div><div class="b-feedback"><strong>✓</strong><span>تصنيف صحيح. الخطوة التالية تتأكد من نقل المهارة إلى جملة جديدة.</span></div></div></section>
+      <aside class="b-tutor-panel"><div class="b-tutor-head"><span class="spark">✦</span><h2>رفيق التعلّم</h2><p>يعرف هدف المحطة ويقدّم تلميحًا، لا إجابة جاهزة.</p></div><div class="b-chat"><div class="b-chat-message">ممتاز. قبل الانتقال، ما العلامة التي ساعدتك على تمييز الفعل الماضي؟</div><div class="b-source">قاعدة الدرس · صيغة الماضي · نسخة ١</div><div class="b-quick"><span>ذكّرني بالقاعدة</span><span>أعطني مثالًا جديدًا</span><span>أريد تلميحًا فقط</span></div><div class="b-chat-input" aria-disabled="true">اسأل عن هذه المحطة… &nbsp; ◁</div></div></aside></div>
+  </main>
+  <script src="preview.js"></script>
+</body>
+</html>
