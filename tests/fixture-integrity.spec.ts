@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test";
 import { achievements, courses, evidenceRecords, pathProgress, reviewSuggestions } from "@/lib/learning-demo";
 import { learningPathIds } from "@/lib/learning-paths";
 import { getLesson, lessonFixtures } from "@/lib/lesson-fixtures";
+import { getTutorStateContent } from "@/lib/tutor-states";
 
 test("all fixture relationships and assessment references resolve", () => {
   expect(new Set(courses.map((course) => course.id)).size).toBe(courses.length);
@@ -48,4 +49,15 @@ test("all fixture relationships and assessment references resolve", () => {
   for (const suggestion of reviewSuggestions) {
     expect(getLesson(suggestion.courseId, suggestion.lessonId)).toBeDefined();
   }
+});
+
+test("missing source metadata withholds a citation without substituting content", () => {
+  const lesson = lessonFixtures[0];
+  const activity = lesson.activities[0];
+  const guidance = lesson.blocks.find((block) => block.layer === "educator-guidance")!;
+  const source = { ...lesson.blocks.find((block) => block.layer === "source-reference")!, provenance: undefined };
+  const content = getTutorStateContent("valid-citation", activity, guidance, lesson.pathId, source);
+  expect(content.title).toBe("بيانات المرجع غير متاحة");
+  expect(content.body).toContain("لا يحتوي على معرّف مصدر قابل للتحقق");
+  expect(content.detail).toContain("لم يُستبدل المرجع بمصدر آخر");
 });

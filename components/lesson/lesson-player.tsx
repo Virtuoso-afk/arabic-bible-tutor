@@ -34,15 +34,24 @@ export function LessonPlayer({ lesson, courseTitle }: LessonPlayerProps) {
   const feedbackVisible = state.classification !== null;
 
   useEffect(() => {
-    if (feedbackVisible) feedbackRef.current?.focus();
+    if (feedbackVisible) {
+      feedbackRef.current?.focus({ preventScroll: true });
+      feedbackRef.current?.scrollIntoView({ block: "center", behavior: "auto" });
+    }
   }, [feedbackVisible, state.classification]);
 
   useEffect(() => {
-    if (isActive) activityRef.current?.focus();
+    if (isActive) {
+      activityRef.current?.focus({ preventScroll: true });
+      activityRef.current?.scrollIntoView({ block: "center", behavior: "auto" });
+    }
   }, [state.currentActivityIndex, isActive]);
 
   useEffect(() => {
-    if (state.status === "completed") completionRef.current?.focus();
+    if (state.status === "completed") {
+      completionRef.current?.focus({ preventScroll: true });
+      completionRef.current?.scrollIntoView({ block: "center", behavior: "auto" });
+    }
   }, [state.status]);
 
   const revealHint = () => dispatch({ type: "REVEAL_HINT", hintTotal: activity.hints.length });
@@ -113,7 +122,7 @@ export function LessonPlayer({ lesson, courseTitle }: LessonPlayerProps) {
         </aside>
       </div>
 
-      {isActive && <nav className={styles.mobileUtility} aria-label="أدوات الدرس للهاتف"><button onClick={revealHint} type="button"><span aria-hidden="true">؟</span> تلميح</button><span>{state.currentActivityIndex + 1} من {lesson.activities.length}</span><button onClick={scrollToTutor} type="button"><span aria-hidden="true">✦</span> الإرشاد</button></nav>}
+      {isActive && <nav className={styles.mobileUtility} aria-label="أدوات الدرس للهاتف" data-testid="mobile-lesson-utility"><button onClick={revealHint} type="button"><span aria-hidden="true">؟</span> تلميح</button><span>{state.currentActivityIndex + 1} من {lesson.activities.length}</span><button onClick={scrollToTutor} type="button"><span aria-hidden="true">✦</span> الإرشاد</button></nav>}
     </div>
   );
 }

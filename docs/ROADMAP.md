@@ -141,10 +141,14 @@ Mission 01A is now integrated as a complete fixture-backed frontend milestone. P
 
 ## Mission 01B — Responsive and interaction QA
 
+**Status:** Automated Chromium QA complete locally; physical-device, assistive-technology, Firefox, and WebKit verification outstanding
+
 - Validate Arabic RTL behavior on representative mobile, tablet, and desktop widths.
 - Test keyboard, screen reader, contrast, touch targets, reduced motion, loading, offline, error, and recovery behavior.
 - Verify interaction states, exercise feedback, progress communication, and subtle celebrations without coercive mechanics.
 - Resolve browser and device issues before adding live services.
+
+Mission 01B adds a production-server QA suite covering axe WCAG-tagged rules, both keyboard-complete lessons, focus management, Arabic/RTL stress, widths from 320 to 1920 CSS pixels, text resize and reflow, route failures, offline recovery, deterministic rapid interaction, no persistence, and unexpected network/runtime activity. Three P2 defects were fixed: unusable lesson reflow under 200% root text, invisible programmatic focus on status regions, and fixed mobile utility overlap on focused feedback. The Chromium demonstration is ready for Maestro review; manual device/AT sign-off and the blocked Firefox/WebKit engine runs remain required before any production or pilot gate.
 
 ## Later missions
 

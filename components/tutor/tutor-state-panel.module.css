@@ -9,6 +9,7 @@
 .selector { display: grid; font-size: var(--type-ui-caption); font-weight: 900; gap: var(--space-2); margin-top: var(--space-5); }
 .selector select { background: #fff; border: var(--border-default); border-radius: var(--radius-control); color: var(--color-text-primary); font: inherit; min-height: 2.75rem; padding: var(--space-2) var(--space-3); width: 100%; }
 .statePanel { --state-color: var(--color-action-primary); background: #eef2fb; border: 1px solid #cbd5f1; border-inline-start: .3rem solid var(--state-color); border-radius: var(--radius-surface); margin-top: var(--space-4); padding: var(--space-4); }
+.statePanel:focus { outline: 3px solid var(--color-focus-ring); outline-offset: 3px; }
 .statePanel > span { color: var(--state-color); font-size: var(--type-ui-caption); font-weight: 900; }
 .statePanel h3 { font-size: 1rem; line-height: 1.6; margin: var(--space-2) 0; }
 .statePanel p { color: #3d4f66; font-size: var(--type-ui-label); line-height: 1.8; margin: 0; }
